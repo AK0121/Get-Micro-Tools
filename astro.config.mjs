@@ -9,6 +9,12 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://getmicrotools.com',
+  redirects: {
+    '/engagement-rate-calculator': {
+      status: 301,
+      destination: '/instagram-engagement-rate-calculator'
+    }
+  },
   integrations: [mcp(), sitemap()],
 
   vite: {
