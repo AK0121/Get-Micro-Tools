@@ -1,0 +1,185 @@
+---
+---
+
+<div class="lg:col-span-7 space-y-6">
+  <div class="flex items-center justify-between border-b border-hairline-soft pb-3">
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">02. Data Input</span>
+      <h3 class="text-sm font-semibold text-ink uppercase tracking-wider">Post Metrics</h3>
+    </div>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button 
+        type="button" 
+        id="reset-calc-btn" 
+        class="px-2.5 py-1 text-xs font-semibold text-muted hover:text-ink hover:bg-surface-strong rounded-md border border-hairline transition-all flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-primary/20 shadow-2xs cursor-pointer"
+        title="Reset all fields to default"
+      >
+        <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        <span>Reset Calculator</span>
+      </button>
+      <span class="text-[11px] text-muted font-medium hidden sm:flex items-center gap-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span> Live Calculation
+      </span>
+    </div>
+  </div>
+
+  {/* Group 1: Audience & Reach Base Panel */}
+  <div class="p-4 sm:p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-4">
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-1.5">
+        <span class="text-sm">🌐</span> Audience Base
+      </span>
+      <span class="text-[10px] text-muted font-normal">Denominators for rate formulas</span>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <label for="ig-followers" class="text-xs font-semibold text-ink flex items-center justify-between">
+          <span>Total Followers</span>
+          <span class="text-[10px] text-muted font-normal">Profile Base</span>
+        </label>
+        <input 
+          type="number" 
+          id="ig-followers" 
+          min="0" 
+          step="1"
+          placeholder="e.g. 25000" 
+          aria-describedby="followers-hint followers-error"
+          class="w-full bg-surface-card border border-hairline rounded-lg px-3.5 py-2.5 text-ink font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-sm aria-invalid:border-red-500 shadow-2xs" 
+        />
+        <p id="followers-hint" class="text-[11px] text-muted leading-tight">Used for ERF & Creator Tier detection</p>
+        <p id="followers-error" class="text-[11px] text-red-500 font-medium hidden flex items-center gap-1">
+          <span>⚠️</span> <span id="followers-error-text">Please enter a non-negative whole number.</span>
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <label for="ig-reach" class="text-xs font-semibold text-ink flex items-center justify-between">
+          <span>Accounts Reached</span>
+          <span class="text-[10px] text-muted font-normal">Insights</span>
+        </label>
+        <input 
+          type="number" 
+          id="ig-reach" 
+          min="0" 
+          step="1"
+          placeholder="e.g. 18500" 
+          aria-describedby="reach-hint reach-error"
+          class="w-full bg-surface-card border border-hairline rounded-lg px-3.5 py-2.5 text-ink font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-sm aria-invalid:border-red-500 shadow-2xs" 
+        />
+        <p id="reach-hint" class="text-[11px] text-muted leading-tight">Used for ERR (True Post Impact)</p>
+        <p id="reach-error" class="text-[11px] text-red-500 font-medium hidden flex items-center gap-1">
+          <span>⚠️</span> <span id="reach-error-text">Please enter a non-negative whole number.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Group 2: Interactions Panel */}
+  <div class="p-4 sm:p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-4">
+    <div class="flex justify-between items-center">
+      <span class="text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-1.5">
+        <span class="text-sm">📊</span> Post Interactions
+      </span>
+      <span class="text-[10px] text-muted font-normal">Numerators for rate formulas</span>
+    </div>
+    
+    <div class="grid grid-cols-2 sm:grid-cols-2 gap-3.5">
+      <div class="space-y-1.5">
+        <label for="ig-likes" class="text-xs font-semibold text-ink flex items-center justify-between">
+          <span>Likes</span>
+          <span>❤️</span>
+        </label>
+        <input 
+          type="number" 
+          id="ig-likes" 
+          min="0" 
+          step="1"
+          placeholder="0" 
+          class="w-full bg-surface-card border border-hairline rounded-lg px-3 py-2 text-ink text-sm font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all aria-invalid:border-red-500 shadow-2xs" 
+        />
+      </div>
+      <div class="space-y-1.5">
+        <label for="ig-comments" class="text-xs font-semibold text-ink flex items-center justify-between">
+          <span>Comments</span>
+          <span>💬</span>
+        </label>
+        <input 
+          type="number" 
+          id="ig-comments" 
+          min="0" 
+          step="1"
+          placeholder="0" 
+          class="w-full bg-surface-card border border-hairline rounded-lg px-3 py-2 text-ink text-sm font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all aria-invalid:border-red-500 shadow-2xs" 
+        />
+      </div>
+      <div class="space-y-1.5">
+        <label for="ig-shares" class="text-xs font-semibold text-ink flex items-center justify-between">
+          <span>Shares / Sends</span>
+          <span>🚀</span>
+        </label>
+        <input 
+          type="number" 
+          id="ig-shares" 
+          min="0" 
+          step="1"
+          placeholder="0" 
+          class="w-full bg-surface-card border border-hairline rounded-lg px-3 py-2 text-ink text-sm font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all aria-invalid:border-red-500 shadow-2xs" 
+        />
+      </div>
+      <div class="space-y-1.5">
+        <label for="ig-saves" class="text-xs font-semibold text-ink flex items-center justify-between">
+          <span>Saves</span>
+          <span>🔖</span>
+        </label>
+        <input 
+          type="number" 
+          id="ig-saves" 
+          min="0" 
+          step="1"
+          placeholder="0" 
+          class="w-full bg-surface-card border border-hairline rounded-lg px-3 py-2 text-ink text-sm font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all aria-invalid:border-red-500 shadow-2xs" 
+        />
+      </div>
+    </div>
+
+    <p id="interactions-error" class="text-[11px] text-red-500 font-medium hidden flex items-center gap-1 pt-1">
+      <span>⚠️</span> <span id="interactions-error-text">Interaction counts cannot be negative.</span>
+    </p>
+
+    {/* Auto-calculated Read-only Total Engagements */}
+    <div class="mt-4 pt-3.5 border-t border-hairline-soft space-y-2">
+      <div class="flex items-center justify-between">
+        <label for="ig-total-engagements" class="text-xs font-semibold text-ink flex items-center gap-1.5">
+          <span>Total Engagements</span>
+          <span>⚡</span>
+        </label>
+        <span class="text-[10px] font-semibold text-muted bg-surface-strong px-2 py-0.5 rounded-md border border-hairline">Auto-Calculated</span>
+      </div>
+      <input 
+        type="number" 
+        id="ig-total-engagements" 
+        readonly
+        tabindex="-1"
+        placeholder="0" 
+        aria-describedby="total-engagements-hint"
+        class="w-full bg-canvas-soft/80 border border-hairline rounded-lg px-3.5 py-2.5 text-ink font-bold text-base focus:outline-none cursor-not-allowed select-none shadow-2xs opacity-90" 
+      />
+      <p id="total-engagements-hint" class="text-[11px] text-muted leading-tight">Automatically calculated sum of Likes, Comments, Shares, and Saves.</p>
+    </div>
+  </div>
+
+  {/* Dynamic Non-blocking Input Warnings Banner */}
+  <div id="input-warning-banner" class="hidden p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-700 dark:text-amber-300 space-y-1 transition-all">
+  </div>
+
+  {/* Guidance Callout Box */}
+  <div class="p-3.5 rounded-xl bg-canvas-soft border border-hairline-soft text-xs text-muted leading-relaxed flex items-start gap-2.5">
+    <span class="text-base leading-none pt-0.5">💡</span>
+    <div>
+      <strong>Analytical Distinction:</strong> <strong>ERR</strong> measures audience conversion efficiency among active post viewers. <strong>ERF</strong> evaluates broader brand authority across total follower count.
+    </div>
+  </div>
+</div>

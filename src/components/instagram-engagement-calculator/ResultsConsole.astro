@@ -1,0 +1,120 @@
+---
+---
+
+<div 
+  class="lg:col-span-5 flex flex-col justify-between p-5 sm:p-6 bg-canvas-soft rounded-2xl border border-hairline space-y-6"
+  role="region"
+  aria-label="Engagement Calculation Results"
+  aria-live="polite"
+>
+  <div class="space-y-6">
+    
+    {/* Dashboard Header */}
+    <div class="flex items-center justify-between border-b border-hairline-soft pb-3">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">03. Analysis</span>
+        <h3 class="text-xs sm:text-sm font-semibold text-ink uppercase tracking-wider">Results Console</h3>
+      </div>
+      <span id="tier-badge" class="px-2.5 py-1 rounded-pill bg-surface-strong text-ink text-xs font-semibold border border-hairline shadow-2xs">
+        Nano Creator (&lt; 10k)
+      </span>
+    </div>
+
+    {/* HERO PRIMARY METRIC FOCUS BLOCK */}
+    <div class="p-6 bg-surface-card rounded-xl border border-hairline shadow-sm text-center relative space-y-3">
+      <span id="primary-metric-label" class="text-[11px] font-bold uppercase tracking-wider text-muted block">
+        Engagement Rate by Reach (ERR)
+      </span>
+      
+      <div class="flex items-baseline justify-center gap-1 my-1">
+        <span id="primary-metric-value" class="text-display-mega text-ink font-bold tracking-tight">0.00</span>
+        <span class="text-display-md text-muted font-semibold">%</span>
+      </div>
+
+      {/* Benchmark Rating Pill */}
+      <div 
+        id="benchmark-badge" 
+        class="flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-pill bg-surface-strong text-muted font-semibold text-xs uppercase tracking-wider border border-hairline transition-all mx-auto max-w-max shadow-2xs"
+      >
+        Awaiting Data
+      </div>
+
+      {/* Active Formula Badge */}
+      <div id="active-formula-display" class="mt-2 inline-block px-3 py-1 bg-canvas-soft rounded-md font-mono text-[11px] text-muted border border-hairline-soft">
+        Formula: ERR = (Engagements / Reach) × 100
+      </div>
+
+      {/* Rating Explanation Note */}
+      <p id="benchmark-explanation" class="text-xs text-muted leading-relaxed text-center pt-1 px-1">
+        Enter post reach & interactions to compute ERR and evaluate against your tier standard.
+      </p>
+    </div>
+
+    {/* GROUPED SUPPORTING METRICS */}
+    <div class="space-y-4 pt-1">
+      <span class="text-xs font-bold text-ink uppercase tracking-wider block border-b border-hairline-soft pb-2">
+        Supporting Metrics & Ratios
+      </span>
+
+      {/* Group 1: Supporting Rate & Volume */}
+      <div class="grid grid-cols-2 gap-3">
+        <div class="p-3 bg-surface-card rounded-lg border border-hairline-soft space-y-1">
+          <span id="secondary-metric-label" class="text-[11px] font-semibold text-muted block truncate">
+            ER by Followers (ERF)
+          </span>
+          <span id="secondary-metric-value" class="text-base font-bold text-ink block">
+            0.00%
+          </span>
+        </div>
+
+        <div class="p-3 bg-surface-card rounded-lg border border-hairline-soft space-y-1">
+          <span class="text-[11px] font-semibold text-muted block truncate">
+            Total Engagements
+          </span>
+          <span id="total-engagements" class="text-base font-bold text-ink block">
+            0
+          </span>
+        </div>
+      </div>
+
+      {/* Group 2: Algorithm Intent Ratios */}
+      <div class="p-3.5 bg-surface-card rounded-lg border border-hairline-soft space-y-2.5">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-muted block">
+          Algorithm Intent Signals
+        </span>
+        
+        <div class="flex justify-between items-center text-xs">
+          <span class="text-muted flex items-center gap-1">
+            <span>🔖</span> Save-to-Like Ratio
+          </span>
+          <span id="save-like-ratio" class="text-ink font-semibold bg-canvas-soft px-2 py-0.5 rounded border border-hairline-soft">
+            0.0%
+          </span>
+        </div>
+
+        <div class="flex justify-between items-center text-xs">
+          <span class="text-muted flex items-center gap-1">
+            <span>🚀</span> Share-to-Like Ratio
+          </span>
+          <span id="share-like-ratio" class="text-ink font-semibold bg-canvas-soft px-2 py-0.5 rounded border border-hairline-soft">
+            0.0%
+          </span>
+        </div>
+      </div>
+    </div>
+
+    {/* ACTIONABLE DETERMINISTIC INSIGHTS & RECOMMENDATIONS */}
+    <div class="pt-2 space-y-3">
+      <span id="insights-heading" class="text-xs font-bold uppercase tracking-wider text-ink block">
+        Actionable Performance Insights
+      </span>
+      
+      <div id="recommendations-list" class="space-y-2.5">
+        <div class="p-3.5 rounded-lg bg-surface-card border border-hairline text-xs text-muted leading-relaxed">
+          Select a calculation mode and input post metrics above to generate rule-based performance recommendations.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

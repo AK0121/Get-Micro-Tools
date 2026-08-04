@@ -1,0 +1,433 @@
+---
+import FAQ from '../FAQ.astro';
+
+interface CreatorTier {
+  name: string;
+  range: string;
+  avgERR: string;
+  avgERF: string;
+  target: string;
+  tip: string;
+}
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  creatorTiers: CreatorTier[];
+  faqs: FAQItem[];
+}
+
+const { creatorTiers, faqs } = Astro.props;
+---
+
+<section class="max-w-4xl mx-auto px-6 py-16 border-t border-hairline">
+  <div class="prose prose-sm md:prose-base prose-ink max-w-none space-y-16">
+    
+    {/* Section 1: What is Instagram Engagement Rate? */}
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">01 / Fundamentals</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">What is Instagram Engagement Rate?</h2>
+      <p class="text-body leading-relaxed">
+        <strong>Instagram Engagement Rate</strong> is the quantitative metric that measures how actively your audience interacts with your content relative to your account size or post reach. Rather than relying on total followers—which can be inflated by dormant accounts or past algorithm trends—engagement rate reveals the <em>true depth of audience connection and content quality</em>.
+      </p>
+      <p class="text-body leading-relaxed">
+        When you publish a post, Reel, or Carousel, Instagram tracks user interactions across four primary intent signals:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">❤️</span>
+            <h3 class="text-sm font-semibold text-ink">Likes (Baseline Appeal)</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">Low-friction double-taps that confirm visual appeal. Likes form baseline engagement, though they carry lower weight in modern recommendation algorithms.</p>
+        </div>
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">💬</span>
+            <h3 class="text-sm font-semibold text-ink">Comments (Dwell & Community)</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">High-intent written responses that signal active conversation. Comments extend post dwell time and alert the algorithm to strong audience interest.</p>
+        </div>
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">🚀</span>
+            <h3 class="text-sm font-semibold text-ink">Shares / Sends (Viral Multiplier)</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">Direct Messages (DMs) or external shares. Shares represent word-of-mouth endorsement and are the #1 driver for Explore & Reels recommendations.</p>
+        </div>
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">🔖</span>
+            <h3 class="text-sm font-semibold text-ink">Saves (Evergreen Utility)</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">Bookmarks saved to private collections. High save counts indicate high-value reference content (e.g., educational guides, recipes, infographics).</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Section 2: ERR vs ERF Breakdown & Formulas */}
+    <div class="space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">02 / Methodology</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">Engagement Rate by Reach (ERR) vs. Followers (ERF)</h2>
+      <p class="text-body leading-relaxed">
+        Not all engagement rates are calculated the same way. The primary distinction lies in your <strong>denominator</strong>: whether you measure engagement against <em>actual post viewers</em> (Reach) or your <em>total audience size</em> (Followers).
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* ERR Card */}
+        <div id="err-formula-card" class="p-6 bg-surface-card rounded-xl border-2 border-primary space-y-3 transition-all shadow-xs">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-bold text-primary uppercase tracking-wider">Reach-Based Metric</h3>
+            <span class="px-2 py-0.5 text-[10px] font-semibold bg-primary/10 text-primary rounded-pill">ERR</span>
+          </div>
+          <h4 class="text-base font-semibold text-ink">Engagement Rate by Reach</h4>
+          <div class="p-3 bg-canvas-soft rounded-lg font-mono text-xs text-ink border border-hairline">
+            ERR = (Total Engagements / Reach) × 100
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            Evaluates how effectively your post converted actual viewers into active participants. Total Engagements equals Likes + Comments + Shares + Saves.
+          </p>
+        </div>
+
+        {/* ERF Card */}
+        <div id="erf-formula-card" class="p-6 bg-surface-card rounded-xl border border-hairline space-y-3 transition-all opacity-80 shadow-xs">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-bold text-muted uppercase tracking-wider">Follower-Based Metric</h3>
+            <span class="px-2 py-0.5 text-[10px] font-semibold bg-surface-strong text-muted rounded-pill">ERF</span>
+          </div>
+          <h4 class="text-base font-semibold text-ink">Engagement Rate by Followers</h4>
+          <div class="p-3 bg-canvas-soft rounded-lg font-mono text-xs text-ink border border-hairline">
+            ERF = (Total Engagements / Followers) × 100
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            Evaluates your engagement against your total public follower count. Used by talent agencies and brand managers to audit overall profile authority.
+          </p>
+        </div>
+      </div>
+
+      {/* Comparison Table */}
+      <div class="overflow-x-auto rounded-xl border border-hairline bg-surface-card shadow-xs pt-2">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-canvas-soft border-b border-hairline text-ink font-semibold uppercase tracking-wider">
+            <tr>
+              <th class="px-4 py-3 sm:px-5">Feature / Dimension</th>
+              <th class="px-4 py-3 sm:px-5 text-primary font-bold">Reach-Based (ERR)</th>
+              <th class="px-4 py-3 sm:px-5">Follower-Based (ERF)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-hairline-soft text-body">
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Primary Denominator</td>
+              <td class="px-4 py-3 text-primary font-medium">Accounts Reached (Insights)</td>
+              <td class="px-4 py-3 text-muted">Total Followers (Public Profile)</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Primary Purpose</td>
+              <td class="px-4 py-3 text-primary font-medium">Post hook & Reels performance</td>
+              <td class="px-4 py-3 text-muted">Macro profile authority & media kit baseline</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Ghost Follower Impact</td>
+              <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400 font-medium">Immune (only measures active viewers)</td>
+              <td class="px-4 py-3 text-red-500 font-medium">Penalized by inactive/ghost accounts</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Non-Follower Virality</td>
+              <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400 font-medium">Accurately normalizes viral distribution</td>
+              <td class="px-4 py-3 text-amber-600 dark:text-amber-400 font-medium">Spikes over 100% on viral Reels</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Data Accessibility</td>
+              <td class="px-4 py-3 text-muted">Requires private Instagram Insights</td>
+              <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400 font-medium">Publicly verifiable without login</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {/* Section 3: Which Formula Brands Use */}
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">03 / Business Insights</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">Which Formula Do Brands & Agencies Use?</h2>
+      <p class="text-body leading-relaxed">
+        Understanding how brands evaluate influencer accounts helps creators position their analytics effectively during brand deal negotiations.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+        <div class="p-6 bg-surface-card rounded-xl border border-hairline shadow-2xs space-y-3">
+          <div class="flex items-center gap-2 text-ink font-semibold">
+            <span class="text-lg">🔍</span>
+            <h3 class="text-base font-bold">1. Initial Screening & Vetting (ERF)</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            When influencer marketing agencies audit hundreds of potential creators for a campaign, they rely on <strong>ERF (Follower-Based)</strong>. Discovery tools compute ERF automatically because total followers and public likes/comments are publicly scrapable without requiring private dashboard screenshots.
+          </p>
+          <div class="p-3 bg-canvas-soft rounded-lg text-xs text-muted border border-hairline-soft">
+            <strong>Agency Rule of Thumb:</strong> Accounts with an ERF under 1.0% are often flagged for follower inactivity or low feed affinity.
+          </div>
+        </div>
+
+        <div class="p-6 bg-surface-card rounded-xl border border-hairline shadow-2xs space-y-3">
+          <div class="flex items-center gap-2 text-ink font-semibold">
+            <span class="text-lg">💼</span>
+            <h3 class="text-base font-bold">2. Paid Deal ROI & Campaign Audit (ERR)</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            For tier-one brand partnerships, performance marketing managers request <strong>ERR (Reach-Based) metrics</strong> or post insights screenshots. Brands want to evaluate actual impression conversion: <em>"Out of the accounts that saw this sponsored post, what percentage clicked, saved, or commented?"</em>
+          </p>
+          <div class="p-3 bg-canvas-soft rounded-lg text-xs text-muted border border-hairline-soft">
+            <strong>Cost-Per-Engagement (CPE):</strong> Brands calculate <code>CPE = Campaign Spend / Total Engagements</code> to benchmark influencer ROI against paid Meta ad performance.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Section 4: Which Formula Creators Should Track */}
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">04 / Creator Strategy</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">Which Formula Should Creators Track?</h2>
+      <p class="text-body leading-relaxed">
+        As a creator or social media manager, your metric focus should adapt depending on whether you are optimizing individual posts or building client media kits:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+        <div class="p-6 bg-surface-card rounded-xl border border-hairline shadow-2xs space-y-3">
+          <h3 class="text-sm font-semibold text-ink uppercase tracking-wider flex items-center gap-2">
+            <span>🎯</span> Use ERR for Daily Content Optimization
+          </h3>
+          <ul class="text-xs text-muted space-y-2.5 list-none leading-relaxed">
+            <li class="flex items-start gap-2"><span class="text-primary font-bold">✓</span> <strong>Hook Testing:</strong> See if your first 3 seconds converted viewers into engagements regardless of organic reach shifts.</li>
+            <li class="flex items-start gap-2"><span class="text-primary font-bold">✓</span> <strong>Reel & Carousel Performance:</strong> Evaluate non-follower Explore page conversion accurately.</li>
+            <li class="flex items-start gap-2"><span class="text-primary font-bold">✓</span> <strong>Format A/B Testing:</strong> Compare whether Carousels get higher save rates than short video Reels.</li>
+          </ul>
+        </div>
+
+        <div class="p-6 bg-surface-card rounded-xl border border-hairline shadow-2xs space-y-3">
+          <h3 class="text-sm font-semibold text-ink uppercase tracking-wider flex items-center gap-2">
+            <span>👥</span> Use ERF for Account Audits & Media Kits
+          </h3>
+          <ul class="text-xs text-muted space-y-2.5 list-none leading-relaxed">
+            <li class="flex items-start gap-2"><span class="text-primary font-bold">✓</span> <strong>Monthly Account Health:</strong> Track ERF trends over 6–12 months to detect follower fatigue early.</li>
+            <li class="flex items-start gap-2"><span class="text-primary font-bold">✓</span> <strong>Media Kits:</strong> Provide ERF as baseline profile proof alongside ERR case study highlights.</li>
+            <li class="flex items-start gap-2"><span class="text-primary font-bold">✓</span> <strong>Sponsorship Pitching:</strong> Highlight ERR conversion ("Our Reels average 6.5% ERR") to justify higher rate cards.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {/* Section 5: Creator Tier Benchmarks Table */}
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">05 / Benchmarks</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">2026 Instagram Creator Benchmarks by Tier</h2>
+      <p class="text-body leading-relaxed">
+        Engagement rate naturally scales inversely with follower size. Smaller accounts enjoy higher audience intimacy and tighter feed distribution, while larger accounts face broader, lower-converting reach. Compare your metrics with official 2026 creator tier standards:
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-hairline bg-surface-card shadow-xs">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-canvas-soft border-b border-hairline text-ink font-semibold uppercase tracking-wider">
+            <tr>
+              <th class="px-4 py-3.5 sm:px-6">Creator Tier</th>
+              <th class="px-4 py-3.5 sm:px-6">Followers</th>
+              <th class="px-4 py-3.5 sm:px-6 text-primary">Avg. ERR</th>
+              <th class="px-4 py-3.5 sm:px-6">Avg. ERF</th>
+              <th class="px-4 py-3.5 sm:px-6 text-emerald-600 dark:text-emerald-400">Good Target</th>
+              <th class="px-4 py-3.5 sm:px-6">Strategic Focus</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-hairline-soft text-body">
+            {creatorTiers.map((t) => (
+              <tr class="hover:bg-canvas-soft/50 transition-colors">
+                <td class="px-4 py-3.5 sm:px-6 font-semibold text-ink">{t.name}</td>
+                <td class="px-4 py-3.5 sm:px-6 text-muted font-medium">{t.range}</td>
+                <td class="px-4 py-3.5 sm:px-6 text-primary font-semibold">{t.avgERR}</td>
+                <td class="px-4 py-3.5 sm:px-6 text-muted font-semibold">{t.avgERF}</td>
+                <td class="px-4 py-3.5 sm:px-6 text-emerald-600 dark:text-emerald-400 font-bold">{t.target}</td>
+                <td class="px-4 py-3.5 sm:px-6 text-muted text-xs leading-normal">{t.tip}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {/* Section 6: Real Calculation Examples */}
+    <div class="space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">06 / Real Examples</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">Real Calculation Examples: Step-by-Step</h2>
+      <p class="text-body leading-relaxed">
+        Here is how to calculate both ERR and ERF using three common real-world Instagram publishing scenarios:
+      </p>
+
+      <div class="space-y-6">
+        {/* Example 1 */}
+        <div class="p-6 bg-surface-card rounded-xl border border-hairline space-y-4 shadow-2xs">
+          <div class="flex items-center justify-between border-b border-hairline-soft pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Example 1: Viral Instagram Reel</span>
+            <span class="px-2.5 py-0.5 rounded-pill bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold text-xs border border-emerald-500/20">High Reach Conversion</span>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            A Micro creator (20,000 followers) posts a viral tutorial Reel that gets distributed heavily to Explore and non-followers.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Reach</span>
+              <span class="text-ink font-bold">85,000</span>
+            </div>
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Likes</span>
+              <span class="text-ink font-bold">3,400</span>
+            </div>
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Comments</span>
+              <span class="text-ink font-bold">220</span>
+            </div>
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Shares + Saves</span>
+              <span class="text-ink font-bold">2,280</span>
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-1 text-xs">
+            <div class="p-3 bg-canvas-soft rounded-lg border border-hairline text-ink leading-relaxed">
+              <strong>Total Engagements Calculation:</strong><br />
+              <code>3,400 (Likes) + 220 (Comments) + 1,450 (Shares) + 830 (Saves) = 5,900 Engagements</code>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3 bg-primary/10 rounded-lg border border-primary/20 text-ink">
+                <strong class="text-primary block mb-1">ERR (Reach-Based):</strong>
+                <code>(5,900 / 85,000) × 100 = <strong>6.94% ERR</strong></code>
+                <p class="text-[11px] text-muted mt-1">Excellent hook performance! Converted viewers far above the Micro tier average of 2.5%–4.5%.</p>
+              </div>
+              <div class="p-3 bg-canvas-soft rounded-lg border border-hairline text-ink">
+                <strong class="text-muted block mb-1">ERF (Follower-Based):</strong>
+                <code>(5,900 / 20,000) × 100 = <strong>29.50% ERF</strong></code>
+                <p class="text-[11px] text-muted mt-1">Reflects viral multiplier effect because post reach was 4.25× total follower count.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Example 2 */}
+        <div class="p-6 bg-surface-card rounded-xl border border-hairline space-y-4 shadow-2xs">
+          <div class="flex items-center justify-between border-b border-hairline-soft pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Example 2: Niche Educational Carousel</span>
+            <span class="px-2.5 py-0.5 rounded-pill bg-blue-500/10 text-blue-600 dark:text-blue-400 font-semibold text-xs border border-blue-500/20">High Utility & Save Ratio</span>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            A Nano creator (6,500 followers) publishes an educational 10-slide Carousel. Reach is lower, but audience saves are exceptionally high.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Reach</span>
+              <span class="text-ink font-bold">5,200</span>
+            </div>
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Likes</span>
+              <span class="text-ink font-bold">320</span>
+            </div>
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Comments</span>
+              <span class="text-ink font-bold">45</span>
+            </div>
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Shares + Saves</span>
+              <span class="text-ink font-bold">405</span>
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-1 text-xs">
+            <div class="p-3 bg-canvas-soft rounded-lg border border-hairline text-ink leading-relaxed">
+              <strong>Total Engagements Calculation:</strong><br />
+              <code>320 (Likes) + 45 (Comments) + 95 (Shares) + 310 (Saves) = 770 Engagements</code>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3 bg-primary/10 rounded-lg border border-primary/20 text-ink">
+                <strong class="text-primary block mb-1">ERR (Reach-Based):</strong>
+                <code>(770 / 5,200) × 100 = <strong>14.81% ERR</strong></code>
+                <p class="text-[11px] text-muted mt-1">Outstanding engagement density! Over 40% of engagements were Saves (310 / 770), signaling extreme utility.</p>
+              </div>
+              <div class="p-3 bg-canvas-soft rounded-lg border border-hairline text-ink">
+                <strong class="text-muted block mb-1">ERF (Follower-Based):</strong>
+                <code>(770 / 6,500) × 100 = <strong>11.85% ERF</strong></code>
+                <p class="text-[11px] text-muted mt-1">High community retention rate across core follower base.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Example 3 */}
+        <div class="p-6 bg-surface-card rounded-xl border border-hairline space-y-4 shadow-2xs">
+          <div class="flex items-center justify-between border-b border-hairline-soft pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Example 3: Mid-Tier Static Feed Post</span>
+            <span class="px-2.5 py-0.5 rounded-pill bg-surface-strong text-muted font-semibold text-xs border border-hairline">Standard Feed Audit</span>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            A Mid-Tier creator (75,000 followers) posts a single static image. Organic feed reach is limited to 14,000 accounts.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Reach</span>
+              <span class="text-ink font-bold">14,000</span>
+            </div>
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Likes</span>
+              <span class="text-ink font-bold">580</span>
+            </div>
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Comments</span>
+              <span class="text-ink font-bold">35</span>
+            </div>
+            <div class="p-2.5 bg-canvas-soft rounded-lg border border-hairline-soft">
+              <span class="text-muted text-[10px] block font-sans">Shares + Saves</span>
+              <span class="text-ink font-bold">37</span>
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-1 text-xs">
+            <div class="p-3 bg-canvas-soft rounded-lg border border-hairline text-ink leading-relaxed">
+              <strong>Total Engagements Calculation:</strong><br />
+              <code>580 (Likes) + 35 (Comments) + 12 (Shares) + 25 (Saves) = 652 Engagements</code>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3 bg-primary/10 rounded-lg border border-primary/20 text-ink">
+                <strong class="text-primary block mb-1">ERR (Reach-Based):</strong>
+                <code>(652 / 14,000) × 100 = <strong>4.66% ERR</strong></code>
+                <p class="text-[11px] text-muted mt-1">Healthy ERR for Mid-Tier! Proves that viewers who saw the post engaged at a solid rate.</p>
+              </div>
+              <div class="p-3 bg-canvas-soft rounded-lg border border-hairline text-ink">
+                <strong class="text-muted block mb-1">ERF (Follower-Based):</strong>
+                <code>(652 / 75,000) × 100 = <strong>0.87% ERF</strong></code>
+                <p class="text-[11px] text-muted mt-1">Low ERF is caused by organic feed reach distribution (~18.6%), NOT poor content resonance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Section 7: FAQ Component */}
+    <FAQ faqs={faqs} title="Frequently Asked Questions" description="Common questions about Instagram engagement formulas, Reach metrics, creator benchmarks, and algorithm signals." />
+
+  </div>
+</section>
