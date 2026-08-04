@@ -13,8 +13,8 @@ interface Props {
 const { 
 	title = "Get Micro Tools | High-Performance Utilities for Creators", 
 	description = "A curated collection of free, professional-grade utilities for modern creators and marketers. Engagement calculators, ROAS engines, and social formatters in one place.",
-	image = "/apple-touch-icon.png",
-	url = Astro.url.href,
+	image = "/og-image.png",,
+	url = new URL(Astro.url.pathname, Astro.site).toString(),
 	type = "website",
 	keywords = "creator tools, micro tools, instagram engagement rate calculator, social media metrics, ROAS calculator, instagram reels tester"
 } = Astro.props;
