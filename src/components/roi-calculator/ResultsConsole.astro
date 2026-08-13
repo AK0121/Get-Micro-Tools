@@ -1,0 +1,151 @@
+---
+---
+
+<div 
+  class="lg:col-span-5 flex flex-col justify-between p-5 sm:p-6 bg-canvas-soft rounded-2xl border border-hairline space-y-6"
+  role="region"
+  aria-label="ROI Calculation Results"
+  aria-live="polite"
+>
+  <div class="space-y-6">
+    
+    {/* Dashboard Header */}
+    <div class="flex items-center justify-between border-b border-hairline-soft pb-3">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">03. Analysis</span>
+        <h3 class="text-xs sm:text-sm font-semibold text-ink uppercase tracking-wider">Results Console</h3>
+      </div>
+      <span id="roi-status-badge" class="px-2.5 py-1 rounded-pill bg-surface-strong text-muted text-xs font-semibold border border-hairline shadow-2xs">
+        Awaiting Data
+      </span>
+    </div>
+
+    {/* HERO PRIMARY METRIC FOCUS BLOCK */}
+    <div class="p-6 bg-surface-card rounded-xl border border-hairline shadow-sm text-center relative space-y-3">
+      <span id="primary-roi-label" class="text-[11px] font-bold uppercase tracking-wider text-muted block">
+        Return on Investment (ROI)
+      </span>
+      
+      <div class="flex items-baseline justify-center gap-1 my-1">
+        <span id="result-roi-value" class="text-display-mega text-ink font-bold tracking-tight">0.00</span>
+        <span class="text-display-md text-muted font-semibold">%</span>
+      </div>
+
+      {/* Benchmark Rating Pill */}
+      <div 
+        id="roi-benchmark-badge" 
+        class="flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-pill bg-surface-strong text-muted font-semibold text-xs uppercase tracking-wider border border-hairline transition-all mx-auto max-w-max shadow-2xs"
+      >
+        Awaiting Data
+      </div>
+
+      {/* Active Formula Badge */}
+      <div id="roi-formula-display" class="mt-2 inline-block px-3 py-1 bg-canvas-soft rounded-md font-mono text-[11px] text-muted border border-hairline-soft">
+        Formula: ROI = ((Final Return - Initial Investment) / Initial Investment) × 100
+      </div>
+
+      {/* Explanation Note */}
+      <p id="roi-explanation-text" class="text-xs text-muted leading-relaxed text-center pt-1 px-1">
+        Enter initial investment & expected return to calculate net ROI.
+      </p>
+    </div>
+
+    {/* ANNUALIZED ROI DISPLAY BLOCK (Shown when duration provided) */}
+    <div id="annualized-roi-container" class="p-4 bg-surface-card rounded-xl border border-hairline-soft space-y-1.5">
+      <div class="flex items-center justify-between">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-muted flex items-center gap-1">
+          <span>📅</span> Annualized ROI (CAGR)
+        </span>
+        <span id="annualized-period-label" class="text-[10px] font-medium text-muted">Per Year</span>
+      </div>
+      <div class="flex items-baseline justify-between pt-1">
+        <div class="flex items-baseline gap-1">
+          <span id="result-annualized-value" class="text-2xl font-bold text-ink tracking-tight">--</span>
+          <span class="text-sm text-muted font-semibold">% / yr</span>
+        </div>
+        <span id="annualized-status-subtext" class="text-xs text-muted font-normal">Compound Annual Rate</span>
+      </div>
+    </div>
+
+    {/* GROUPED SUPPORTING METRICS */}
+    <div class="space-y-4 pt-1">
+      <span class="text-xs font-bold text-ink uppercase tracking-wider block border-b border-hairline-soft pb-2">
+        Financial Breakdown & Metrics
+      </span>
+
+      {/* Grid: Net Gain & Benefit-Cost Ratio */}
+      <div class="grid grid-cols-2 gap-3">
+        <div class="p-3 bg-surface-card rounded-lg border border-hairline-soft space-y-1">
+          <span class="text-[11px] font-semibold text-muted block truncate">
+            Net Profit / Gain
+          </span>
+          <div class="flex items-baseline gap-0.5 truncate">
+            <span class="currency-symbol text-xs text-muted font-mono">$</span>
+            <span id="result-net-gain-value" class="text-base font-bold text-ink">
+              0.00
+            </span>
+          </div>
+        </div>
+
+        <div class="p-3 bg-surface-card rounded-lg border border-hairline-soft space-y-1">
+          <span id="secondary-metric-label" class="text-[11px] font-semibold text-muted block truncate">
+            Benefit-Cost Ratio
+          </span>
+          <span id="result-bcr-value" class="text-base font-bold text-ink block">
+            0.00x
+          </span>
+        </div>
+      </div>
+
+      {/* Marketing Specific Extra Metric (Break-Even Revenue) */}
+      <div id="marketing-extra-metric" class="hidden p-3 bg-surface-card rounded-lg border border-hairline-soft space-y-1">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-semibold text-muted">Break-Even Sales Target</span>
+          <span class="text-[10px] text-muted">0% Profit Threshold</span>
+        </div>
+        <div class="flex items-baseline gap-0.5 font-mono">
+          <span class="currency-symbol text-xs text-muted">$</span>
+          <span id="result-breakeven-rev-value" class="text-base font-bold text-ink">0.00</span>
+        </div>
+      </div>
+
+      {/* Visual Chart / Proportion Bar */}
+      <div class="p-3.5 bg-surface-card rounded-lg border border-hairline-soft space-y-2.5">
+        <div class="flex justify-between items-center text-xs">
+          <span class="text-muted font-semibold uppercase tracking-wider text-[10px]">Return vs. Cost Distribution</span>
+          <span id="chart-ratio-label" class="text-ink font-semibold font-mono text-[11px]">100% Outlay</span>
+        </div>
+        
+        <div class="relative h-4 w-full bg-canvas-soft rounded-full overflow-hidden flex border border-hairline-soft">
+          <div id="chart-bar-cost" class="h-full bg-red-500/30 border-r border-red-500/40 transition-all duration-700 ease-out" style="width: 100%"></div>
+          <div id="chart-bar-gain" class="h-full bg-emerald-500/40 transition-all duration-700 ease-out" style="width: 0%"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-[11px] pt-0.5">
+          <div class="flex items-center gap-1.5">
+            <div class="w-2.5 h-2.5 rounded-sm bg-red-500/40"></div>
+            <span class="text-muted">Capital Cost</span>
+          </div>
+          <div class="flex items-center gap-1.5 justify-end">
+            <div class="w-2.5 h-2.5 rounded-sm bg-emerald-500/40"></div>
+            <span class="text-muted">Net Return</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* ACTIONABLE PERFORMANCE INSIGHTS */}
+    <div class="pt-2 space-y-3">
+      <span class="text-xs font-bold uppercase tracking-wider text-ink block">
+        Actionable Insights & Recommendations
+      </span>
+      
+      <div id="roi-recommendations-list" class="space-y-2.5">
+        <div class="p-3.5 rounded-lg bg-surface-card border border-hairline text-xs text-muted leading-relaxed">
+          Enter investment metrics above to generate rule-based financial insights and performance recommendations.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

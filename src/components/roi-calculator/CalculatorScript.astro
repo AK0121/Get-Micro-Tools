@@ -1,0 +1,317 @@
+---
+---
+
+<script>
+  import {
+    calculateROIMetrics,
+    evaluateROIBenchmark,
+    generateROIRecommendations,
+    parseNumberInput,
+    type ROICalculationInput,
+    type ROIRecommendation
+  } from '../../utils/roi-calculator';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Mode State
+    let currentMode: 'standard' | 'marketing' = 'standard';
+
+    // Element Selectors
+    const modeButtons = document.querySelectorAll<HTMLButtonElement>('.roi-mode-btn');
+    const resetBtn = document.getElementById('reset-roi-btn');
+    const currencySelect = document.getElementById('roi-currency') as HTMLSelectElement | null;
+    const initialInput = document.getElementById('roi-initial-investment') as HTMLInputElement | null;
+    const finalInput = document.getElementById('roi-final-return') as HTMLInputElement | null;
+    const marginContainer = document.getElementById('roi-margin-container');
+    const marginInput = document.getElementById('roi-profit-margin') as HTMLInputElement | null;
+    const durationInput = document.getElementById('roi-duration-val') as HTMLInputElement | null;
+    const durationUnitSelect = document.getElementById('roi-duration-unit') as HTMLSelectElement | null;
+    
+    // Labels & Containers
+    const labelInitial = document.getElementById('label-initial-investment');
+    const labelFinal = document.getElementById('label-final-return');
+    const currencySymbols = document.querySelectorAll('.currency-symbol');
+    const netGainSummary = document.getElementById('roi-calc-net-gain-display');
+
+    // Outputs
+    const statusBadge = document.getElementById('roi-status-badge');
+    const primaryLabel = document.getElementById('primary-roi-label');
+    const roiValueEl = document.getElementById('result-roi-value');
+    const benchmarkBadge = document.getElementById('roi-benchmark-badge');
+    const formulaDisplay = document.getElementById('roi-formula-display');
+    const explanationText = document.getElementById('roi-explanation-text');
+    
+    const annualizedContainer = document.getElementById('annualized-roi-container');
+    const annualizedValueEl = document.getElementById('result-annualized-value');
+    const annualizedPeriodLabel = document.getElementById('annualized-period-label');
+
+    const netGainValueEl = document.getElementById('result-net-gain-value');
+    const bcrValueEl = document.getElementById('result-bcr-value');
+    const marketingExtraMetric = document.getElementById('marketing-extra-metric');
+    const breakEvenRevEl = document.getElementById('result-breakeven-rev-value');
+
+    const chartRatioLabel = document.getElementById('chart-ratio-label');
+    const chartBarCost = document.getElementById('chart-bar-cost');
+    const chartBarGain = document.getElementById('chart-bar-gain');
+    const recommendationsList = document.getElementById('roi-recommendations-list');
+
+    // Update Currency Symbols across page
+    const updateCurrency = () => {
+      const symbol = currencySelect?.value || '$';
+      currencySymbols.forEach((el) => {
+        el.textContent = symbol;
+      });
+    };
+
+    // Render Recommendations List
+    const renderRecommendations = (recs: ROIRecommendation[]) => {
+      if (!recommendationsList) return;
+      
+      if (recs.length === 0) {
+        recommendationsList.innerHTML = `
+          <div class="p-3.5 rounded-lg bg-surface-card border border-hairline text-xs text-muted leading-relaxed">
+            Enter investment metrics above to generate financial insights.
+          </div>
+        `;
+        return;
+      }
+
+      recommendationsList.innerHTML = recs
+        .map((rec) => {
+          let badgeBg = 'bg-surface-strong text-muted border-hairline';
+          let icon = '💡';
+          if (rec.type === 'success') {
+            badgeBg = 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20';
+            icon = '✅';
+          } else if (rec.type === 'warning') {
+            badgeBg = 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20';
+            icon = '⚠️';
+          } else if (rec.type === 'tip') {
+            badgeBg = 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20';
+            icon = '📌';
+          }
+
+          return `
+            <div class="p-3 rounded-lg bg-surface-card border border-hairline-soft space-y-1 transition-all">
+              <div class="flex items-center gap-1.5 font-bold text-xs text-ink">
+                <span>${icon}</span>
+                <span>${rec.title}</span>
+              </div>
+              <p class="text-xs text-muted leading-relaxed pl-5">${rec.text}</p>
+            </div>
+          `;
+        })
+        .join('');
+    };
+
+    // Primary Calculation & UI Update Loop
+    const calculate = () => {
+      updateCurrency();
+
+      const initialVal = parseNumberInput(initialInput?.value, 0);
+      const finalVal = parseNumberInput(finalInput?.value, 0);
+      const marginVal = parseNumberInput(marginInput?.value, 100);
+      const durationVal = parseNumberInput(durationInput?.value, 0);
+      const durationUnit = (durationUnitSelect?.value || 'years') as 'years' | 'months';
+
+      const calcInput: ROICalculationInput = {
+        initialInvestment: initialVal,
+        finalReturn: finalVal,
+        profitMarginPct: marginVal,
+        durationValue: durationVal,
+        durationUnit: durationUnit,
+        mode: currentMode
+      };
+
+      const result = calculateROIMetrics(calcInput);
+      const benchmark = evaluateROIBenchmark(result, initialVal);
+      const recommendations = generateROIRecommendations(result, initialVal, finalVal, currentMode);
+
+      // 1. Primary Hero ROI Value
+      if (roiValueEl) {
+        if (initialVal <= 0) {
+          roiValueEl.textContent = '0.00';
+          roiValueEl.className = 'text-display-mega text-ink font-bold tracking-tight';
+        } else if (result.roiPct >= 0) {
+          roiValueEl.textContent = result.roiPct.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          });
+          roiValueEl.className = 'text-display-mega text-emerald-500 font-bold tracking-tight';
+        } else {
+          roiValueEl.textContent = result.roiPct.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          });
+          roiValueEl.className = 'text-display-mega text-red-500 font-bold tracking-tight';
+        }
+      }
+
+      // 2. Status Badge & Benchmark Pill
+      if (statusBadge) {
+        if (initialVal <= 0) {
+          statusBadge.textContent = 'Awaiting Data';
+          statusBadge.className = 'px-2.5 py-1 rounded-pill bg-surface-strong text-muted text-xs font-semibold border border-hairline shadow-2xs';
+        } else if (result.isProfitable) {
+          statusBadge.textContent = 'Profitable';
+          statusBadge.className = 'px-2.5 py-1 rounded-pill bg-emerald-500/10 text-emerald-500 text-xs font-bold border border-emerald-500/20 uppercase tracking-wider';
+        } else if (result.isLoss) {
+          statusBadge.textContent = 'Loss';
+          statusBadge.className = 'px-2.5 py-1 rounded-pill bg-red-500/10 text-red-500 text-xs font-bold border border-red-500/20 uppercase tracking-wider';
+        } else {
+          statusBadge.textContent = 'Break-Even';
+          statusBadge.className = 'px-2.5 py-1 rounded-pill bg-amber-500/10 text-amber-500 text-xs font-bold border border-amber-500/20 uppercase tracking-wider';
+        }
+      }
+
+      if (benchmarkBadge) {
+        benchmarkBadge.textContent = benchmark.label;
+        benchmarkBadge.className = `flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-pill font-semibold text-xs uppercase tracking-wider border transition-all mx-auto max-w-max shadow-2xs ${benchmark.badgeClass}`;
+      }
+
+      if (explanationText) {
+        explanationText.textContent = benchmark.description;
+      }
+
+      // 3. Formula Display Text
+      if (formulaDisplay) {
+        if (currentMode === 'marketing') {
+          formulaDisplay.textContent = 'Formula: Marketing ROI = ((Gross Revenue × Margin %) - Campaign Spend) / Campaign Spend × 100';
+        } else {
+          formulaDisplay.textContent = 'Formula: ROI = ((Final Return - Initial Investment) / Initial Investment) × 100';
+        }
+      }
+
+      // 4. Annualized ROI Display
+      if (result.hasDuration && result.annualizedRoiPct !== null) {
+        if (annualizedValueEl) {
+          annualizedValueEl.textContent = result.annualizedRoiPct.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          });
+        }
+        if (annualizedPeriodLabel) {
+          const yrs = result.durationYears?.toFixed(1) || '1';
+          annualizedPeriodLabel.textContent = `${yrs} ${durationUnit}`;
+        }
+        annualizedContainer?.classList.remove('opacity-40');
+      } else {
+        if (annualizedValueEl) annualizedValueEl.textContent = '--';
+        if (annualizedPeriodLabel) annualizedPeriodLabel.textContent = 'Per Year';
+        annualizedContainer?.classList.add('opacity-40');
+      }
+
+      // 5. Net Gain & Supporting Metrics
+      const formattedNetGain = result.netGain.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      if (netGainSummary) netGainSummary.textContent = formattedNetGain;
+      if (netGainValueEl) {
+        netGainValueEl.textContent = formattedNetGain;
+        if (result.netGain > 0) {
+          netGainValueEl.className = 'text-base font-bold text-emerald-500';
+        } else if (result.netGain < 0) {
+          netGainValueEl.className = 'text-base font-bold text-red-500';
+        } else {
+          netGainValueEl.className = 'text-base font-bold text-ink';
+        }
+      }
+
+      if (bcrValueEl) {
+        bcrValueEl.textContent = `${result.benefitCostRatio.toFixed(2)}x`;
+      }
+
+      if (currentMode === 'marketing' && marketingExtraMetric && breakEvenRevEl) {
+        marketingExtraMetric.classList.remove('hidden');
+        breakEvenRevEl.textContent = (result.breakEvenRevenue || 0).toLocaleString(undefined, {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+      } else if (marketingExtraMetric) {
+        marketingExtraMetric.classList.add('hidden');
+      }
+
+      // 6. Visual Ratio Bar Chart
+      if (chartBarCost && chartBarGain && chartRatioLabel) {
+        if (initialVal <= 0 && finalVal <= 0) {
+          chartBarCost.style.width = '100%';
+          chartBarGain.style.width = '0%';
+          chartRatioLabel.textContent = '100% Outlay';
+        } else {
+          const totalScale = initialVal + Math.max(0, result.netGain);
+          const costPct = totalScale > 0 ? (initialVal / totalScale) * 100 : 50;
+          const gainPct = totalScale > 0 ? (Math.max(0, result.netGain) / totalScale) * 100 : 50;
+
+          chartBarCost.style.width = `${Math.min(100, Math.max(0, costPct))}%`;
+          chartBarGain.style.width = `${Math.min(100, Math.max(0, gainPct))}%`;
+          chartRatioLabel.textContent = `${Math.round(costPct)}% Cost / ${Math.round(gainPct)}% Profit`;
+        }
+      }
+
+      // 7. Render Insights
+      renderRecommendations(recommendations);
+    };
+
+    // Mode Switch Handler
+    const setMode = (mode: 'standard' | 'marketing') => {
+      currentMode = mode;
+      modeButtons.forEach((btn) => {
+        const isSelected = btn.getAttribute('data-mode') === mode;
+        btn.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+        btn.tabIndex = isSelected ? 0 : -1;
+
+        if (isSelected) {
+          btn.className = 'roi-mode-btn min-h-[44px] px-4 py-2.5 text-xs font-semibold rounded-lg border border-primary bg-primary/10 text-primary transition-all focus:outline-none focus:ring-2 focus:ring-primary/40 flex items-center gap-2 shadow-xs cursor-pointer';
+        } else {
+          btn.className = 'roi-mode-btn min-h-[44px] px-4 py-2.5 text-xs font-semibold rounded-lg border border-hairline bg-surface-card text-muted hover:text-ink hover:border-hairline-strong transition-all focus:outline-none focus:ring-2 focus:ring-primary/40 flex items-center gap-2 cursor-pointer';
+        }
+      });
+
+      if (mode === 'marketing') {
+        marginContainer?.classList.remove('hidden');
+        if (labelInitial) labelInitial.textContent = 'Marketing Spend';
+        if (labelFinal) labelFinal.textContent = 'Gross Revenue';
+        if (primaryLabel) primaryLabel.textContent = 'Marketing Return on Investment (mROI)';
+      } else {
+        marginContainer?.classList.add('hidden');
+        if (labelInitial) labelInitial.textContent = 'Initial Investment';
+        if (labelFinal) labelFinal.textContent = 'Final Return';
+        if (primaryLabel) primaryLabel.textContent = 'Return on Investment (ROI)';
+      }
+
+      calculate();
+    };
+
+    // Attach Mode Switch Listeners
+    modeButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-mode') as 'standard' | 'marketing';
+        if (mode) setMode(mode);
+      });
+    });
+
+    // Attach Input Event Listeners
+    [initialInput, finalInput, marginInput, durationInput].forEach((input) => {
+      input?.addEventListener('input', calculate);
+    });
+
+    [currencySelect, durationUnitSelect].forEach((select) => {
+      select?.addEventListener('change', calculate);
+    });
+
+    // Reset Button Handler
+    resetBtn?.addEventListener('click', () => {
+      if (initialInput) initialInput.value = '';
+      if (finalInput) finalInput.value = '';
+      if (marginInput) marginInput.value = '100';
+      if (durationInput) durationInput.value = '';
+      if (currencySelect) currencySelect.value = '$';
+      if (durationUnitSelect) durationUnitSelect.value = 'years';
+      setMode('standard');
+    });
+
+    // Initial Trigger
+    calculate();
+  });
+</script>

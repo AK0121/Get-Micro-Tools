@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+import CalculatorHeader from '../components/roi-calculator/CalculatorHeader.astro';
+import ModeToggle from '../components/roi-calculator/ModeToggle.astro';
+import CalculatorInputs from '../components/roi-calculator/CalculatorInputs.astro';
+import ResultsConsole from '../components/roi-calculator/ResultsConsole.astro';
+import EducationalContent from '../components/roi-calculator/EducationalContent.astro';
+import CalculatorScript from '../components/roi-calculator/CalculatorScript.astro';
+
+const title = "ROI Calculator | Return on Investment & Marketing ROI Calculator";
+const description = "Calculate your Return on Investment (ROI) and Marketing ROI with our free calculator. Learn how to calculate ROI, master the ROI formula, view worked examples, and compare ROI vs ROAS.";
+const keywords = "roi calculator, marketing roi calculator, return on investment calculator, roi calculation, roi formula, how to calculate roi, return on investment formula, roi vs roas";
+const url = "https://getmicrotools.com/roi-calculator";
+---
+
+<Layout 
+  title={title}
+  description={description} 
+  keywords={keywords}
+  url={url}
+>
+  <Nav />
+
+  <main class="min-h-screen bg-canvas">
+    {/* Header Section */}
+    <CalculatorHeader />
+
+    {/* Calculator & Analysis Card Section */}
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <div class="bg-surface-card rounded-2xl border border-hairline overflow-hidden shadow-sm">
+        
+        {/* Calculation Mode Toggle Header */}
+        <ModeToggle />
+
+        {/* Main Grid: Inputs vs Results */}
+        <div class="p-4 sm:p-6 md:p-8 xl:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+          
+          {/* Inputs Column */}
+          <CalculatorInputs />
+
+          {/* Results Analysis Console Column */}
+          <ResultsConsole />
+
+        </div>
+      </div>
+    </section>
+
+    {/* Detailed Educational & Methodological Content Section */}
+    <EducationalContent />
+  </main>
+
+  <Footer />
+</Layout>
+
+<CalculatorScript />
