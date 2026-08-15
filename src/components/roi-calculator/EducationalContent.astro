@@ -5,25 +5,25 @@ import { faqs, benchmarkTiers } from './calculatorData';
 
 <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
   
-  {/* Useful Introductory Content */}
+  {/* Section 1: Overview & Definition */}
   <div class="prose prose-ink dark:prose-invert max-w-none space-y-6">
     <h2 class="text-3xl font-bold text-ink tracking-tight">
       What is Return on Investment (ROI)?
     </h2>
     <p class="text-body text-base md:text-lg leading-relaxed">
-      <strong>Return on Investment (ROI)</strong> is a universal financial metric used to evaluate the efficiency, net gain, and overall profitability of an expenditure relative to its initial cost. Whether you are analyzing stock market portfolios, real estate purchases, business equipment, or digital ad campaigns, calculating ROI provides a clear percentage score of your financial performance.
+      <strong>Return on Investment (ROI)</strong> is a universal financial metric used to evaluate the efficiency, profitability, and net financial gain of an investment relative to its initial cost. Whether you are analyzing stock market equities, commercial real estate holdings, enterprise software purchases, or paid digital advertising campaigns, calculating ROI provides an objective percentage score of capital productivity.
     </p>
     <p class="text-body text-base leading-relaxed">
-      Using a reliable <strong>Return on Investment Calculator</strong> allows business leaders, financial analysts, and digital marketers to compare completely different asset classes and marketing channels on an equal footing. Instead of judging performance by gross revenue alone, ROI focuses on net profit generated per dollar invested.
+      A dedicated <strong>Return on Investment Calculator</strong> eliminates guesswork by standardizing performance evaluations across completely different asset classes and marketing channels. Instead of focusing solely on gross revenue or top-line vanity metrics, ROI measures the exact net dollars returned per dollar of capital risked.
     </p>
   </div>
 
-  {/* ROI Formulas Section */}
+  {/* Section 2: Mathematical Framework & Formulas */}
   <div class="space-y-6">
     <div class="border-b border-hairline pb-4">
       <span class="text-xs font-bold uppercase tracking-wider text-primary">Mathematical Framework</span>
       <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">The ROI Formula: How to Calculate ROI</h2>
-      <p class="text-sm text-muted mt-1">Understanding the mathematical formulas behind standard ROI, marketing ROI, and annualized returns (CAGR).</p>
+      <p class="text-sm text-muted mt-1">Explore the foundational formulas used for simple ROI, marketing ROI with COGS, and annualized compound returns (CAGR).</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 not-prose">
@@ -36,10 +36,10 @@ import { faqs, benchmarkTiers } from './calculatorData';
           <span class="text-[10px] font-semibold text-muted bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Cumulative</span>
         </div>
         <p class="text-xs text-muted leading-relaxed">
-          Measures total percentage gain or loss over the entire holding period of an investment.
+          Measures total percentage net gain or loss across the entire holding period of an investment.
         </p>
         <div class="p-3 bg-canvas-soft rounded-xl border border-hairline-soft font-mono text-xs text-center font-bold text-ink">
-          ROI (%) = <span class="text-primary">[ (Final Return - Initial Investment) / Initial Investment ]</span> × 100
+          ROI (%) = <span class="text-primary">[ (Final Return - Initial Cost) / Initial Cost ]</span> × 100
         </div>
       </div>
 
@@ -52,7 +52,7 @@ import { faqs, benchmarkTiers } from './calculatorData';
           <span class="text-[10px] font-semibold text-muted bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Margin Integrated</span>
         </div>
         <p class="text-xs text-muted leading-relaxed">
-          Factors in Cost of Goods Sold (COGS) to isolate true net campaign profitability.
+          Incorporates Cost of Goods Sold (COGS) and gross margin to compute true net campaign profit.
         </p>
         <div class="p-3 bg-canvas-soft rounded-xl border border-hairline-soft font-mono text-xs text-center font-bold text-ink">
           mROI (%) = <span class="text-primary">[ ((Revenue × Margin %) - Ad Spend) / Ad Spend ]</span> × 100
@@ -68,7 +68,7 @@ import { faqs, benchmarkTiers } from './calculatorData';
           <span class="text-[10px] font-semibold text-muted bg-canvas-soft px-2 py-0.5 rounded border border-hairline">Per Year</span>
         </div>
         <p class="text-xs text-muted leading-relaxed">
-          Normalizes multi-year returns into an equivalent compound annual growth rate.
+          Normalizes multi-year holding periods into an equivalent annual compound growth rate.
         </p>
         <div class="p-3 bg-canvas-soft rounded-xl border border-hairline-soft font-mono text-xs text-center font-bold text-ink">
           Annualized ROI = <span class="text-primary">[ (Final Return / Initial Cost)^(1 / Years) - 1 ]</span> × 100
@@ -77,73 +77,63 @@ import { faqs, benchmarkTiers } from './calculatorData';
     </div>
   </div>
 
-  {/* Explanation of Inputs Section */}
+  {/* Section 3: Step-by-Step How-To Guide */}
   <div class="space-y-6">
     <div class="border-b border-hairline pb-4">
-      <span class="text-xs font-bold uppercase tracking-wider text-primary">Calculator Documentation</span>
-      <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">Explanation of Calculator Inputs</h2>
-      <p class="text-sm text-muted mt-1">A detailed breakdown of every variable used in our ROI calculation engine.</p>
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Calculation Guide</span>
+      <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">Step-by-Step: How to Calculate Return on Investment</h2>
+      <p class="text-sm text-muted mt-1">Follow this five-step methodology to compute accurate ROI for any financial or marketing asset.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
-      <div class="p-5 rounded-xl bg-canvas-soft border border-hairline space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">1</span>
-          <h3 class="text-sm font-bold text-ink">Initial Investment (Capital Outlay / Ad Spend)</h3>
-        </div>
-        <p class="text-xs text-muted leading-relaxed pl-8">
-          The total upfront monetary amount invested. In financial assets, this includes the purchase price, commissions, and setup costs. In digital marketing, this represents your total advertising expenditure.
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 not-prose">
+      <div class="p-4 rounded-xl bg-canvas-soft border border-hairline space-y-2">
+        <span class="w-7 h-7 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">1</span>
+        <h3 class="text-xs font-bold text-ink uppercase tracking-wider">Determine Initial Cost</h3>
+        <p class="text-xs text-muted leading-relaxed">
+          Sum all upfront capital, including purchase price, fees, installation, or advertising budget.
         </p>
       </div>
 
-      <div class="p-5 rounded-xl bg-canvas-soft border border-hairline space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">2</span>
-          <h3 class="text-sm font-bold text-ink">Final Return (Total Value / Revenue Generated)</h3>
-        </div>
-        <p class="text-xs text-muted leading-relaxed pl-8">
-          The total gross proceeds received at the end of the investment period or campaign. This encompasses sold asset value, total dividends collected, or total gross e-commerce sales generated.
+      <div class="p-4 rounded-xl bg-canvas-soft border border-hairline space-y-2">
+        <span class="w-7 h-7 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">2</span>
+        <h3 class="text-xs font-bold text-ink uppercase tracking-wider">Calculate Final Value</h3>
+        <p class="text-xs text-muted leading-relaxed">
+          Record total revenue, asset liquidation proceeds, dividends, or gross sales generated.
         </p>
       </div>
 
-      <div class="p-5 rounded-xl bg-canvas-soft border border-hairline space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">3</span>
-          <h3 class="text-sm font-bold text-ink">Gross Profit Margin (%) <span class="text-[10px] font-normal text-muted">(Marketing Mode)</span></h3>
-        </div>
-        <p class="text-xs text-muted leading-relaxed pl-8">
-          The percentage of sales revenue remaining after deducting Cost of Goods Sold (COGS), inventory, and shipping costs. E.g., a 40% margin implies that 60% of revenue goes toward product production and fulfillment.
+      <div class="p-4 rounded-xl bg-canvas-soft border border-hairline space-y-2">
+        <span class="w-7 h-7 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">3</span>
+        <h3 class="text-xs font-bold text-ink uppercase tracking-wider">Compute Net Profit</h3>
+        <p class="text-xs text-muted leading-relaxed">
+          Subtract total initial cost from final value to identify the raw monetary gain or loss.
         </p>
       </div>
 
-      <div class="p-5 rounded-xl bg-canvas-soft border border-hairline space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">4</span>
-          <h3 class="text-sm font-bold text-ink">Investment Duration (Years or Months)</h3>
-        </div>
-        <p class="text-xs text-muted leading-relaxed pl-8">
-          The time horizon over which the investment was held. Providing a duration unlocks <strong>Annualized ROI (CAGR)</strong>, enabling accurate comparisons between short-term trades and multi-year holdings.
+      <div class="p-4 rounded-xl bg-canvas-soft border border-hairline space-y-2">
+        <span class="w-7 h-7 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">4</span>
+        <h3 class="text-xs font-bold text-ink uppercase tracking-wider">Divide by Initial Cost</h3>
+        <p class="text-xs text-muted leading-relaxed">
+          Divide the net profit by initial investment to obtain the benefit-cost ratio.
         </p>
       </div>
 
-      <div class="p-5 rounded-xl bg-canvas-soft border border-hairline space-y-2 md:col-span-2">
-        <div class="flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">5</span>
-          <h3 class="text-sm font-bold text-ink">Display Currency</h3>
-        </div>
-        <p class="text-xs text-muted leading-relaxed pl-8">
-          Select your preferred currency symbol (USD $, EUR €, GBP £, INR ₹, JPY ¥, AUD A$, CAD C$, CHF Fr, SGD S$, AED د.إ) to dynamically format all monetary inputs, net gains, and break-even output metrics.
+      <div class="p-4 rounded-xl bg-canvas-soft border border-hairline space-y-2">
+        <span class="w-7 h-7 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">5</span>
+        <h3 class="text-xs font-bold text-ink uppercase tracking-wider">Convert to Percentage</h3>
+        <p class="text-xs text-muted leading-relaxed">
+          Multiply the ratio by 100 to express your Return on Investment as a clear percentage score.
         </p>
       </div>
     </div>
   </div>
 
-  {/* Worked ROI Examples Section */}
+  {/* Section 4: Worked Practical Walkthroughs */}
   <div class="space-y-6">
     <div class="border-b border-hairline pb-4">
       <span class="text-xs font-bold uppercase tracking-wider text-primary">Practical Walkthrough</span>
-      <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">Worked ROI Examples</h2>
-      <p class="text-sm text-muted mt-1">Step-by-step ROI calculations demonstrating how to compute returns for both asset investments and paid ad campaigns.</p>
+      <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">Worked ROI Examples with Detailed Calculations</h2>
+      <p class="text-sm text-muted mt-1">Real-world scenarios showing the math behind stock/real estate investing versus paid advertising campaigns.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 not-prose">
@@ -151,22 +141,22 @@ import { faqs, benchmarkTiers } from './calculatorData';
       <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-5 shadow-xs">
         <div class="flex items-center justify-between border-b border-hairline-soft pb-3">
           <h3 class="text-base font-bold text-ink flex items-center gap-2">
-            <span>🏢</span> Example 1: Real Estate / Stock Investment
+            <span>🏢</span> Example 1: Multi-Year Index / Real Estate Asset
           </h3>
           <span class="text-[10px] font-semibold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">Asset Growth</span>
         </div>
         
         <div class="space-y-2 text-xs text-muted">
-          <p><strong>Scenario:</strong> An investor purchases an index portfolio for <strong>$10,000</strong> and sells it <strong>3 years</strong> later for <strong>$15,000</strong>.</p>
+          <p><strong>Scenario:</strong> An investor purchases shares in an index fund for <strong>$10,000</strong> and sells them <strong>3 years</strong> later for <strong>$15,000</strong>.</p>
         </div>
 
         <div class="p-4 bg-canvas-soft rounded-xl border border-hairline-soft space-y-2 text-xs font-mono">
           <div class="flex justify-between text-ink">
-            <span>1. Net Profit Calculation:</span>
+            <span>1. Net Profit:</span>
             <span class="font-bold">$15,000 - $10,000 = $5,000</span>
           </div>
           <div class="flex justify-between text-ink">
-            <span>2. Simple ROI Calculation:</span>
+            <span>2. Cumulative ROI:</span>
             <span class="font-bold">($5,000 / $10,000) × 100 = 50.00%</span>
           </div>
           <div class="flex justify-between text-primary font-bold pt-1 border-t border-hairline-soft">
@@ -176,30 +166,30 @@ import { faqs, benchmarkTiers } from './calculatorData';
         </div>
 
         <p class="text-xs text-muted leading-relaxed">
-          <strong>Interpretation:</strong> While the cumulative return over 3 years is 50%, the annualized return of 14.47% reveals the true compounding growth rate per year, outperforming the historical S&P 500 average.
+          <strong>Key Insight:</strong> Although the total cumulative gain is 50%, the annualized return is 14.47% per year, demonstrating strong compound outperformance against historical market averages (~7%–10%).
         </p>
       </div>
 
-      {/* Example 2: Marketing Campaign */}
+      {/* Example 2: Digital Marketing Campaign */}
       <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-5 shadow-xs">
         <div class="flex items-center justify-between border-b border-hairline-soft pb-3">
           <h3 class="text-base font-bold text-ink flex items-center gap-2">
-            <span>📣</span> Example 2: Digital Marketing Campaign
+            <span>📣</span> Example 2: E-Commerce Paid Ad Campaign
           </h3>
           <span class="text-[10px] font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20">Marketing ROI</span>
         </div>
         
         <div class="space-y-2 text-xs text-muted">
-          <p><strong>Scenario:</strong> An e-commerce brand spends <strong>$5,000</strong> on Meta Ads, generating <strong>$20,000</strong> in revenue. Product gross profit margin is <strong>40%</strong>.</p>
+          <p><strong>Scenario:</strong> A direct-to-consumer brand spends <strong>$5,000</strong> on Meta Ads, producing <strong>$20,000</strong> in revenue with a <strong>40% gross margin</strong> (60% COGS & shipping).</p>
         </div>
 
         <div class="p-4 bg-canvas-soft rounded-xl border border-hairline-soft space-y-2 text-xs font-mono">
           <div class="flex justify-between text-ink">
-            <span>1. Gross Profit:</span>
+            <span>1. Gross Profit (Revenue × Margin):</span>
             <span class="font-bold">$20,000 × 40% = $8,000</span>
           </div>
           <div class="flex justify-between text-ink">
-            <span>2. Net Profit After Ad Spend:</span>
+            <span>2. Net Profit (Gross Profit - Ad Spend):</span>
             <span class="font-bold">$8,000 - $5,000 = $3,000</span>
           </div>
           <div class="flex justify-between text-primary font-bold">
@@ -207,35 +197,30 @@ import { faqs, benchmarkTiers } from './calculatorData';
             <span>($3,000 / $5,000) × 100 = 60.00%</span>
           </div>
           <div class="flex justify-between text-muted pt-1 border-t border-hairline-soft">
-            <span>4. Break-Even Revenue Target:</span>
+            <span>4. Break-Even Revenue Threshold:</span>
             <span>$5,000 / 0.40 = $12,500</span>
           </div>
         </div>
 
         <p class="text-xs text-muted leading-relaxed">
-          <strong>Interpretation:</strong> Looking strictly at gross sales ($20,000 / $5,000 = 4.0x ROAS) looks great, but incorporating the 40% gross margin shows that net marketing ROI is 60% with $3,000 in net profit.
+          <strong>Key Insight:</strong> Evaluating purely by ad spend ($20k / $5k = 4.0x ROAS) hides product costs. Factoring in the 40% margin reveals true net marketing ROI of 60% with $3,000 in actual net profit.
         </p>
       </div>
     </div>
   </div>
 
-  {/* ROI Interpretation & Benchmarks Table */}
+  {/* Section 5: Industry Performance Benchmarks Table */}
   <div class="space-y-6">
     <div class="border-b border-hairline pb-4">
       <span class="text-xs font-bold uppercase tracking-wider text-primary">Performance Benchmarks</span>
       <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">ROI Interpretation: What is a Good Return on Investment?</h2>
-      <p class="text-sm text-muted mt-1">Evaluating your ROI calculations against industry standards, risk levels, and alternative asset classes.</p>
+      <p class="text-sm text-muted mt-1">Benchmark your calculated returns against historical industry performance standards and risk profiles.</p>
     </div>
 
     <div class="prose prose-ink dark:prose-invert max-w-none text-sm text-body space-y-4">
       <p>
-        Interpreting your ROI result requires context. A 20% ROI achieved over a 3-month ad campaign is extraordinary, whereas a 20% ROI over a 10-year real estate holding represents modest growth (~1.8% annually, below inflation). When evaluating ROI:
+        Evaluating whether an ROI score is "good" requires assessing investment duration, liquidity, and risk exposure. A 30% ROI earned in 60 days on an advertising campaign represents outstanding velocity, whereas a 30% cumulative ROI over 10 years on real estate represents poor performance (~2.6% annual return, lagging inflation).
       </p>
-      <ul class="list-disc pl-5 space-y-1">
-        <li><strong>Positive ROI (> 0%):</strong> Indicates net profit. The capital return exceeded initial costs.</li>
-        <li><strong>Break-Even ROI (= 0%):</strong> Total revenue generated exactly equals initial capital outlay and cost of goods.</li>
-        <li><strong>Negative ROI (< 0%):</strong> Indicates financial loss. The cost exceeded final return proceeds.</li>
-      </ul>
     </div>
 
     <div class="overflow-x-auto rounded-2xl border border-hairline bg-surface-card shadow-xs">
@@ -262,16 +247,16 @@ import { faqs, benchmarkTiers } from './calculatorData';
     </div>
   </div>
 
-  {/* ROI vs ROAS Section with Contextual Internal Link */}
+  {/* Section 6: ROI vs. ROAS In-Depth Comparison with Internal Linking */}
   <div class="p-8 rounded-2xl bg-surface-card border border-hairline space-y-6 shadow-sm not-prose">
     <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-wider">
-      <span>⚖️</span> Comparative Guide
+      <span>⚖️</span> Comparative Analysis
     </div>
     
     <div class="space-y-2">
       <h2 class="text-2xl font-bold text-ink tracking-tight">ROI vs. ROAS: Key Differences & When to Use Each</h2>
       <p class="text-sm text-muted leading-relaxed">
-        While both metrics measure financial return in digital marketing, mistaking <strong>ROAS (Return on Ad Spend)</strong> for <strong>ROI (Return on Investment)</strong> is one of the most common causes of unprofitable scaling.
+        While both metrics measure financial return in business and marketing, confusing <strong>ROAS (Return on Ad Spend)</strong> with <strong>ROI (Return on Investment)</strong> is a primary reason media buyers overspend on unprofitable ad campaigns.
       </p>
     </div>
 
@@ -282,8 +267,8 @@ import { faqs, benchmarkTiers } from './calculatorData';
         </h3>
         <ul class="text-xs text-muted space-y-2 list-disc pl-4 leading-relaxed">
           <li><strong>Scope:</strong> Bottom-line net profitability.</li>
-          <li><strong>Costs Included:</strong> Ad spend, Cost of Goods Sold (COGS), shipping, software, merchant fees, and team overhead.</li>
-          <li><strong>Primary Metric:</strong> Net Profit / Total Investment Outlay.</li>
+          <li><strong>Costs Included:</strong> Ad spend, Cost of Goods Sold (COGS), shipping, merchant processing fees, agency retainers, and team overhead.</li>
+          <li><strong>Formula:</strong> <code>Net Profit / Total Investment Outlay × 100</code></li>
           <li><strong>Best Used For:</strong> Strategic executive decisions, annual marketing channel budget allocation, and business valuation.</li>
         </ul>
       </div>
@@ -294,8 +279,8 @@ import { faqs, benchmarkTiers } from './calculatorData';
         </h3>
         <ul class="text-xs text-muted space-y-2 list-disc pl-4 leading-relaxed">
           <li><strong>Scope:</strong> Top-line advertising revenue efficiency.</li>
-          <li><strong>Costs Included:</strong> Direct advertising cost (ad spend) only. Ignores product manufacturing and overhead.</li>
-          <li><strong>Primary Metric:</strong> Gross Ad Revenue / Direct Ad Spend.</li>
+          <li><strong>Costs Included:</strong> Direct advertising cost (ad spend) only. Excludes inventory, shipping, and operational overhead.</li>
+          <li><strong>Formula:</strong> <code>Gross Revenue / Direct Ad Spend</code></li>
           <li><strong>Best Used For:</strong> Campaign-level optimization, ad set bidding tactics, and creative testing on Meta, Google, and TikTok.</li>
         </ul>
       </div>
@@ -303,7 +288,7 @@ import { faqs, benchmarkTiers } from './calculatorData';
 
     <div class="p-5 rounded-xl bg-primary/5 border border-primary/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div class="space-y-1">
-        <h4 class="text-sm font-bold text-ink">Need campaign-level ad spend analysis?</h4>
+        <h4 class="text-sm font-bold text-ink">Need campaign-level ad spend & break-even analysis?</h4>
         <p class="text-xs text-muted">
           Calculate your exact ad spend efficiency, break-even ROAS targets, and profit margins with our dedicated tool.
         </p>
@@ -318,10 +303,69 @@ import { faqs, benchmarkTiers } from './calculatorData';
     </div>
   </div>
 
-  {/* FAQ Section */}
+  {/* Section 7: 5 Critical ROI Calculation Mistakes to Avoid */}
+  <div class="space-y-6">
+    <div class="border-b border-hairline pb-4">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Pitfalls & Best Practices</span>
+      <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">5 Common ROI Calculation Mistakes to Avoid</h2>
+      <p class="text-sm text-muted mt-1">Ensure your financial modeling remains accurate by avoiding these frequent analytical oversights.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 not-prose">
+      <div class="p-5 rounded-xl bg-surface-card border border-hairline space-y-2">
+        <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+          <span class="text-red-500">1.</span> Ignoring the Time Horizon
+        </h3>
+        <p class="text-xs text-muted leading-relaxed">
+          Comparing simple cumulative returns across differing timeframes distorts reality. Always calculate <strong>Annualized ROI (CAGR)</strong> when analyzing investments held for longer than one year.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-xl bg-surface-card border border-hairline space-y-2">
+        <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+          <span class="text-red-500">2.</span> Omitting COGS and Operational Overhead
+        </h3>
+        <p class="text-xs text-muted leading-relaxed">
+          In marketing and e-commerce, evaluating ROI based solely on gross sales overlooks inventory production, shipping, and merchant fees, creating the illusion of profitability on loss-making campaigns.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-xl bg-surface-card border border-hairline space-y-2">
+        <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+          <span class="text-red-500">3.</span> Confusing Cash Flow with Total ROI
+        </h3>
+        <p class="text-xs text-muted leading-relaxed">
+          An asset generating positive monthly cash flow may still produce negative total ROI if its underlying market valuation depreciates more than the accumulated cash distributions.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-xl bg-surface-card border border-hairline space-y-2">
+        <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+          <span class="text-red-500">4.</span> Overlooking Inflation & Real Returns
+        </h3>
+        <p class="text-xs text-muted leading-relaxed">
+          A nominal 4% annual return during a period with 5% annual inflation yields a negative 1% real return in purchasing power. Factor in inflation rates when evaluating multi-year investments.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-xl bg-surface-card border border-hairline space-y-2 md:col-span-2">
+        <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+          <span class="text-red-500">5.</span> Disregarding Opportunity Cost
+        </h3>
+        <p class="text-xs text-muted leading-relaxed">
+          Locking capital into a low-yield 3% project forfeits the opportunity to deploy those funds into historical 8%–10% index funds or high-performing acquisition channels.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Section 8: FAQ Section with FAQPage Schema */}
   <section class="pt-8 border-t border-hairline">
-    <FAQ faqs={faqs} title="Frequently Asked Questions (ROI Calculation)" description="Common questions about ROI formulas, marketing ROI, annualized returns, and ROI vs ROAS." />
+    <FAQ 
+      faqs={faqs} 
+      title="Frequently Asked Questions (ROI Calculation)" 
+      description="Expert answers to the most common questions regarding ROI formulas, marketing ROI, annualized returns, break-even targets, and ROI vs ROAS." 
+    />
   </section>
 
 </section>
-

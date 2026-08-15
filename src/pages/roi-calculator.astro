@@ -10,10 +10,96 @@ import ResultsConsole from '../components/roi-calculator/ResultsConsole.astro';
 import EducationalContent from '../components/roi-calculator/EducationalContent.astro';
 import CalculatorScript from '../components/roi-calculator/CalculatorScript.astro';
 
-const title = "ROI Calculator | Return on Investment & Marketing ROI Calculator";
-const description = "Calculate your Return on Investment (ROI) and Marketing ROI with our free calculator. Learn how to calculate ROI, master the ROI formula, view worked examples, and compare ROI vs ROAS.";
-const keywords = "roi calculator, marketing roi calculator, return on investment calculator, roi calculation, roi formula, how to calculate roi, return on investment formula, roi vs roas";
+const title = "ROI Calculator | Free Return on Investment & Marketing ROI Tool";
+const description = "Calculate Return on Investment (ROI), Marketing ROI, and Annualized Growth (CAGR) with our free ROI calculator. Learn the ROI formula, view worked examples, and compare ROI vs ROAS.";
+const keywords = "roi calculator, return on investment calculator, marketing roi calculator, calculate roi, roi formula, how to calculate roi, annualized roi calculator, business roi calculator, investment return calculator, roi vs roas, return on investment formula";
 const url = "https://getmicrotools.com/roi-calculator";
+
+// Structured Data: WebApplication Schema
+const webApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ROI Calculator",
+  "alternateName": [
+    "Return on Investment Calculator",
+    "Marketing ROI Calculator",
+    "ROI & CAGR Calculator",
+    "Investment Return Calculator"
+  ],
+  "url": "https://getmicrotools.com/roi-calculator",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "description": "Free ROI Calculator to calculate Return on Investment (ROI), Marketing ROI, Annualized Growth (CAGR), and benefit-cost ratios. Includes step-by-step formulas, worked examples, and industry benchmarks.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Standard ROI calculation with cumulative profit/loss",
+    "Marketing ROI with Cost of Goods Sold (COGS) & margin adjustments",
+    "Annualized ROI / Compound Annual Growth Rate (CAGR)",
+    "Benefit-Cost Ratio (BCR) and break-even sales revenue target calculation",
+    "Multi-currency support (USD, EUR, GBP, INR, JPY, AUD, CAD, CHF, SGD, AED)",
+    "Interactive performance benchmark comparison"
+  ]
+};
+
+// Structured Data: BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://getmicrotools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ROI Calculator",
+      "item": "https://getmicrotools.com/roi-calculator"
+    }
+  ]
+};
+
+// Structured Data: HowTo Schema
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Calculate Return on Investment (ROI)",
+  "description": "A step-by-step mathematical guide to calculating simple ROI, marketing ROI, and annualized returns.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Step 1: Identify Initial Investment",
+      "text": "Determine the total initial cost or capital outlay of your investment, such as the purchase price of an asset, equipment cost, or advertising campaign budget."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 2: Determine Final Return Proceeds",
+      "text": "Identify the total proceeds, gross revenue, or current market value generated from the investment upon completion or sale."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 3: Calculate Net Profit",
+      "text": "Subtract your initial investment from the final return proceeds: Net Profit = Final Return - Initial Investment."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 4: Apply the ROI Formula",
+      "text": "Divide the net profit by the initial investment amount: ROI Ratio = Net Profit / Initial Investment."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 5: Multiply by 100 for ROI Percentage",
+      "text": "Multiply the resulting ratio by 100 to get the Return on Investment as a percentage: ROI (%) = [(Final Return - Initial Investment) / Initial Investment] × 100."
+    }
+  ]
+};
 ---
 
 <Layout 
@@ -22,6 +108,11 @@ const url = "https://getmicrotools.com/roi-calculator";
   keywords={keywords}
   url={url}
 >
+  {/* Inject Rich Structured Schemas for Search Engines */}
+  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+
   <Nav />
 
   <main class="min-h-screen bg-canvas">
