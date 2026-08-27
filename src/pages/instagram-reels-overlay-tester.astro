@@ -8,13 +8,125 @@ import SafeZoneGuide from '../components/instagram-preview/SafeZoneGuide.astro';
 import ReelsMockup from '../components/instagram-preview/ReelsMockup.astro';
 import FormatSelector from '../components/instagram-preview/FormatSelector.astro';
 
-const title = "Instagram Reels Safe Zone Checker | Reels Overlay Tester";
-const description = "Test your content with our free Instagram reels safe zone checker. Ensure your text and visuals aren't blocked by UI elements with our reels overlay tester.";
-const keywords = "Instagram reels safe zone checker, reels overlay tester, instagram reel safe zone checker, overlay tester, overlay safe zone";
+import FAQ from '../components/FAQ.astro';
+
+const title = "Instagram Reels Safe Zone Checker & Overlay Tester (1080x1920) | Get Micro Tools";
+const description = "Free client-side Instagram Reels safe zone tester. Check your vertical 9:16 videos against native UI icons, captions, and 4:5 feed crops before posting.";
+const keywords = "instagram reels safe zone, reels overlay tester, instagram reel safe zone checker, reels safe zone dimensions, 9:16 video safe zone, instagram ui overlay tester";
 const url = "https://getmicrotools.com/instagram-reels-overlay-tester";
+
+const webApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Instagram Reels Safe Zone Checker & Overlay Tester",
+  "alternateName": [
+    "Reels Overlay Tester",
+    "Instagram Video Safe Zone Checker",
+    "9:16 Safe Zone Preview Tool"
+  ],
+  "url": "https://getmicrotools.com/instagram-reels-overlay-tester",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "description": "Free client-side preview tool to verify 9:16 vertical videos against native Instagram Reels UI layers, action buttons, captions, and 4:5 home feed crops.",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Get Micro Tools",
+    "url": "https://getmicrotools.com"
+  },
+  "featureList": [
+    "Instant client-side MP4 video and image preview with zero server uploads",
+    "9:16 Full Screen Reels and 4:5 Portrait Home Feed format toggles",
+    "Independently toggleable UI layers: Header, Right Action Bar, Profile Info, Caption, and Bottom Navigation",
+    "Original Fit (letterbox) vs Fill Screen (cover) scaling modes",
+    "Live aspect ratio detection for uploaded media assets"
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://getmicrotools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Instagram Reels Overlay Tester",
+      "item": "https://getmicrotools.com/instagram-reels-overlay-tester"
+    }
+  ]
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Check and Protect Safe Zones on Instagram Reels",
+  "description": "A step-by-step workflow for testing vertical video text placement against Instagram UI layers.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Step 1: Export Video at 1080x1920 Resolution",
+      "text": "Export your 9:16 vertical video from your editing software at 1080x1920 resolution in MP4 or MOV format."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 2: Upload Media to the Safe Zone Tester",
+      "text": "Drag and drop your video file into the browser preview tool. Processing executes 100% locally on your device."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 3: Audit UI Occlusion and Dead Zones",
+      "text": "Check that on-screen titles, subtitles, and key visual focal points are clear of the top header (220px), bottom caption area (440px), and right action icons (120px)."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 4: Check 4:5 Portrait Feed Crop",
+      "text": "Switch the format selector to 4:5 Portrait Feed to ensure your primary hook remains centered when non-followers see your Reel in their main feed."
+    }
+  ]
+};
+
+const faqs = [
+  {
+    question: "What are the exact safe zone pixel dimensions for Instagram Reels (1080x1920)?",
+    answer: "For a standard 1080×1920 vertical video, leave a 220px margin at the top (under username/search), a 440px margin at the bottom (above captions, audio attribution, and bottom navigation), and a 120px margin on the right edge (clear of Like, Comment, Share, and Remix buttons). The central safe zone is approximately 1000px wide by 1260px high."
+  },
+  {
+    question: "Why does Instagram crop 9:16 Reels to 4:5 on the Home Feed?",
+    answer: "When a user scrolls through their standard Instagram Home Feed, Reels are rendered in a 4:5 aspect ratio (1080×1350) rather than full 9:16. Instagram crops 285 pixels off the top and 285 pixels off the bottom. If your headline or hook is placed too high or low, it will be invisible in the main feed until the user taps to open the full-screen player."
+  },
+  {
+    question: "How does the 1:1 Profile Grid crop affect Reels?",
+    answer: "On your public profile grid, Reels are displayed as a square 1:1 thumbnail (1080×1080). This crops 420 pixels off both the top and bottom of your 9:16 video. Keep your primary subject and thumbnail text strictly inside the central 1080×1080 square."
+  },
+  {
+    question: "Are my uploaded videos or images sent to any server?",
+    answer: "No. The Get Micro Tools Reels Overlay Tester processes all media entirely client-side inside your web browser using HTML5 Canvas and video APIs. Your media never leaves your device."
+  },
+  {
+    question: "Can I use this tool to test TikTok and YouTube Shorts videos?",
+    answer: "Yes. While TikTok and YouTube Shorts have slightly different action bar layouts, the core 9:16 vertical canvas (1080×1920) and bottom caption exclusion zones (350–450px) are very similar. Content that passes our Instagram safe zone checks will generally be safe on TikTok and Shorts as well."
+  }
+];
 ---
 
 <Layout title={title} description={description} keywords={keywords} url={url}>
+  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+
   {/* Force dark mode for this page specifically by wrapping the content */}
   <div class="dark bg-canvas min-h-screen w-full flex flex-col">
     <Nav />
@@ -28,8 +140,8 @@ const url = "https://getmicrotools.com/instagram-reels-overlay-tester";
         </div>
         <h1 class="text-display-lg md:text-display-mega mb-6 tracking-tight text-ink">Reels Overlay Tester</h1>
         <p class="text-body text-lg max-w-2xl leading-relaxed">
-          Upload your media to see exactly how it will look inside the Instagram Reels player. 
-          Identify "Dead Zones" where the UI covers your hooks and captions.
+          Upload your media to see exactly how it will look inside the native Instagram player. 
+          Identify dead zones where buttons, captions, and feed crops block your hooks.
         </p>
       </header>
 
@@ -50,93 +162,177 @@ const url = "https://getmicrotools.com/instagram-reels-overlay-tester";
         <ReelsMockup />
       </div>
 
-      {/* SEO Content Section */}
-      <section class="mt-24 pt-24 border-t border-hairline">
-        <div class="max-w-4xl">
-          <h2 class="text-display-lg mb-8 text-ink">Instagram Reels Safe Zone Checker: The Ultimate Guide to Perfect Content</h2>
-          <div class="prose prose-ink prose-lg max-w-none space-y-8 text-body leading-relaxed">
-            <p>
-              When you're creating content for Instagram Reels, you're not just fighting the algorithm—you're fighting the UI. Every Reel you post is covered by a layer of buttons, text, and icons that can obscure your message. That's why using an <strong>Instagram reels safe zone checker</strong> is essential for any serious creator.
-            </p>
+      {/* Technical Safe-Zone Guide Section */}
+      <section class="mt-24 pt-24 border-t border-hairline max-w-5xl mx-auto space-y-16">
+        
+        {/* Section 1: Pixel Safe-Zone Specification */}
+        <div class="space-y-6">
+          <div class="border-b border-hairline pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Technical Specifications</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">1080×1920 Reels Safe Zone Coordinate Blueprint</h2>
+            <p class="text-sm text-muted mt-1">Exact exclusion margins based on Instagram's native mobile UI overlays for standard 9:16 vertical video exports.</p>
+          </div>
 
-            <h3 class="text-display-md text-ink mt-12 mb-6">What is an Instagram Reels Safe Zone?</h3>
-            <p>
-              The "safe zone" refers to the area of your 9:16 vertical video that is guaranteed to be visible to all users, regardless of their device or the specific version of the Instagram app they are using. Instagram overlays several UI elements on top of your video:
-            </p>
-            <ul class="list-disc pl-6 space-y-2">
-              <li><strong>Bottom Overlay:</strong> The username, caption, and audio track information.</li>
-              <li><strong>Right Action Bar:</strong> Like, comment, share, and three-dot menu icons.</li>
-              <li><strong>Top Bar:</strong> The "Reels" heading and camera/search icons.</li>
-            </ul>
-            <p>
-              If your key text or visual "hooks" fall into these areas, they become unreadable. An <strong>instagram reel safe zone checker</strong> helps you visualize these "dead zones" before you hit publish.
-            </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 not-prose">
+            <div class="p-5 rounded-2xl bg-surface-card border border-hairline space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-ink uppercase tracking-wider">Top Exclusion Zone</span>
+                <span class="text-[10px] font-mono font-bold text-red-400 bg-red-500/10 px-2 py-0.5 rounded">0 – 220px</span>
+              </div>
+              <p class="text-xs text-muted leading-relaxed">
+                Covers audio search, top camera controls, and native phone notch/Dynamic Island cutouts. Avoid headlines here.
+              </p>
+            </div>
 
-            <h3 class="text-display-md text-ink mt-12 mb-6">Why You Need a Reels Overlay Tester</h3>
-            <p>
-              Precision is key in social media marketing. If a viewer can't read your caption because it's buried under a "Follow" button, they're likely to keep scrolling. A <strong>reels overlay tester</strong> allows you to upload your video or image and see exactly where the Instagram interface will sit.
-            </p>
+            <div class="p-5 rounded-2xl bg-surface-card border border-hairline space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-ink uppercase tracking-wider">Bottom Exclusion Zone</span>
+                <span class="text-[10px] font-mono font-bold text-red-400 bg-red-500/10 px-2 py-0.5 rounded">1480 – 1920px</span>
+              </div>
+              <p class="text-xs text-muted leading-relaxed">
+                Covers account handle, follow button, multi-line caption, audio attribution pill, and bottom app navigation bar.
+              </p>
+            </div>
 
-            <h4 class="text-title-md text-ink mt-8 mb-4">1. Protect Your Hooks</h4>
-            <p>
-              The first three seconds of a Reel are the most important. Often, creators place their main hook (text) at the very top or bottom of the screen. Without an <strong>overlay tester</strong>, you might accidentally place your headline right under the top "Reels" text or the bottom caption.
-            </p>
+            <div class="p-5 rounded-2xl bg-surface-card border border-hairline space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-ink uppercase tracking-wider">Right Action Margin</span>
+                <span class="text-[10px] font-mono font-bold text-red-400 bg-red-500/10 px-2 py-0.5 rounded">960 – 1080px</span>
+              </div>
+              <p class="text-xs text-muted leading-relaxed">
+                Covers Like, Comment, Share/Send, Bookmark, and Remix vertical icon stack. Keep text and faces clear of the right 120px.
+              </p>
+            </div>
 
-            <h4 class="text-title-md text-ink mt-8 mb-4">2. Optimize for All Devices</h4>
-            <p>
-              Instagram's UI scales differently on various screen aspect ratios. While it might look fine on your iPhone 15, it could be cut off on a Google Pixel or a Samsung Galaxy. A robust <strong>overlay safe zone</strong> guide ensures your content is responsive.
-            </p>
-
-            <h4 class="text-title-md text-ink mt-8 mb-4">3. Professionalism</h4>
-            <p>
-              High-quality content isn't just about resolution; it's about composition. Using a <strong>reels overlay tester</strong> shows that you care about the user experience, leading to higher engagement and better brand perception.
-            </p>
-
-            <h3 class="text-display-md text-ink mt-12 mb-6">How to Use Our Instagram Reel Safe Zone Checker</h3>
-            <p>
-              Our tool is designed to be the simplest <strong>instagram reels safe zone checker</strong> on the web. Here’s how to get the most out of it:
-            </p>
-            <ol class="list-decimal pl-6 space-y-4">
-              <li><strong>Upload Your Media:</strong> Drag and drop your video (MP4) or image (JPG/PNG) into the tester.</li>
-              <li><strong>Review the Overlays:</strong> Look at the right-hand preview. You'll see a real-time mockup of the Instagram Reels interface.</li>
-              <li><strong>Identify Blocked Areas:</strong> Check if your text, face, or product is being covered by the interaction icons or the caption area.</li>
-              <li><strong>Adjust and Re-test:</strong> If your content is blocked, move your elements toward the center and re-upload to confirm they are in the <strong>overlay safe zone</strong>.</li>
-            </ol>
-
-            <h3 class="text-display-md text-ink mt-12 mb-6">Common Pitfalls in Reels Design</h3>
-            <p>
-              Many creators make the mistake of designing their Reels in a "vacuum"—forgetting that the final product will have a layer of UI on top. 
-            </p>
-            <ul class="list-disc pl-6 space-y-2">
-              <li><strong>The "Dead Zone" at the Bottom:</strong> The bottom 25% of a Reel is heavily crowded. Avoid placing any text here.</li>
-              <li><strong>The "Right Edge" Trap:</strong> The engagement icons sit on the right. If you frame your subject too far to the right, their face might be covered by the "Like" heart.</li>
-              <li><strong>Ignoring the Top Notch:</strong> Different phones have different "notches" or "punch-hole" cameras. Our <strong>overlay tester</strong> accounts for the general top-bar area to keep your headers safe.</li>
-            </ul>
-
-            <h3 class="text-display-md text-ink mt-12 mb-6">Best Practices for Reels Dimensions and Aspect Ratio</h3>
-            <p>
-              To ensure your content looks its best in the <strong>instagram reel safe zone checker</strong>, you must start with the correct dimensions. Instagram Reels are designed for a 9:16 aspect ratio. The ideal resolution is 1080 x 1920 pixels. 
-            </p>
-            <p>
-              If you upload a video with a different aspect ratio, Instagram will either crop it or add borders, which can completely throw off your <strong>overlay safe zone</strong> calculations. For example, a 4:5 video will have significant black bars at the top and bottom, which might make you think you have more space than you actually do once the UI is applied. 
-            </p>
-            <p>
-              Always record or export your content in 1080x1920 to maintain consistency with our <strong>reels overlay tester</strong>. This ensures that the simulated UI elements align perfectly with how they will appear on a real device.
-            </p>
-
-            <h3 class="text-display-md text-ink mt-12 mb-6">Maximize Engagement with Overlay Safe Zone Awareness</h3>
-            <p>
-              Social media success is a game of inches. By ensuring every word of your caption and every visual detail of your video is visible, you remove friction for your audience. Using an <strong>instagram reels safe zone checker</strong> is a small step in your workflow that can lead to a massive difference in your reach and engagement rate.
-            </p>
-            <h3 class="text-display-md text-ink mt-12 mb-6">The Future of Reels Marketing and Creative Content</h3>
-            <p>
-              As Instagram continues to evolve, the interface will likely change, but the core principle remains: your content must be seen to be effective. Staying ahead of UI updates by regularly checking your designs in a <strong>reels overlay tester</strong> ensures that your brand remains at the forefront of digital storytelling. By mastering the <strong>overlay safe zone</strong>, you're not just making a video; you're crafting an experience that respects the viewer's attention and maximizes your potential for viral growth. 
-            </p>
-            <p>
-              In the fast-paced world of social media, small optimizations lead to significant results. Whether you're an influencer, a small business owner, or a social media manager, the <strong>instagram reel safe zone checker</strong> is a vital tool in your creative arsenal. Don't let your hard work go to waste by having it covered up—test every Reel and ensure your message is clear every time.
-            </p>
+            <div class="p-5 rounded-2xl bg-surface-card border border-hairline space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Active Text Canvas</span>
+                <span class="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">1000 × 1260px</span>
+              </div>
+              <p class="text-xs text-muted leading-relaxed">
+                The guaranteed visible area across all mobile screen aspect ratios. Center your primary hook and subtitles here.
+              </p>
+            </div>
           </div>
         </div>
+
+        {/* Section 2: Feed Crop Physics (9:16 vs 4:5 vs 1:1) */}
+        <div class="space-y-6">
+          <div class="border-b border-hairline pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Aspect Ratio Physics</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">How Instagram Crops Reels Across App Surfaces</h2>
+            <p class="text-sm text-muted mt-1">Understanding how a single 9:16 video asset is rendered across the Reels Tab, Home Feed, and Profile Grid.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 not-prose">
+            <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-ink">1. Reels Tab (Full 9:16)</h3>
+                <span class="text-xs font-mono text-primary font-bold">1080 × 1920</span>
+              </div>
+              <p class="text-xs text-muted leading-relaxed">
+                Full-bleed vertical display. All native UI overlay icons sit directly on top of your video frame. Full safe-zone clearance required.
+              </p>
+              <div class="p-3 bg-canvas-soft rounded-lg text-xs font-mono text-muted border border-hairline">
+                Visible Area: 100% of height
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-ink">2. Home Feed (4:5 Crop)</h3>
+                <span class="text-xs font-mono text-primary font-bold">1080 × 1350</span>
+              </div>
+              <p class="text-xs text-muted leading-relaxed">
+                When Reels appear in follower and recommended home feeds, Instagram automatically crops <strong>285px off the top</strong> and <strong>285px off the bottom</strong>.
+              </p>
+              <div class="p-3 bg-canvas-soft rounded-lg text-xs font-mono text-muted border border-hairline">
+                Crop: Top & Bottom 14.8% removed
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-ink">3. Profile Grid (1:1 Square)</h3>
+                <span class="text-xs font-mono text-primary font-bold">1080 × 1080</span>
+              </div>
+              <p class="text-xs text-muted leading-relaxed">
+                The profile grid displays a center square crop, removing <strong>420px off top and bottom</strong>. Thumbnail titles must be positioned in the exact vertical center.
+              </p>
+              <div class="p-3 bg-canvas-soft rounded-lg text-xs font-mono text-muted border border-hairline">
+                Crop: Top & Bottom 21.8% removed
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 3: Subtitle & Captions Placement Best Practices */}
+        <div class="p-8 rounded-2xl bg-surface-card border border-hairline space-y-6 not-prose">
+          <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-wider">
+            <span>🎬</span> Video Editing Best Practices
+          </div>
+          <h2 class="text-2xl font-bold text-ink tracking-tight">4 Rules for Safe Subtitle & Text Placement</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+              <h3 class="text-sm font-bold text-ink">1. Position Subtitles at Y: 1150–1350px</h3>
+              <p class="text-xs text-muted leading-relaxed">
+                Place auto-captions and animated subtitles just above the bottom caption buffer. This keeps them readable in both 9:16 and 4:5 modes without overlapping username tags.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+              <h3 class="text-sm font-bold text-ink">2. Limit Dynamic Text to 2–4 Words Per Line</h3>
+              <p class="text-xs text-muted leading-relaxed">
+                Long lines of text will spread into the right 120px icon dead zone. Keep kinetic captions compact and centered to ensure complete visibility.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+              <h3 class="text-sm font-bold text-ink">3. Add Contrast Shadow or Dark Box</h3>
+              <p class="text-xs text-muted leading-relaxed">
+                White text with a 30–50% black stroke or soft drop shadow prevents your hooks from disappearing when footage passes through high-brightness scenes.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+              <h3 class="text-sm font-bold text-ink">4. Check Device Aspect Ratio Variances</h3>
+              <p class="text-xs text-muted leading-relaxed">
+                Taller phones (19.5:9 or 20:9 aspect ratios like iPhone 15/16 and Samsung Galaxy S24) expand letterboxing differently than standard 16:9 displays.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 4: Related Tools */}
+        <div class="space-y-6">
+          <div class="border-b border-hairline pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Creator Toolkit</span>
+            <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">Related Social Media Utilities</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose">
+            <a href="/instagram-engagement-rate-calculator" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-2">
+              <div>
+                <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">📈 Instagram Engagement Rate Calculator</h3>
+                <p class="text-xs text-muted mt-1 leading-relaxed">Calculate your Reach (ERR) and Follower (ERF) engagement rates with 2026 creator tier benchmarks.</p>
+              </div>
+              <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">Calculate Engagement &rarr;</span>
+            </a>
+
+            <a href="/tiktok-bio-checker" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-2">
+              <div>
+                <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">🎵 TikTok Bio Checker & Counter</h3>
+                <p class="text-xs text-muted mt-1 leading-relaxed">Test your profile bio against the official 80-character limit with authentic mobile previews.</p>
+              </div>
+              <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">Check TikTok Bio &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Section 5: FAQ Component */}
+        <FAQ faqs={faqs} title="Instagram Reels Safe Zone FAQ" description="Common questions about Instagram Reels safe zones, 4:5 feed crops, video export resolution, and device UI overlays." />
+
       </section>
     </div>
   </main>

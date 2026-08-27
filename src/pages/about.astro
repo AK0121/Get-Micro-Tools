@@ -5,69 +5,114 @@ import Footer from '../components/Footer.astro';
 
 const tools = [
   {
+    name: "ROI Calculator",
+    description: "Calculate Return on Investment, Marketing ROI with COGS, and Compound Annual Growth Rate (CAGR).",
+    href: "/roi-calculator"
+  },
+  {
     name: "Instagram Engagement Rate Calculator",
-    description: "Calculate Instagram Engagement Rate by Reach (ERR) and Followers (ERF) with creator benchmarks.",
+    description: "Calculate Instagram Engagement Rate by Reach (ERR) and Followers (ERF) with 2026 creator tier benchmarks.",
     href: "/instagram-engagement-rate-calculator"
   },
   {
+    name: "TikTok Bio Checker",
+    description: "Verify your TikTok bio against the official 80-character limit with live mobile profile previews and emoji grapheme counting.",
+    href: "/tiktok-bio-checker"
+  },
+  {
     name: "Instagram Reels Overlay Tester",
-    description: "Preview how your Reels will look with UI overlays to ensure your content is never blocked.",
+    description: "Preview how your vertical video hooks look under real Reels UI layers to prevent text occlusion.",
     href: "/instagram-reels-overlay-tester"
   },
   {
-    name: "LinkedIn Preview Formatter",
-    description: "Optimize your LinkedIn posts and previews for maximum professional impact.",
-    href: "/linkedin-preview-formatter"
+    name: "ROAS & Profitability Engine",
+    description: "Determine exact Return on Ad Spend, net profits, and margin-adjusted break-even points for paid campaigns.",
+    href: "/roas-calculator"
   },
   {
-    name: "ROAS & Profitability Calculator",
-    description: "Deep dive into your ad spend efficiency and overall business profitability.",
-    href: "/roas-calculator"
+    name: "LinkedIn Preview Formatter",
+    description: "Format posts with Unicode emphasis and test the exact 'see more' cutoff line across mobile and desktop feeds.",
+    href: "/linkedin-preview-formatter"
   }
 ];
 ---
 
 <Layout 
   title="About Us | Get Micro Tools"
-  description="Learn more about Abhishek and the mission behind Get Micro Tools - empowering the creator economy with professional-grade utilities."
-  keywords="about abhishek, creator economy tools, influencer utilities, agency marketing tools"
+  description="Learn about the mission, engineering philosophy, and standards behind Get Micro Tools — fast, free, client-side utilities for creators and marketers."
+  keywords="about get micro tools, creator utilities, marketing calculators, privacy-first tools"
 >
   <Nav />
   
   <main class="max-w-4xl mx-auto px-6 py-20 md:py-32">
     <section class="mb-20">
       <header class="text-center mb-16">
-        <h1 class="text-display-md md:text-display-lg text-ink mb-6">Built for the Creator Economy</h1>
+        <h1 class="text-display-md md:text-display-lg text-ink mb-6">Built for Creators & Marketers</h1>
         <p class="text-body-lg text-muted max-w-2xl mx-auto leading-relaxed">
-          Get Micro Tools is a collection of high-performance utilities designed to solve the specific, daily challenges of modern digital entrepreneurs.
+          Get Micro Tools is a collection of high-performance, browser-based utilities designed to solve daily calculation, formatting, and preview challenges without paywalls or friction.
         </p>
       </header>
 
-      <div class="bg-surface-card border border-hairline rounded-2xl p-8 md:p-12 shadow-sm">
+      <div class="bg-surface-card border border-hairline rounded-2xl p-8 md:p-12 shadow-sm space-y-6">
         <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
-          <div class="w-24 h-24 bg-primary/10 rounded-full flex-shrink-0 flex items-center justify-center overflow-hidden border-2 border-primary/20">
-            <span class="text-3xl font-bold text-primary">A</span>
+          <div class="w-20 h-20 bg-primary/10 rounded-full flex-shrink-0 flex items-center justify-center overflow-hidden border-2 border-primary/20">
+            <span class="text-2xl font-bold text-primary">AK</span>
           </div>
-          <div class="flex-1">
-            <h2 class="text-display-xs text-ink mb-4">Meet Abhishek</h2>
-            <div class="space-y-4 text-body text-muted leading-relaxed">
+          <div class="flex-1 space-y-4">
+            <h2 class="text-display-xs text-ink">About the Maker</h2>
+            <div class="space-y-3 text-body text-muted leading-relaxed text-sm md:text-base">
               <p>
-                Hi, I'm Abhishek. I created <strong>Get Micro Tools</strong> because I saw a gap in the market. While there are many complex, expensive marketing platforms out there, there's a shortage of simple, focused, and free tools that just <em>work</em>.
+                Hi, I'm Abhishek. I build web utilities and digital products under the <strong>AK_Builds</strong> imprint. I created <strong>Get Micro Tools</strong> to address a persistent frustration in digital marketing and creator workflows: everyday tools are frequently locked behind subscription paywalls, cluttered with intrusive popups, or buried in bloated enterprise software.
               </p>
               <p>
-                Whether you're an independent influencer trying to prove your value to brands, or an agency owner managing dozen of campaigns, you shouldn't have to fight with complex spreadsheets or pay for "pro" features just to calculate your ROAS or test a Reel overlay.
+                Whether you are an independent creator evaluating brand sponsorship rates, a media buyer calculating break-even ROAS across paid channels, or a founder drafting formatted social posts, you should have access to instantaneous, mathematically rigorous tools that respect your time and data.
               </p>
-              <p>
-                This website is my contribution to the creator economy—a set of "micro" utilities that provide "macro" value.
-              </p>
+            </div>
+            <div class="flex items-center gap-4 pt-2">
+              <a href="https://x.com/getmicrotools" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline">
+                <span>Follow on X</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+              </a>
+              <span class="text-hairline-strong">•</span>
+              <a href="mailto:hello@getmicrotools.com" class="inline-flex items-center gap-1.5 text-xs font-semibold text-muted hover:text-ink">
+                <span>hello@getmicrotools.com</span>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Engineering Principles -->
+    <section class="mb-20 space-y-6">
+      <h2 class="text-display-sm text-ink text-center">Core Engineering Principles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 not-prose">
+        <div class="p-6 bg-surface-card border border-hairline rounded-xl space-y-2">
+          <div class="text-2xl mb-2">🔒</div>
+          <h3 class="text-ink font-semibold text-sm">100% Client-Side Privacy</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            All arithmetic, text formatting, and image rendering occur directly in your browser session. Your proprietary ad spend figures and unreleased media never touch our servers.
+          </p>
+        </div>
+        <div class="p-6 bg-surface-card border border-hairline rounded-xl space-y-2">
+          <div class="text-2xl mb-2">📐</div>
+          <h3 class="text-ink font-semibold text-sm">Empirically Verified Specs</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Formulas and UI overlay dimensions are calibrated against official developer documentation from Meta, TikTok, and standard financial CAGR methodologies.
+          </p>
+        </div>
+        <div class="p-6 bg-surface-card border border-hairline rounded-xl space-y-2">
+          <div class="text-2xl mb-2">⚡</div>
+          <h3 class="text-ink font-semibold text-sm">Zero Friction & Free Forever</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            No mandatory account creation, no email gates, and no restricted premium tiers. Free, open tools built for maximum utility.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section class="mb-20">
-      <h2 class="text-display-sm text-ink mb-12 text-center">Our Toolset So Far</h2>
+      <h2 class="text-display-sm text-ink mb-12 text-center">Our Tool Suite</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {tools.map(tool => (
           <div class="group bg-surface-card border border-hairline rounded-xl p-6 hover:border-primary/50 transition-all hover:shadow-md">
@@ -76,7 +121,7 @@ const tools = [
               {tool.description}
             </p>
             <a href={tool.href} class="text-primary text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
-              Try it now 
+              Launch tool
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
@@ -87,12 +132,12 @@ const tools = [
     </section>
 
     <section class="text-center py-12 bg-canvas-soft rounded-2xl border border-hairline">
-      <h2 class="text-display-xs text-ink mb-4">Have an idea for a tool?</h2>
+      <h2 class="text-display-xs text-ink mb-4">Have an idea or spotted an issue?</h2>
       <p class="text-body text-muted mb-8 max-w-md mx-auto">
-        I'm constantly building and adding new tools to this collection. If there's a utility that would make your life easier, let me know.
+        We actively refine existing tools and build new utilities based on creator suggestions.
       </p>
       <a href="/contact" class="inline-flex items-center justify-center px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-active transition-all active:scale-95 shadow-sm">
-        Get in Touch
+        Contact the Maker
       </a>
     </section>
   </main>

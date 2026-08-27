@@ -17,6 +17,7 @@ const getIconKey = (iconProp: string, titleProp: string) => {
   if (iconProp === "reels" || t.includes("reels")) return "reels";
   if (iconProp === "roas" || t.includes("roas")) return "roas";
   if (iconProp === "linkedin" || t.includes("linkedin")) return "linkedin";
+  if (iconProp === "tiktok" || t.includes("tiktok")) return "tiktok";
   return iconProp;
 };
 
@@ -55,6 +56,11 @@ const iconKey = getIconKey(icon, title);
           <!-- Typography / Text Editor Icon -->
           <svg class="w-5 h-5 text-ink group-hover:text-primary transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+          </svg>
+        ) : iconKey === "tiktok" ? (
+          <!-- TikTok / Music Note Icon -->
+          <svg class="w-5 h-5 text-ink group-hover:text-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.88 2.89 2.89 0 01-2.89-2.88 2.89 2.89 0 012.89-2.89c.34 0 .66.06.96.16v-3.53a6.37 6.37 0 00-.96-.08A6.34 6.34 0 003 15.67 6.34 6.34 0 009.34 22a6.34 6.34 0 006.34-6.33V9.04a8.28 8.28 0 003.91 1.15V6.69z" />
           </svg>
         ) : (
           <span class="text-xl" aria-hidden="true">{icon}</span>

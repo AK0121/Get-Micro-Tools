@@ -32,26 +32,115 @@ const faqs = [
 ];
 
 // Page Metadata
-const title = "ROAS Calculator | Break-Even & Profitability Tool | Get Micro Tools";
-const description = "Calculate your Return on Ad Spend (ROAS), break-even points, and net profit with our free ROAS calculator. Essential for Facebook, Google, and TikTok ads.";
-const keywords = "roas calculator, break even roas calculator, breakeven roas calculator, marketing profit calculator, ad spend ROI";
+const title = "ROAS Calculator & Break-Even Ad Spend Engine | Get Micro Tools";
+const description = "Free client-side ROAS Calculator. Calculate Return on Ad Spend, margin-adjusted break-even ROAS, and true net profit across Meta, Google, and TikTok ad campaigns.";
+const keywords = "roas calculator, break even roas calculator, return on ad spend calculator, target roas calculator, ecommerce roas benchmarks, ad spend profit calculator";
 const url = "https://getmicrotools.com/roas-calculator";
+
+const webApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ROAS & Break-Even Profitability Engine",
+  "alternateName": [
+    "ROAS Calculator",
+    "Break-Even ROAS Calculator",
+    "Return on Ad Spend Calculator",
+    "Ad Spend Profitability Tool"
+  ],
+  "url": "https://getmicrotools.com/roas-calculator",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "description": "Free client-side ROAS Calculator to compute Return on Ad Spend (ROAS), break-even ROAS targets, and net campaign profitability factoring in profit margins and COGS.",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Get Micro Tools",
+    "url": "https://getmicrotools.com"
+  },
+  "featureList": [
+    "Instant real-time ROAS multiplier calculation (Revenue / Ad Spend)",
+    "Margin-adjusted break-even ROAS calculation (1 / Profit Margin %)",
+    "Live Net Profit estimation with dynamic profit/loss badge",
+    "Multi-currency support (USD, EUR, GBP, INR, JPY, AUD, CAD, CHF, SGD, AED)",
+    "Visual spend vs profit breakdown bar chart",
+    "100% private client-side processing with zero data storage"
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://getmicrotools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ROAS Calculator",
+      "item": "https://getmicrotools.com/roas-calculator"
+    }
+  ]
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Calculate ROAS and Break-Even Ad Spend",
+  "description": "Step-by-step mathematical guide to calculating marketing Return on Ad Spend and required break-even targets.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Step 1: Input Total Direct Ad Spend",
+      "text": "Enter the total advertising budget spent on the campaign across Meta, Google, or TikTok."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 2: Input Total Attributed Revenue",
+      "text": "Enter the gross revenue generated directly from the ad campaign tracked via conversion pixels."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 3: Define Net Profit Margin Percentage",
+      "text": "Input the gross profit margin percentage before ad spend (subtracting product COGS, packaging, and gateway fees)."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 4: Analyze Break-Even vs Actual ROAS",
+      "text": "Compare your actual calculated ROAS against the break-even target. If actual ROAS exceeds break-even ROAS, the campaign is net profitable."
+    }
+  ]
+};
 ---
 
 <Layout title={title} description={description} keywords={keywords} url={url}>
+  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+
   <Nav />
 
   <main class="min-h-screen bg-canvas transition-colors duration-500">
     {/* Hero Header */}
     <header class="max-w-7xl mx-auto px-6 pt-24 pb-16">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-pill bg-surface-strong text-ink text-[11px] font-semibold uppercase tracking-wider mb-6">
-        Marketing Tools
+        Marketing Utilities
       </div>
       <h1 class="text-display-lg md:text-display-mega text-ink mb-6">
         ROAS & Profitability Engine
       </h1>
       <p class="text-body text-lg max-w-2xl">
-        Stop flying blind on your ad spend. Calculate your exact ROAS, break-even points, and net profit margins with professional-grade accuracy.
+        Stop flying blind on your ad spend. Calculate exact Return on Ad Spend, margin-adjusted break-even points, and net profits across Meta, Google, and TikTok campaigns.
       </p>
     </header>
 
@@ -102,23 +191,23 @@ const url = "https://getmicrotools.com/roas-calculator";
 
               {/* Profit Margin */}
               <div class="space-y-2">
-                <label class="text-sm text-ink font-medium" for="profit-margin">Profit Margin (%)</label>
+                <label class="text-sm text-ink font-medium" for="profit-margin">Profit Margin Before Ad Spend (%)</label>
                 <div class="relative">
                   <span class="absolute right-4 top-1/2 -translate-y-1/2 text-muted">%</span>
                   <input type="number" id="profit-margin" placeholder="100" class="w-full bg-canvas-soft border border-hairline rounded-xl pl-4 pr-10 py-3 text-ink focus:outline-none focus:border-primary transition-all placeholder:text-muted/40" value="100" />
                 </div>
-                <p class="text-[10px] text-muted">Percentage of revenue that is profit before ad spend (e.g., 40% means COGS is 60%)</p>
+                <p class="text-[10px] text-muted">Gross margin % after subtracting COGS, shipping, and payment gateway fees.</p>
               </div>
 
               <button id="btn-estimate" class="w-full py-4 bg-ink text-canvas rounded-xl font-semibold hover:opacity-90 transition-all active:scale-[0.98]">
-                Estimate Profitability
+                Calculate Profitability
               </button>
             </div>
           </div>
 
           {/* Visual Chart Area (Initially Hidden) */}
           <div id="chart-container" class="hidden p-8 rounded-2xl bg-surface-card border border-hairline shadow-sm space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <h2 class="text-xs font-semibold uppercase tracking-widest text-muted">Profit Breakdown</h2>
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-muted">Revenue Allocation</h2>
             <div class="space-y-6">
               <div class="relative h-12 w-full bg-canvas-soft rounded-full overflow-hidden flex border border-hairline">
                 <div id="bar-spend" class="h-full bg-red-500/20 border-r border-red-500/30 transition-all duration-1000 ease-out" style="width: 0%"></div>
@@ -127,12 +216,12 @@ const url = "https://getmicrotools.com/roas-calculator";
               <div class="grid grid-cols-2 gap-4 text-xs">
                 <div class="flex items-center gap-2">
                   <div class="w-3 h-3 rounded-sm bg-red-500/40"></div>
-                  <span class="text-muted">Ad Spend: </span>
+                  <span class="text-muted">Ad Spend Share: </span>
                   <span id="label-spend-pct" class="font-medium text-ink">0%</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <div class="w-3 h-3 rounded-sm bg-emerald-500/40"></div>
-                  <span class="text-muted">Net Profit: </span>
+                  <span class="text-muted">Net Profit Share: </span>
                   <span id="label-profit-pct" class="font-medium text-ink">0%</span>
                 </div>
               </div>
@@ -143,7 +232,7 @@ const url = "https://getmicrotools.com/roas-calculator";
         {/* Right Column: Metrics Dashboard */}
         <div class="space-y-8">
           <div class="p-8 md:p-12 rounded-2xl bg-surface-card border border-hairline sticky top-24 shadow-xl">
-            <h2 class="text-xs font-semibold uppercase tracking-widest text-muted mb-8">Live Metrics Dashboard</h2>
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-muted mb-8">Performance Console</h2>
             
             <div class="space-y-10">
               {/* ROAS */}
@@ -160,7 +249,7 @@ const url = "https://getmicrotools.com/roas-calculator";
               {/* Net Profit */}
               <div>
                 <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm text-muted font-medium">Net Profit</span>
+                  <span class="text-sm text-muted font-medium">Net Profit After Ad Spend</span>
                   <span id="profit-badge" class="hidden px-2 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase border"></span>
                 </div>
                 <div class="flex items-baseline gap-1">
@@ -173,11 +262,12 @@ const url = "https://getmicrotools.com/roas-calculator";
 
               {/* Break-Even ROAS */}
               <div>
-                <span class="text-sm text-muted block mb-2 font-medium">Break-Even ROAS</span>
+                <span class="text-sm text-muted block mb-2 font-medium">Break-Even ROAS Threshold</span>
                 <div class="flex items-baseline gap-1">
                   <span id="break-even-roas" class="text-3xl md:text-4xl font-light text-ink tracking-tight">0.00</span>
                   <span class="text-xl text-muted font-light">x</span>
                 </div>
+                <p class="text-xs text-muted mt-1">Minimum ROAS needed to cover both product costs and ad spend.</p>
               </div>
             </div>
           </div>
@@ -185,78 +275,209 @@ const url = "https://getmicrotools.com/roas-calculator";
 
       </div>
 
-      {/* SEO Content Section */}
-      <section class="mt-24 max-w-4xl mx-auto prose prose-ink dark:prose-invert">
-        <h2 class="text-3xl font-bold mb-8">ROAS Calculator: The Ultimate Tool for Marketing Profitability</h2>
-        <p>
-          In the fast-paced world of digital marketing, data is your most valuable asset. But data without interpretation is just noise. One of the most critical metrics for any advertiser—whether you're running Facebook Ads, Google Search campaigns, or influencer partnerships—is <strong>Return on Ad Spend (ROAS)</strong>. 
-        </p>
-        <p>
-          Our professional <strong>ROAS calculator</strong> is designed to help you strip away the complexity and see exactly how your campaigns are performing. But we don't just stop at a simple ratio; we provide a comprehensive <strong>break even ROAS calculator</strong> to ensure you know the exact point where your marketing becomes profitable.
-        </p>
+      {/* Educational Content & Benchmarks Section */}
+      <section class="mt-24 max-w-5xl mx-auto space-y-16">
+        
+        {/* Section 1: Mathematical Foundations */}
+        <div class="space-y-6">
+          <div class="border-b border-hairline pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Mathematical Framework</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">ROAS vs. Break-Even ROAS: Formulas & Mechanics</h2>
+            <p class="text-sm text-muted mt-1">Understand the core equations governing paid advertising efficiency and margin protection.</p>
+          </div>
 
-        <h3 class="text-2xl font-semibold mt-12 mb-4">What is ROAS?</h3>
-        <p>
-          ROAS stands for Return on Ad Spend. It is a marketing metric that measures the amount of gross revenue your business earns for every dollar it spends on advertising. 
-        </p>
-        <div class="bg-surface-strong p-6 rounded-xl border border-hairline my-8">
-          <p class="text-center font-mono text-lg mb-0">ROAS = Gross Revenue / Ad Spend</p>
-        </div>
-        <p>
-          For example, if you spend $1,000 on ads and generate $5,000 in revenue, your ROAS is 5.0x (or 500%). This means for every dollar you spent, you earned five dollars back.
-        </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
+            <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+              <h3 class="text-xs font-bold text-ink uppercase tracking-wider">Standard ROAS Formula</h3>
+              <p class="text-xs text-muted leading-relaxed">
+                Measures top-line revenue generated for every dollar spent on paid ad platforms.
+              </p>
+              <div class="p-3 bg-canvas-soft rounded-xl border border-hairline font-mono text-xs text-center font-bold text-ink">
+                ROAS = <span class="text-primary">Gross Revenue / Ad Spend</span>
+              </div>
+              <p class="text-[11px] text-muted">Example: $10,000 Revenue / $2,500 Ad Spend = <strong>4.00x ROAS (400%)</strong></p>
+            </div>
 
-        <h3 class="text-2xl font-semibold mt-12 mb-4">Why You Need a ROAS Calculator</h3>
-        <p>
-          Calculating ROAS manually is easy, but understanding the nuances of profitability requires more depth. A high ROAS doesn't always mean a campaign is successful if your profit margins are thin. That's where our tool excels. By incorporating your profit margins, we help you calculate your <strong>breakeven ROAS</strong>.
-        </p>
-
-        <h4 class="text-xl font-semibold mt-8 mb-4">ROAS vs. ROI: What's the Difference?</h4>
-        <p>
-          While they are often used interchangeably, ROAS and ROI (Return on Investment) measure different things:
-        </p>
-        <ul>
-          <li><strong>ROAS</strong> focuses purely on the effectiveness of your ad spend in terms of revenue.</li>
-          <li><strong>ROI</strong> takes into account all expenses, including cost of goods sold (COGS), shipping, and overhead, to show the final net profit.</li>
-        </ul>
-        <p>
-          Our calculator bridges this gap by allowing you to input your profit margin, giving you a clearer picture of your actual net profit after ad spend. For overall business and asset growth evaluation, try our free <a href="/roi-calculator" class="text-primary hover:underline font-semibold">ROI Calculator</a>.
-        </p>
-
-        <h3 class="text-2xl font-semibold mt-12 mb-4">Understanding Break Even ROAS</h3>
-        <p>
-          The most common question marketers ask is: "What is a good ROAS?" The answer is always: "It depends on your margins."
-        </p>
-        <p>
-          This is why a <strong>break even ROAS calculator</strong> is essential. Your break-even ROAS is the point at which your gross profit equals your ad spend. If your ROAS is higher than your break-even point, you are making money. If it's lower, you are losing money on every sale.
-        </p>
-        <div class="bg-surface-strong p-6 rounded-xl border border-hairline my-8 text-center">
-          <p class="font-mono text-lg mb-2">Break-even ROAS = 1 / Profit Margin %</p>
-          <p class="text-sm text-muted">Example: 40% Margin = 1 / 0.4 = 2.5x Break-even</p>
+            <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+              <h3 class="text-xs font-bold text-ink uppercase tracking-wider">Break-Even ROAS Formula</h3>
+              <p class="text-xs text-muted leading-relaxed">
+                The exact point where gross margin dollars match advertising expenditure (zero net profit/loss).
+              </p>
+              <div class="p-3 bg-canvas-soft rounded-xl border border-hairline font-mono text-xs text-center font-bold text-ink">
+                Break-Even ROAS = <span class="text-primary">1 / Profit Margin %</span>
+              </div>
+              <p class="text-[11px] text-muted">Example: 40% Margin = 1 / 0.40 = <strong>2.50x Break-Even ROAS</strong></p>
+            </div>
+          </div>
         </div>
 
-        <h3 class="text-2xl font-semibold mt-12 mb-4">How to Improve Your ROAS</h3>
-        <p>
-          Once you've used our <strong>breakeven ROAS calculator</strong> to determine your baseline, you can focus on optimization. Here are three key ways to boost your performance:
-        </p>
-        <ol>
-          <li><strong>Optimize Conversion Rates:</strong> Small tweaks to your landing pages can significantly increase revenue without increasing spend.</li>
-          <li><strong>Refine Targeting:</strong> Stop wasting money on audiences that don't convert. Use data to double down on your most profitable segments.</li>
-          <li><strong>Creative Testing:</strong> Ad fatigue is real. Regularly testing new visuals and copy ensures your ROAS remains high over time.</li>
-        </ol>
+        {/* Section 2: Industry Benchmark Table */}
+        <div class="space-y-6">
+          <div class="border-b border-hairline pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Industry Standards</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">Target ROAS Benchmarks by E-Commerce Vertical</h2>
+            <p class="text-sm text-muted mt-1">Compare typical gross margins and required target ROAS across major product categories.</p>
+          </div>
 
-        <h3 class="text-2xl font-semibold mt-12 mb-4">Use Our Free ROAS Calculator Today</h3>
-        <p>
-          Whether you are a seasoned media buyer or a small business owner just starting with ads, our tool provides the clarity you need. Enter your ad spend, total revenue, and profit margin to see your live metrics dashboard. 
-        </p>
-        <p>
-          Stop guessing and start growing with our professional-grade <strong>roas calculator</strong>.
-        </p>
-      </section>
+          <div class="overflow-x-auto rounded-2xl border border-hairline bg-surface-card shadow-xs">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-canvas-soft text-ink font-semibold border-b border-hairline uppercase tracking-wider text-[11px]">
+                <tr>
+                  <th class="py-3.5 px-4 sm:px-6">Industry / Business Model</th>
+                  <th class="py-3.5 px-4 sm:px-6">Typical Gross Margin</th>
+                  <th class="py-3.5 px-4 sm:px-6 text-center">Break-Even ROAS</th>
+                  <th class="py-3.5 px-4 sm:px-6 text-primary font-bold">Healthy Target ROAS</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-hairline-soft text-body">
+                <tr class="hover:bg-canvas-soft/50 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-ink">DTC Apparel & Footwear</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-muted">35% – 50%</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-center font-mono">2.0x – 2.8x</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-primary">3.0x – 4.0x</td>
+                </tr>
+                <tr class="hover:bg-canvas-soft/50 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-ink">Beauty, Skincare & Cosmetics</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-muted">65% – 80%</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-center font-mono">1.25x – 1.5x</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-primary">2.0x – 2.8x</td>
+                </tr>
+                <tr class="hover:bg-canvas-soft/50 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-ink">Consumer Electronics & Gadgets</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-muted">15% – 25%</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-center font-mono">4.0x – 6.6x</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-primary">5.5x – 8.0x</td>
+                </tr>
+                <tr class="hover:bg-canvas-soft/50 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-ink">Digital Products, Templates & Courses</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-muted">85% – 95%</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-center font-mono">1.05x – 1.18x</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-primary">1.5x – 2.2x</td>
+                </tr>
+                <tr class="hover:bg-canvas-soft/50 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-ink">Nutritional Supplements & Health</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-muted">55% – 70%</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-center font-mono">1.4x – 1.8x</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono font-bold text-primary">2.2x – 3.2x</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-      {/* FAQ Section */}
-      <section class="mt-24 max-w-4xl mx-auto">
-        <FAQ faqs={faqs} title="ROAS Frequently Asked Questions" description="" />
+        {/* Section 3: Worked Practical Scenarios */}
+        <div class="space-y-6">
+          <div class="border-b border-hairline pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Real-World Case Studies</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">Worked Calculation Scenarios: Physical vs Digital</h2>
+            <p class="text-sm text-muted mt-1">Step-by-step mathematical audits of paid acquisition campaigns.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 not-prose">
+            {/* Scenario 1 */}
+            <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-4 shadow-xs">
+              <div class="flex items-center justify-between border-b border-hairline-soft pb-3">
+                <h3 class="text-base font-bold text-ink flex items-center gap-2">
+                  <span>📦</span> Case 1: DTC Apparel Brand (Meta Ads)
+                </h3>
+                <span class="text-[10px] font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20">Physical Goods</span>
+              </div>
+              
+              <div class="space-y-2 text-xs text-muted">
+                <p><strong>Setup:</strong> A brand spends <strong>$10,000</strong> on Meta Advantage+ shopping campaigns, generating <strong>$32,000</strong> in revenue. Product COGS + packaging is 50%, and payment processor + shipping fees account for 10% (Effective Margin: <strong>40%</strong>).</p>
+              </div>
+
+              <div class="p-4 bg-canvas-soft rounded-xl border border-hairline-soft space-y-2 text-xs font-mono">
+                <div class="flex justify-between text-ink">
+                  <span>1. Campaign ROAS:</span>
+                  <span class="font-bold">$32,000 / $10,000 = 3.20x</span>
+                </div>
+                <div class="flex justify-between text-ink">
+                  <span>2. Break-Even ROAS:</span>
+                  <span class="font-bold">1 / 0.40 = 2.50x</span>
+                </div>
+                <div class="flex justify-between text-ink">
+                  <span>3. Gross Profit (40%):</span>
+                  <span class="font-bold">$32,000 × 0.40 = $12,800</span>
+                </div>
+                <div class="flex justify-between text-emerald-600 dark:text-emerald-400 font-bold pt-1 border-t border-hairline-soft">
+                  <span>4. True Net Profit:</span>
+                  <span>$12,800 - $10,000 = +$2,800</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-muted leading-relaxed">
+                <strong>Verdict:</strong> Because the 3.20x ROAS exceeds the 2.50x break-even threshold, the campaign generated $2,800 in clean net profit after covering all product and ad costs.
+              </p>
+            </div>
+
+            {/* Scenario 2 */}
+            <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-4 shadow-xs">
+              <div class="flex items-center justify-between border-b border-hairline-soft pb-3">
+                <h3 class="text-base font-bold text-ink flex items-center gap-2">
+                  <span>🎓</span> Case 2: Creator Digital Course (Google Ads)
+                </h3>
+                <span class="text-[10px] font-semibold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">Digital Product</span>
+              </div>
+              
+              <div class="space-y-2 text-xs text-muted">
+                <p><strong>Setup:</strong> A creator spends <strong>$3,000</strong> on Google Search ads for a $200 video editing course, generating <strong>$9,000</strong> in sales (45 enrollments). Software hosting & merchant fees are 10% (Effective Margin: <strong>90%</strong>).</p>
+              </div>
+
+              <div class="p-4 bg-canvas-soft rounded-xl border border-hairline-soft space-y-2 text-xs font-mono">
+                <div class="flex justify-between text-ink">
+                  <span>1. Campaign ROAS:</span>
+                  <span class="font-bold">$9,000 / $3,000 = 3.00x</span>
+                </div>
+                <div class="flex justify-between text-ink">
+                  <span>2. Break-Even ROAS:</span>
+                  <span class="font-bold">1 / 0.90 = 1.11x</span>
+                </div>
+                <div class="flex justify-between text-ink">
+                  <span>3. Gross Profit (90%):</span>
+                  <span class="font-bold">$9,000 × 0.90 = $8,100</span>
+                </div>
+                <div class="flex justify-between text-emerald-600 dark:text-emerald-400 font-bold pt-1 border-t border-hairline-soft">
+                  <span>4. True Net Profit:</span>
+                  <span>$8,100 - $3,000 = +$5,100</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-muted leading-relaxed">
+                <strong>Verdict:</strong> High gross margins allow creators to scale profitably at lower ROAS targets (1.5x–2.0x) compared to physical e-commerce businesses.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 4: Cross-Links */}
+        <div class="space-y-6">
+          <div class="border-b border-hairline pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Related Calculators</span>
+            <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">Explore More Performance & Finance Utilities</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose">
+            <a href="/roi-calculator" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-2">
+              <div>
+                <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">📊 Return on Investment (ROI) & CAGR Calculator</h3>
+                <p class="text-xs text-muted mt-1 leading-relaxed">Calculate total business ROI, holding period gains, and annualized growth rates.</p>
+              </div>
+              <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">Calculate ROI &rarr;</span>
+            </a>
+
+            <a href="/instagram-engagement-rate-calculator" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-2">
+              <div>
+                <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">📈 Instagram Engagement Rate Calculator</h3>
+                <p class="text-xs text-muted mt-1 leading-relaxed">Audit influencer reach, engagement rate by reach (ERR), and brand deal conversion metrics.</p>
+              </div>
+              <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">Calculate Engagement &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Section 5: FAQ Component */}
+        <FAQ faqs={faqs} title="ROAS Frequently Asked Questions" description="Expert answers regarding ROAS formulas, break-even thresholds, profit margins, and paid ad campaign optimization." />
       </section>
     </div>
   </main>

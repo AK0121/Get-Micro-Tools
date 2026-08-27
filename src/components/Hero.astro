@@ -1,22 +1,24 @@
 ---
 const tools = [
   { name: "IG Engagement", icon: "📈", color: "bg-timeline-thinking/20", textColor: "text-timeline-thinking", href: "/instagram-engagement-rate-calculator" },
+  { name: "TikTok Bio", icon: "🎵", color: "bg-rose-500/20", textColor: "text-rose-500", href: "/tiktok-bio-checker" },
   { name: "Reels Tester", icon: "📱", color: "bg-timeline-read/20", textColor: "text-timeline-read", href: "/instagram-reels-overlay-tester" },
   { name: "ROAS Engine", icon: "💰", color: "bg-timeline-grep/20", textColor: "text-timeline-grep", href: "/roas-calculator" },
+  { name: "ROI Calculator", icon: "📊", color: "bg-emerald-500/20", textColor: "text-emerald-500", href: "/roi-calculator" },
   { name: "LI Formatter", icon: "✍️", color: "bg-timeline-edit/20", textColor: "text-timeline-edit", href: "/linkedin-preview-formatter" }
 ];
 
-const testimonials = [
-  { text: "The Reels Tester is a lifesaver for my content workflow.", author: "Sarah J.", role: "Content Creator" },
-  { text: "Finally, a simple ROAS engine that just works. No fluff.", author: "Mark D.", role: "Marketer" },
-  { text: "Microtools is my daily driver for social posts.", author: "Elena R.", role: "SMM" }
+const corePillars = [
+  { title: "Zero Data Logging", description: "All calculations execute locally in your browser. Sensitive ad spend and revenue data never touch a server.", icon: "🔒" },
+  { title: "Standardized Benchmarks", description: "Metrics are calibrated against actual creator and e-commerce tier standards for actionable accuracy.", icon: "🎯" },
+  { title: "No Sign-Ups Required", description: "No email gates, paywalls, or hidden tier limits. Open any utility and get instant results immediately.", icon: "⚡" }
 ];
 ---
 
 <section class="flex flex-col items-center text-center pt-20 pb-12 px-6">
   <div class="inline-flex items-center gap-2 px-3 py-1 rounded-pill bg-surface-strong/50 border border-hairline mb-8 animate-fade-in">
     <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-    <span class="text-ink text-[11px] font-semibold uppercase tracking-wider">New: LI Formatter v1.2</span>
+    <span class="text-ink text-[11px] font-semibold uppercase tracking-wider">New: TikTok Bio Checker v1.0</span>
   </div>
   
   <h1 class="text-display-mega text-ink mb-6 max-w-4xl tracking-[-0.03em]">
@@ -80,7 +82,7 @@ const testimonials = [
           </div>
 
           <!-- Bento Grid Tools -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 animate-stagger mb-12">
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 animate-stagger mb-12">
             {tools.map((tool, index) => (
               <div 
                 class="group/card relative bg-surface-card border border-hairline rounded-lg p-4 flex flex-col items-start gap-3 transition-all duration-300"
@@ -97,28 +99,18 @@ const testimonials = [
             ))}
           </div>
 
-          <!-- Reviews Section -->
+          <!-- Engineering Guarantees Section -->
           <div class="text-left mb-6">
-            <h3 class="text-display-xs text-ink mb-1">Community Love</h3>
-            <p class="text-[10px] text-muted uppercase tracking-widest font-bold">What creators are saying</p>
+            <h3 class="text-display-xs text-ink mb-1">Built for Speed & Privacy</h3>
+            <p class="text-[10px] text-muted uppercase tracking-widest font-bold">Core Platform Principles</p>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {testimonials.map((t, i) => (
-              <div class="bg-surface-strong/20 border border-hairline rounded-lg p-4 flex flex-col gap-3" style={`animation-delay: ${(tools.length + i) * 50}ms`}>
-                <div class="flex gap-0.5 text-primary text-[10px]">
-                  {"★".repeat(5)}
-                </div>
-                <p class="text-xs text-ink italic leading-relaxed">"{t.text}"</p>
-                <div class="flex items-center gap-2 mt-auto">
-                  <div class="w-6 h-6 rounded-full bg-surface-card border border-hairline flex items-center justify-center text-[10px] font-bold text-muted">
-                    {t.author[0]}
-                  </div>
-                  <div>
-                    <div class="text-[10px] font-bold text-ink">{t.author}</div>
-                    <div class="text-[8px] text-muted uppercase">{t.role}</div>
-                  </div>
-                </div>
+            {corePillars.map((pillar, i) => (
+              <div class="bg-surface-strong/20 border border-hairline rounded-lg p-4 flex flex-col gap-2 text-left" style={`animation-delay: ${(tools.length + i) * 50}ms`}>
+                <div class="text-base">{pillar.icon}</div>
+                <div class="text-xs font-bold text-ink">{pillar.title}</div>
+                <p class="text-xs text-muted leading-relaxed">{pillar.description}</p>
               </div>
             ))}
           </div>

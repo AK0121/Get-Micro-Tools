@@ -4,33 +4,124 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ.astro';
 
+// Page Metadata
+const title = "LinkedIn Post Formatter & Preview Generator (Bold & Italic) | Get Micro Tools";
+const description = "Free client-side LinkedIn text formatter and post preview simulator. Style text with bold/italic Unicode fonts and preview the exact 'see more' cutoff across desktop and mobile.";
+const keywords = "linkedin text formatter, linkedin post preview, linkedin formatting tool, bold text linkedin, linkedin see more cutoff, linkedin hook generator";
+const url = "https://getmicrotools.com/linkedin-preview-formatter";
+
+const webApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "LinkedIn Text Formatter & Post Preview Generator",
+  "alternateName": [
+    "LinkedIn Preview Tool",
+    "LinkedIn Text Styler",
+    "LinkedIn Hook & Cutoff Simulator"
+  ],
+  "url": "https://getmicrotools.com/linkedin-preview-formatter",
+  "applicationCategory": "SocialNetworkingApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "description": "Free client-side LinkedIn text formatter to apply bold and italic Unicode formatting while simulating desktop and mobile feed preview cutoffs in real time.",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Get Micro Tools",
+    "url": "https://getmicrotools.com"
+  },
+  "featureList": [
+    "Real-time Unicode Bold and Italic font converter",
+    "Desktop (210 chars) and Mobile (140 chars) feed truncation preview",
+    "Media attachment mode simulating image/document feed height compression",
+    "One-click clipboard copy with instant feedback",
+    "Character and line counter with screen-reader accessibility best practices"
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://getmicrotools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "LinkedIn Preview Formatter",
+      "item": "https://getmicrotools.com/linkedin-preview-formatter"
+    }
+  ]
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Format and Preview LinkedIn Posts for Maximum Engagement",
+  "description": "A step-by-step workflow for styling LinkedIn post text and optimizing opening hooks before publishing.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Step 1: Draft Your Opening Hook",
+      "text": "Write a punchy 1-2 sentence hook in the text workspace that introduces your core insight."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 2: Apply Strategic Bold or Italic Emphasis",
+      "text": "Select your headline or key phrase and click 'Bold' or 'Italic' to apply Unicode emphasis to 2-3 words."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 3: Toggle Desktop and Mobile Previews",
+      "text": "Switch between Desktop (210-char limit) and Mobile (140-char limit) to ensure your hook appears completely above the '...see more' fold."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 4: Copy and Paste into LinkedIn",
+      "text": "Click 'Copy Formatted Text' to copy the formatted Unicode text to your clipboard, then paste directly into the LinkedIn post creator."
+    }
+  ]
+};
+
 const faqs = [
   {
-    question: "What is a LinkedIn text formatter?",
-    answer: "A LinkedIn text formatter is a tool that allows you to create stylized text (like bold, italics, or different fonts) for your LinkedIn posts. Since LinkedIn doesn't have these options built-in, the tool uses Unicode characters to achieve the look."
+    question: "How does Unicode formatting work on LinkedIn?",
+    answer: "LinkedIn does not natively support rich-text Markdown (like HTML or native bolding) in standard post descriptions. Our tool converts standard Latin letters into Mathematical Alphanumeric Symbols from the Unicode standard (such as 𝗯𝗼𝗹𝗱 and 𝘪𝘵𝘢𝘭𝘪𝘤) that render universally across browsers and mobile apps."
   },
   {
-    question: "How do I get bold text on LinkedIn?",
-    answer: "To get bold text on LinkedIn, simply type your post into our free LinkedIn text formatter, select the text you want to bold, and click the 'Bold' button. Then, copy and paste the result directly into your LinkedIn post."
+    question: "Is using bold Unicode text bad for accessibility (Screen Readers)?",
+    answer: "Yes, if overused. Screen readers (like NVDA or VoiceOver) interpret mathematical Unicode characters literally (e.g., 𝗯 is read as 'Mathematical Bold Small B'). To maintain accessibility, use bold or italic formatting solely for short 2–3 word headlines, labels, or bullet points—never for entire paragraphs."
   },
   {
-    question: "What is the LinkedIn 'See More' cutoff?",
-    answer: "The 'See More' cutoff is the point where LinkedIn truncates your post in the feed. Our LinkedIn post preview generator helps you see this cutoff (approx. 140 chars on mobile, 210 on desktop) so you can keep your hook visible."
+    question: "Does styled Unicode text affect LinkedIn search SEO?",
+    answer: "Yes. LinkedIn's internal search algorithm indexes standard ASCII text. Styled Unicode characters are not recognized as standard letters (e.g., searching for 'marketing' will not match '𝗺𝗮𝗿𝗸𝗲𝘁𝗶𝗻𝗴'). Keep your primary niche keywords in standard, unstyled plain text."
   },
   {
-    question: "Is it safe to use Unicode characters for LinkedIn formatting?",
-    answer: "Yes, it's generally safe, but should be used sparingly. Unicode characters are not standard text and might not be read correctly by screen readers. We recommend using them for emphasis on a few words rather than for your entire post to maintain accessibility."
+    question: "Where does the '...see more' cutoff happen on LinkedIn?",
+    answer: "On desktop devices, LinkedIn typically truncates text after approximately 210 characters (or 3 lines). On mobile devices, the cutoff happens earlier, at approximately 140 characters (or 2 lines). When media or documents are attached, the cutoff tightens to roughly 100 characters."
+  },
+  {
+    question: "What is the 1-3-1 post formatting rule on LinkedIn?",
+    answer: "The 1-3-1 rule is a skimmable structure: 1 punchy opening hook line, followed by a 3-line concise context or story block, concluding with a 1-line key takeaway or call-to-action. This creates comfortable white space on mobile screens and maximizes click-through on 'see more'."
   }
 ];
-
-// Page Metadata
-const title = "LinkedIn Text Formatter & Post Preview Generator | Free Tool";
-const description = "Use our free LinkedIn text formatter to create bold and italic text. Preview your LinkedIn post to avoid the 'see more' cutoff and optimize engagement.";
-const keywords = "linkedin text formatter, linkedin post preview, linkedin post preview generator, free linkedin text formatter, linkedin formatting tool";
-const url = "https://getmicrotools.com/linkedin-preview-formatter";
 ---
 
 <Layout title={title} description={description} keywords={keywords} url={url}>
+  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+
   <main class="min-h-screen bg-canvas selection:bg-primary/20 transition-colors duration-500">
     <Nav />
     
@@ -38,13 +129,13 @@ const url = "https://getmicrotools.com/linkedin-preview-formatter";
       <div class="max-w-3xl">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-strong text-ink text-caption-uppercase mb-4">
           <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-          Formatting Tool
+          Formatting Utility
         </div>
         <h1 class="text-display-lg md:text-display-mega text-ink mb-6">
-          LinkedIn <span class="text-primary">Preview</span> & Formatter.
+          LinkedIn <span class="text-primary">Preview</span> & Formatter
         </h1>
         <p class="text-body-md text-muted max-w-2xl">
-          Stand out in the feed with stylized text and ensure your most important hook isn't hidden behind the 'see more' cutoff.
+          Stand out in the professional feed with styled text and ensure your high-converting hook is fully visible before the 'see more' fold.
         </p>
       </div>
     </header>
@@ -58,10 +149,10 @@ const url = "https://getmicrotools.com/linkedin-preview-formatter";
             <!-- Toolbar -->
             <div class="flex flex-wrap items-center justify-between gap-3 p-3 bg-canvas-soft border-b border-hairline transition-colors duration-500">
               <div class="flex items-center gap-2">
-                <button id="btn-bold" class="px-3 py-1.5 text-xs font-semibold bg-white dark:bg-ink text-ink dark:text-canvas border border-hairline rounded hover:border-muted transition-all active:scale-95" title="Toggle Bold">𝗕 Bold</button>
-                <button id="btn-italic" class="px-3 py-1.5 text-xs font-semibold bg-white dark:bg-ink text-ink dark:text-canvas border border-hairline rounded hover:border-muted transition-all active:scale-95" title="Toggle Italic">𝘐 Italic</button>
+                <button id="btn-bold" class="px-3 py-1.5 text-xs font-semibold bg-white dark:bg-ink text-ink dark:text-canvas border border-hairline rounded hover:border-muted transition-all active:scale-95 cursor-pointer" title="Toggle Bold">𝗕 Bold</button>
+                <button id="btn-italic" class="px-3 py-1.5 text-xs font-semibold bg-white dark:bg-ink text-ink dark:text-canvas border border-hairline rounded hover:border-muted transition-all active:scale-95 cursor-pointer" title="Toggle Italic">𝘐 Italic</button>
                 <div class="h-4 w-px bg-hairline mx-1"></div>
-                <button id="btn-clear" class="px-3 py-1.5 text-xs font-semibold text-muted hover:text-ink transition-all active:scale-95">Clear Text</button>
+                <button id="btn-clear" class="px-3 py-1.5 text-xs font-semibold text-muted hover:text-ink transition-all active:scale-95 cursor-pointer">Clear Text</button>
               </div>
 
               <!-- Contains Image/Media Toggle -->
@@ -89,7 +180,7 @@ const url = "https://getmicrotools.com/linkedin-preview-formatter";
           <!-- Action Button -->
           <button 
             id="copy-btn"
-            class="w-full py-4 bg-primary hover:bg-primary-active text-white text-sm font-semibold rounded-md transition-all active:scale-[0.98] shadow-md shadow-primary/10 flex items-center justify-center gap-2 group"
+            class="w-full py-4 bg-primary hover:bg-primary-active text-white text-sm font-semibold rounded-md transition-all active:scale-[0.98] shadow-md shadow-primary/10 flex items-center justify-center gap-2 group cursor-pointer"
           >
             <span id="copy-btn-text">Copy Formatted Text</span>
             <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -105,8 +196,8 @@ const url = "https://getmicrotools.com/linkedin-preview-formatter";
         <div class="sticky top-24">
           <div class="mb-4 flex items-center justify-between">
             <div class="flex items-center gap-1 p-1 bg-surface-strong/50 rounded-lg border border-hairline">
-              <button id="view-desktop" class="px-3 py-1.5 text-[11px] uppercase tracking-wider font-bold rounded-md transition-all bg-white dark:bg-ink text-ink dark:text-canvas shadow-sm">Desktop</button>
-              <button id="view-mobile" class="px-3 py-1.5 text-[11px] uppercase tracking-wider font-bold rounded-md transition-all text-muted hover:text-ink">Mobile</button>
+              <button id="view-desktop" class="px-3 py-1.5 text-[11px] uppercase tracking-wider font-bold rounded-md transition-all bg-white dark:bg-ink text-ink dark:text-canvas shadow-sm cursor-pointer">Desktop</button>
+              <button id="view-mobile" class="px-3 py-1.5 text-[11px] uppercase tracking-wider font-bold rounded-md transition-all text-muted hover:text-ink cursor-pointer">Mobile</button>
             </div>
             <div class="flex gap-1">
               <div class="w-2.5 h-2.5 rounded-full bg-hairline-strong"></div>
@@ -125,10 +216,10 @@ const url = "https://getmicrotools.com/linkedin-preview-formatter";
                 </div>
                 <div class="pt-0.5 flex-grow">
                   <div class="flex items-center gap-1">
-                    <span class="text-sm font-semibold text-black dark:text-white hover:text-primary hover:underline cursor-pointer">Jane Designer</span>
+                    <span class="text-sm font-semibold text-black dark:text-white hover:text-primary hover:underline cursor-pointer">Alex Morgan</span>
                     <span class="text-xs text-muted"> • 1st</span>
                   </div>
-                  <p class="text-[12px] text-muted leading-tight line-clamp-1">Creative Director at Visionary Studio | Digital Strategy & UX</p>
+                  <p class="text-[12px] text-muted leading-tight line-clamp-1">Head of Growth & Product Strategy | Scaling B2B SaaS</p>
                   <div class="flex items-center gap-1 mt-0.5 text-[12px] text-muted">
                     <span>1h • </span>
                     <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" class="opacity-70"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 12a5 5 0 110-10 5 5 0 010 10zm.5-7.5h-1v3l2.5 1.5.5-.8-2-1.2v-2.5z"/></svg>
@@ -154,8 +245,8 @@ const url = "https://getmicrotools.com/linkedin-preview-formatter";
                       <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <h5 class="text-xs font-semibold text-ink mb-1">Image / Video / Article Link</h5>
-                  <p class="text-[10px] text-muted max-w-[200px]">LinkedIn compresses feed posts when rich media is attached.</p>
+                  <h5 class="text-xs font-semibold text-ink mb-1">Image / PDF Document / Link Card</h5>
+                  <p class="text-[10px] text-muted max-w-[200px]">LinkedIn tightens feed preview cutoffs when media is attached.</p>
                 </div>
               </div>
 
@@ -184,63 +275,188 @@ const url = "https://getmicrotools.com/linkedin-preview-formatter";
           </div>
 
           <div class="mt-8 p-6 bg-canvas-soft border border-hairline rounded-lg transition-colors duration-500">
-            <h4 class="text-title-sm text-ink mb-2">The "See More" Cutoff</h4>
+            <h4 class="text-title-sm text-ink mb-2">Feed Truncation Mechanics</h4>
             <p class="text-body-sm leading-relaxed text-muted">
-              LinkedIn truncates posts differently by device. On <strong class="text-ink">Mobile</strong>, the cutoff is usually <strong class="text-ink">~140 characters</strong>. On <strong class="text-ink">Desktop</strong>, it's approximately <strong class="text-ink">~210 characters</strong>. Keep your hook short for maximum impact.
+              On <strong class="text-ink">Mobile</strong>, the cutoff triggers at <strong class="text-ink">~140 characters</strong>. On <strong class="text-ink">Desktop</strong>, it extends to <strong class="text-ink">~210 characters</strong>. Posts with attached media truncate after <strong class="text-ink">~100 characters</strong>.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SEO Content Section -->
-    <section class="max-w-7xl mx-auto px-6 py-24 border-t border-hairline transition-colors duration-500">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-display-md text-ink mb-8">Elevate Your Presence with Our LinkedIn Text Formatter</h2>
-        <div class="prose prose-ink max-w-none space-y-6 text-body-md text-muted leading-relaxed">
-          <p>
-            In the crowded world of professional networking, standing out is more important than ever. Our <strong>LinkedIn text formatter</strong> is designed to give you a competitive edge by allowing you to add personality and emphasis to your posts. While LinkedIn doesn't natively support rich text editing like bold or italics, our tool uses mathematical alphanumeric symbols from the Unicode standard to create stylized text that remains readable across most modern devices and browsers.
-          </p>
-          <p>
-            Whether you're announcing a new job, sharing industry insights, or looking to hire, using a <strong>free LinkedIn text formatter</strong> helps you highlight key points, making your content more skimmable and engaging. By strategically applying bold or italic styles to your headlines and calls-to-action, you can guide your reader's eye to the most critical parts of your message.
-          </p>
-
-          <h2 class="text-display-sm text-ink pt-8">Why You Need a LinkedIn Post Preview Generator</h2>
-          <p>
-            Have you ever spent an hour crafting the perfect post, only to realize after publishing that your most important "hook" was hidden behind the "see more" link? This is where a <strong>LinkedIn post preview generator</strong> becomes an essential part of your workflow. Our tool provides a real-time mockup of how your post will appear in the LinkedIn feed, allowing you to visualize the exact point where the platform truncates your text.
-          </p>
-          <p>
-            The "see more" cutoff is a critical factor in your post's performance. If your opening lines don't grab attention and force the reader to click, your engagement rates will suffer. By using our <strong>LinkedIn post preview</strong> feature, you can experiment with different hook lengths and formatting styles to ensure that your first two lines are as impactful as possible.
-          </p>
-
-          <h2 class="text-display-sm text-ink pt-8">Mastering the LinkedIn "See More" Cutoff</h2>
-          <p>
-            The LinkedIn algorithm favors posts that generate high engagement early on. One of the best ways to signal quality to the algorithm is to get users to click "see more." However, you must know where that line is drawn. On desktop devices, LinkedIn typically shows about 210 characters before the cutoff. On mobile devices, this is significantly shorter, often around 140 characters.
-          </p>
-          <p>
-            Our <strong>LinkedIn text formatter</strong> includes a dual-view preview toggle, so you can check your content for both desktop and mobile users. This ensures that your most vital information—whether it's a link, a question, or a bold statement—is visible to everyone, regardless of the device they are using.
-          </p>
-
-          <h2 class="text-display-sm text-ink pt-8">Benefits of Using a Free LinkedIn Text Formatter</h2>
-          <p>
-            Beyond just aesthetics, using a <strong>free LinkedIn text formatter</strong> offers several strategic benefits for creators, marketers, and job seekers:
-          </p>
-          <ul class="list-disc pl-6 space-y-3">
-            <li><strong>Increased Stop-Power:</strong> Stylized text breaks the visual monotony of the LinkedIn feed, causing users to pause their scrolling.</li>
-            <li><strong>Improved Content Hierarchy:</strong> Use bold text for headers and italics for quotes or emphasis to make long-form posts easier to digest.</li>
-            <li><strong>Optimized Hooks:</strong> Test multiple versions of your opening statement with our <strong>LinkedIn post preview generator</strong> to see which one looks best before you go live.</li>
-            <li><strong>Professional Branding:</strong> Consistency in your formatting helps build a recognizable personal brand on the platform.</li>
-          </ul>
-          <p>
-            In conclusion, while content is king, presentation is the key that unlocks the door. By combining the power of stylized text with the precision of a feed preview, our tool empowers you to create LinkedIn posts that don't just get seen—they get read and remembered.
-          </p>
+    <!-- Educational & Guidelines Section -->
+    <section class="max-w-5xl mx-auto px-6 py-20 border-t border-hairline space-y-16">
+      
+      {/* Section 1: Accessibility & Unicode Technical Reality */}
+      <div class="space-y-6">
+        <div class="border-b border-hairline pb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Technical Standards</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">Unicode Formatting: Screen Reader Accessibility & SEO</h2>
+          <p class="text-sm text-muted mt-1">How mathematical alphanumeric Unicode characters function and how to format responsibly.</p>
         </div>
 
-        <!-- Tool Specific FAQs -->
-        <div class="mt-24">
-          <FAQ faqs={faqs} title="LinkedIn Text Formatter FAQ" description="" />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
+          <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+            <div class="flex items-center gap-2 text-red-500 font-semibold text-sm">
+              <span>⚠️</span>
+              <h3 class="font-bold uppercase tracking-wider text-xs">Screen Reader Impact</h3>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              When software like VoiceOver or NVDA encounters styled Unicode, it spells out mathematical symbols character-by-character (e.g., <code>𝗯𝗼𝗹𝗱</code> is vocalized as <em>"Mathematical Bold Small B, Mathematical Bold Small O..."</em>). 
+            </p>
+            <div class="p-3 bg-canvas-soft rounded-lg text-xs text-ink font-medium border border-hairline">
+              <strong>Rule:</strong> Never format full sentences or paragraphs with Unicode. Restrict styling strictly to 2–3 word headlines or bullet titles.
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+            <div class="flex items-center gap-2 text-primary font-semibold text-sm">
+              <span>🔍</span>
+              <h3 class="font-bold uppercase tracking-wider text-xs">Platform Search & Indexing</h3>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              LinkedIn's internal search crawler indexes standard ASCII characters. Styled Unicode characters are treated as distinct math symbols, meaning searching for <code>marketing</code> will not surface a post written as <code>𝗺𝗮𝗿𝗸𝗲𝘁𝗶𝗻𝗴</code>.
+            </p>
+            <div class="p-3 bg-canvas-soft rounded-lg text-xs text-ink font-medium border border-hairline">
+              <strong>Rule:</strong> Keep your core industry keywords, hashtags, and author names in clean, unstyled standard text.
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Section 2: High-Converting Hook Frameworks */}
+      <div class="space-y-6">
+        <div class="border-b border-hairline pb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Copywriting Frameworks</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">4 Tested LinkedIn Hook Archetypes</h2>
+          <p class="text-sm text-muted mt-1">Structure your opening 140 characters to maximize "see more" click-through rates.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
+          <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-ink">1. The Contrarian Reframe</h3>
+              <span class="text-[10px] font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full">High Dwell Time</span>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Challenges accepted industry dogma immediately, triggering intellectual curiosity to see the alternative.
+            </p>
+            <div class="p-3 bg-canvas-soft rounded-lg font-mono text-xs text-ink border border-hairline-soft">
+              Most teams think [Common Strategy] is the best way to grow.<br /><br />
+              They are mistaken. Here is what we do instead: 👇
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-ink">2. The Hard Numbers Case Study</h3>
+              <span class="text-[10px] font-semibold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full">Proof Driven</span>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Opens with specific financial, traffic, or efficiency data to establish instant authority.
+            </p>
+            <div class="p-3 bg-canvas-soft rounded-lg font-mono text-xs text-ink border border-hairline-soft">
+              We spent $42,500 testing [Channel] over the last 90 days.<br /><br />
+              The 3 unexpected findings every founder should know:
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-ink">3. The Framework Playbook</h3>
+              <span class="text-[10px] font-semibold text-blue-600 bg-blue-500/10 px-2 py-0.5 rounded-full">Save & Repost Magnet</span>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Promises a step-by-step resolution to a common workflow bottleneck.
+            </p>
+            <div class="p-3 bg-canvas-soft rounded-lg font-mono text-xs text-ink border border-hairline-soft">
+              How to [Achieve Goal] in [Timeframe] without [Biggest Pain Point]:<br /><br />
+              Our complete 5-step operating playbook: 🧵
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-ink">4. The Costly Mistake Story</h3>
+              <span class="text-[10px] font-semibold text-amber-600 bg-amber-500/10 px-2 py-0.5 rounded-full">Authenticity</span>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Leverages vulnerability and personal learning to build deep audience connection.
+            </p>
+            <div class="p-3 bg-canvas-soft rounded-lg font-mono text-xs text-ink border border-hairline-soft">
+              In 2023, I made a mistake that cost our agency $18,000.<br /><br />
+              It taught me the single most valuable lesson about [Topic]:
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 3: The 1-3-1 Formatting Rule */}
+      <div class="p-8 rounded-2xl bg-surface-card border border-hairline space-y-6 not-prose">
+        <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-wider">
+          <span>📐</span> Visual Formatting Anatomy
+        </div>
+        <h2 class="text-2xl font-bold text-ink tracking-tight">The 1-3-1 Post Structure: Optimizing Mobile Readability</h2>
+        <p class="text-sm text-muted leading-relaxed">
+          Over 70% of LinkedIn consumption happens on mobile screens. Dense text blocks cause users to scroll past. The 1-3-1 structure prevents visual fatigue:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+            <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center">1</span>
+            <h3 class="text-sm font-bold text-ink">1 Punchy Hook Line</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Under 140 characters. Grabs attention and creates curiosity to click 'see more'.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+            <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center">3</span>
+            <h3 class="text-sm font-bold text-ink">3 Context Lines</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Short bullet points or clean 1-sentence paragraphs explaining the insight or data.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+            <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center">1</span>
+            <h3 class="text-sm font-bold text-ink">1 Takeaway / Question</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              A clear takeaway or engaging discussion question to drive meaningful comments.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 4: Related Tools */}
+      <div class="space-y-6">
+        <div class="border-b border-hairline pb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Creator Toolkit</span>
+          <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">More Utilities for Creators & Marketers</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose">
+          <a href="/tiktok-bio-checker" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-2">
+            <div>
+              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">🎵 TikTok Bio Checker & Counter</h3>
+              <p class="text-xs text-muted mt-1 leading-relaxed">Count characters against the strict 80-char limit with live profile preview.</p>
+            </div>
+            <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">Check TikTok Bio &rarr;</span>
+          </a>
+
+          <a href="/roi-calculator" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-2">
+            <div>
+              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">📊 ROI & CAGR Calculator</h3>
+              <p class="text-xs text-muted mt-1 leading-relaxed">Calculate Return on Investment, Marketing ROI, and annual compound growth rates.</p>
+            </div>
+            <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">Calculate ROI &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      {/* Section 5: Tool Specific FAQs */}
+      <FAQ faqs={faqs} title="LinkedIn Text Formatter FAQ" description="Common questions about Unicode bold/italic formatting, screen reader accessibility, and the LinkedIn feed cutoff." />
+
     </section>
 
     <Footer />
