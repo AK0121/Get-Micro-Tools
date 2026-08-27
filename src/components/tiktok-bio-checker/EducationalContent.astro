@@ -1,0 +1,531 @@
+---
+import FAQ from '../FAQ.astro';
+import { faqs as defaultFaqs, type FAQItem } from './checkerData';
+
+interface Props {
+  faqs?: FAQItem[];
+}
+
+const { faqs = defaultFaqs } = Astro.props;
+---
+
+<section class="max-w-4xl mx-auto px-6 py-16 border-t border-hairline">
+  <div class="prose prose-sm md:prose-base prose-ink max-w-none space-y-16">
+    
+    <!-- Section 1: Understanding the TikTok Bio Limit -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">01 / Character Limit Rules</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">Understanding the 80-Character TikTok Bio Limit</h2>
+      <p class="text-body leading-relaxed">
+        The official <strong>TikTok bio character limit is strictly 80 characters</strong>. When a viewer discovers your video on the <em>For You Page (FYP)</em> and taps through to your profile, your bio is your single opportunity to convert that viewer into a follower, subscriber, or customer. Because 80 characters is roughly 10 to 15 words, every character, symbol, and line break must serve a clear purpose.
+      </p>
+      <p class="text-body leading-relaxed">
+        Here is how TikTok calculates characters toward your 80-character limit:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">🔤</span>
+            <h3 class="text-sm font-semibold text-ink">Letters, Numbers & Spaces</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">Every English letter, number, punctuation mark, and space bar stroke counts as exactly 1 character toward the limit.</p>
+        </div>
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">↩️</span>
+            <h3 class="text-sm font-semibold text-ink">Line Breaks (Enter Key)</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">Pressing Enter/Return to start a new line consumes 1 character. A 3-line bio uses 2 characters just for the line returns.</p>
+        </div>
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">✨</span>
+            <h3 class="text-sm font-semibold text-ink">Emojis & Special Symbols</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">Standard emojis take 1 to 2 characters depending on Unicode composition. Complex emojis with modifiers can consume extra code units.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: How the TikTok Bio Checker Works -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">02 / Tool Mechanics</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">How Our TikTok Bio Checker & Character Counter Works</h2>
+      <p class="text-body leading-relaxed">
+        Writing directly inside the native TikTok app can be frustrating because the app truncates excess text without giving detailed feedback on words, lines, or remaining capacity. Our <strong>free TikTok bio character counter</strong> provides a real-time testing sandbox before you update your live profile:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-2 shadow-2xs">
+          <div class="flex items-center gap-2 text-ink font-semibold">
+            <span class="text-base">⚡</span>
+            <h3 class="text-sm font-bold">Precise Grapheme Counting</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            Standard character counters often miscount multi-byte Unicode emojis. Our tool uses modern grapheme cluster segmentation (<code>Intl.Segmenter</code>) so the character count you see matches what TikTok allows.
+          </p>
+        </div>
+
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-2 shadow-2xs">
+          <div class="flex items-center gap-2 text-ink font-semibold">
+            <span class="text-base">📱</span>
+            <h3 class="text-sm font-bold">Authentic Profile Mockup</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            Visualize how your bio lines, emojis, username, and website link appear in an authentic iOS/Android TikTok profile layout. Test line breaks to avoid awkward text truncation.
+          </p>
+        </div>
+
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-2 shadow-2xs">
+          <div class="flex items-center gap-2 text-ink font-semibold">
+            <span class="text-base">📊</span>
+            <h3 class="text-sm font-bold">Live Progress & Warning Indicators</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            The capacity progress bar changes dynamically from green (safe) to amber (approaching 80 characters) and red (over limit), alerting you instantly if you need to trim text.
+          </p>
+        </div>
+
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-2 shadow-2xs">
+          <div class="flex items-center gap-2 text-ink font-semibold">
+            <span class="text-base">✨</span>
+            <h3 class="text-sm font-bold">One-Click Clean & Copy</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            Clean redundant spaces and format line breaks with one click. Then copy your verified bio directly to your clipboard and paste it into TikTok effortlessly.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: The 3-Part TikTok Bio Formula -->
+    <div class="space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">03 / Bio Framework</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">The Winning 3-Part TikTok Bio Formula</h2>
+      <p class="text-body leading-relaxed">
+        With only 80 characters available, you cannot write a lengthy biography. Instead, structure your bio into three high-impact micro-statements designed to drive action:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="p-5 bg-surface-card rounded-xl border border-hairline space-y-2 shadow-2xs">
+          <div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">
+            1
+          </div>
+          <h3 class="text-sm font-bold text-ink">The Value Hook</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            State clearly who you help and what content you produce. Focus on the tangible value the follower receives.
+          </p>
+          <div class="p-2 bg-canvas-soft rounded text-[11px] text-ink font-mono border border-hairline-soft">
+            e.g. Daily AI tools & creator tips ⚡
+          </div>
+        </div>
+
+        <div class="p-5 bg-surface-card rounded-xl border border-hairline space-y-2 shadow-2xs">
+          <div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">
+            2
+          </div>
+          <h3 class="text-sm font-bold text-ink">Credibility / Proof</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Establish instant trust or authority with a milestone, upload schedule, or credential.
+          </p>
+          <div class="p-2 bg-canvas-soft rounded text-[11px] text-ink font-mono border border-hairline-soft">
+            e.g. 100k+ builders | New video Mon 📦
+          </div>
+        </div>
+
+        <div class="p-5 bg-surface-card rounded-xl border border-hairline space-y-2 shadow-2xs">
+          <div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">
+            3
+          </div>
+          <h3 class="text-sm font-bold text-ink">Call-to-Action (CTA)</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Guide profile visitors directly to your link in bio. Always conclude with a pointing-down finger emoji (👇).
+          </p>
+          <div class="p-2 bg-canvas-soft rounded text-[11px] text-ink font-mono border border-hairline-soft">
+            e.g. Grab free starter pack 👇
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Niche Bio Examples & Ideas Table -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">04 / Bio Ideas & Templates</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">High-Converting TikTok Bio Ideas Across Popular Niches</h2>
+      <p class="text-body leading-relaxed">
+        Looking for inspiration? Here are tested <strong>TikTok bio ideas</strong> tailored for creators, online businesses, coaches, and brands—each strictly verified under the 80-character limit:
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-hairline bg-surface-card shadow-xs">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-canvas-soft border-b border-hairline text-ink font-semibold uppercase tracking-wider">
+            <tr>
+              <th class="px-4 py-3 sm:px-5">Niche</th>
+              <th class="px-4 py-3 sm:px-5">Bio Copy & Structure</th>
+              <th class="px-4 py-3 sm:px-5 text-primary text-center">Characters</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-hairline-soft text-body">
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Tech & AI Creator</td>
+              <td class="px-4 py-3 font-mono text-xs">Daily tech tips & creator workflows ⚡<br />Free tools & presets below 👇</td>
+              <td class="px-4 py-3 text-center font-bold text-emerald-600 dark:text-emerald-400">71 / 80</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">E-Commerce Brand</td>
+              <td class="px-4 py-3 font-mono text-xs">Sustainable street style 🌿<br />Worldwide shipping 📦<br />Shop new drop 👇</td>
+              <td class="px-4 py-3 text-center font-bold text-emerald-600 dark:text-emerald-400">71 / 80</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Coach / Consultant</td>
+              <td class="px-4 py-3 font-mono text-xs">Helping creators scale to $10k/mo 🚀<br />Free growth guide below 👇</td>
+              <td class="px-4 py-3 text-center font-bold text-emerald-600 dark:text-emerald-400">68 / 80</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Fitness & Health</td>
+              <td class="px-4 py-3 font-mono text-xs">Simple daily home workouts 💪<br />30-Day Transformation Challenge 👇</td>
+              <td class="px-4 py-3 text-center font-bold text-emerald-600 dark:text-emerald-400">68 / 80</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Food & Recipes</td>
+              <td class="px-4 py-3 font-mono text-xs">Quick 15-minute healthy dinners 🥑<br />Grab my free recipe book 👇</td>
+              <td class="px-4 py-3 text-center font-bold text-emerald-600 dark:text-emerald-400">62 / 80</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Vlog & Lifestyle</td>
+              <td class="px-4 py-3 font-mono text-xs">Unfiltered vlogs & iced coffee ☕<br />Join the chaos ✨<br />Latest video 👇</td>
+              <td class="px-4 py-3 text-center font-bold text-emerald-600 dark:text-emerald-400">70 / 80</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Podcast & Media</td>
+              <td class="px-4 py-3 font-mono text-xs">Uncensored business & creator stories 🎙️<br />New episode every Monday 👇</td>
+              <td class="px-4 py-3 text-center font-bold text-emerald-600 dark:text-emerald-400">73 / 80</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink">Art & Design</td>
+              <td class="px-4 py-3 font-mono text-xs">Visual artist & graphic designer 🎨<br />Custom prints & commissions 👇</td>
+              <td class="px-4 py-3 text-center font-bold text-emerald-600 dark:text-emerald-400">68 / 80</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 5: TikTok Bio SEO -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">05 / Search Visibility</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">TikTok Bio SEO: How to Rank in TikTok Search</h2>
+      <p class="text-body leading-relaxed">
+        TikTok is increasingly used by millions of users as a search engine. To ensure your profile ranks when users search for topics in your niche, apply these TikTok Bio SEO strategies:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <h3 class="text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-1.5">
+            <span>🎯</span> Frontload Primary Keywords
+          </h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Place your main keyword (e.g. <em>"Video Editor"</em>, <em>"Fitness Coach"</em>, <em>"Excel Tips"</em>) in your Display Name and the first 30 characters of your bio.
+          </p>
+        </div>
+
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <h3 class="text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-1.5">
+            <span>🏷️</span> Match Audience Search Queries
+          </h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Use the exact language your target audience types into the TikTok search bar when looking for solutions or tutorials.
+          </p>
+        </div>
+
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <h3 class="text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-1.5">
+            <span>🔍</span> Keep Formatting Clean for Crawlers
+          </h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Avoid obscure stylized Unicode fonts for your main keywords, as search crawlers may not parse them as standard text tokens.
+          </p>
+        </div>
+
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5 shadow-2xs">
+          <h3 class="text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-1.5">
+            <span>⚡</span> Align Bio with Video Captions
+          </h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Reinforce topical authority by aligning keywords in your bio with the hashtags and spoken topics in your video content.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 6: Clickable Link Eligibility Guide -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">06 / Links in Bio</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">How to Get a Clickable Website Link on TikTok</h2>
+      <p class="text-body leading-relaxed">
+        Many creators make the mistake of typing a URL directly into their 80-character bio text (such as <code>mywebsite.com</code>). However, plain bio text is <strong>not clickable</strong>. To add an authentic clickable link below your bio:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+        <div class="p-6 bg-surface-card rounded-xl border border-hairline shadow-2xs space-y-3">
+          <div class="flex items-center gap-2 text-ink font-semibold">
+            <span class="text-lg">🏢</span>
+            <h3 class="text-base font-bold">Option A: TikTok Business Account</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            Switching to a free Business Account unlocks the dedicated <strong>Website</strong> field immediately in most regions without requiring 1,000 followers.
+          </p>
+          <div class="p-3 bg-canvas-soft rounded-lg text-xs text-muted border border-hairline-soft space-y-1">
+            <strong>Trade-off:</strong> Business accounts have access to the Commercial Music Library rather than copyrighted trending sounds.
+          </div>
+        </div>
+
+        <div class="p-6 bg-surface-card rounded-xl border border-hairline shadow-2xs space-y-3">
+          <div class="flex items-center gap-2 text-ink font-semibold">
+            <span class="text-lg">⭐</span>
+            <h3 class="text-base font-bold">Option B: Creator Account (1k+ Followers)</h3>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            Personal / Creator accounts unlock the clickable Website link once the account reaches <strong>1,000 followers</strong>.
+          </p>
+          <div class="p-3 bg-canvas-soft rounded-lg text-xs text-muted border border-hairline-soft space-y-1">
+            <strong>Advantage:</strong> Full unrestricted access to all trending viral sounds, pop songs, and voice clips.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 7: Common Bio Mistakes -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">07 / Optimization Best Practices</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">5 Costly TikTok Bio Mistakes to Avoid</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5">
+          <h3 class="text-xs font-bold text-red-500 uppercase tracking-wider flex items-center gap-1.5">
+            <span>❌</span> Wasting Characters on Hashtags
+          </h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Hashtags in bios are not clickable like video tags and waste 10-25% of your precious 80-character quota.
+          </p>
+        </div>
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5">
+          <h3 class="text-xs font-bold text-red-500 uppercase tracking-wider flex items-center gap-1.5">
+            <span>❌</span> Typing URLs as Plain Text
+          </h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Raw URLs inside your bio text cannot be tapped on mobile. Use the native Website profile field instead.
+          </p>
+        </div>
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5">
+          <h3 class="text-xs font-bold text-red-500 uppercase tracking-wider flex items-center gap-1.5">
+            <span>❌</span> Omitting a Clear Call-to-Action
+          </h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Without telling viewers to click your link or check out your resource, your profile link conversion rate drops significantly.
+          </p>
+        </div>
+        <div class="p-4 bg-surface-card rounded-xl border border-hairline space-y-1.5">
+          <h3 class="text-xs font-bold text-red-500 uppercase tracking-wider flex items-center gap-1.5">
+            <span>❌</span> Cluttered Emoji Overload
+          </h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Using more than 3-4 emojis makes your bio hard to scan on small mobile displays. Stick to functional emojis like 👇 or ⚡.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 8: Social Platform Bio Character Limit Comparison -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">08 / Comparison</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">TikTok Bio Character Limit vs Other Social Platforms</h2>
+      <p class="text-body leading-relaxed">
+        How does TikTok's 80-character limit compare to other major social networks? Because TikTok has one of the strictest character limits across all platforms, optimizing your copy is essential:
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-hairline bg-surface-card shadow-xs">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-canvas-soft border-b border-hairline text-ink font-semibold uppercase tracking-wider">
+            <tr>
+              <th class="px-4 py-3 sm:px-5">Platform</th>
+              <th class="px-4 py-3 sm:px-5 text-center">Bio Character Limit</th>
+              <th class="px-4 py-3 sm:px-5">Clickable Links</th>
+              <th class="px-4 py-3 sm:px-5">Line Break Support</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-hairline-soft text-body">
+            <tr class="hover:bg-canvas-soft/50 transition-colors bg-primary/5">
+              <td class="px-4 py-3 font-semibold text-ink flex items-center gap-2">
+                <span>🎵</span> TikTok
+              </td>
+              <td class="px-4 py-3 text-center font-bold text-primary">80 characters</td>
+              <td class="px-4 py-3 text-xs">Separate Website field (1k followers or Business)</td>
+              <td class="px-4 py-3 text-xs">Yes (counts as 1 char each)</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink flex items-center gap-2">
+                <span>📸</span> Instagram
+              </td>
+              <td class="px-4 py-3 text-center font-semibold text-ink">150 characters</td>
+              <td class="px-4 py-3 text-xs">Up to 5 profile links</td>
+              <td class="px-4 py-3 text-xs">Yes (full support)</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink flex items-center gap-2">
+                <span>🐦</span> X (Twitter)
+              </td>
+              <td class="px-4 py-3 text-center font-semibold text-ink">160 characters</td>
+              <td class="px-4 py-3 text-xs">1 website field + inline links</td>
+              <td class="px-4 py-3 text-xs">Yes</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink flex items-center gap-2">
+                <span>💼</span> LinkedIn
+              </td>
+              <td class="px-4 py-3 text-center font-semibold text-ink">220 chars (Headline)</td>
+              <td class="px-4 py-3 text-xs">Custom CTA link button</td>
+              <td class="px-4 py-3 text-xs">Single line headline</td>
+            </tr>
+            <tr class="hover:bg-canvas-soft/50 transition-colors">
+              <td class="px-4 py-3 font-semibold text-ink flex items-center gap-2">
+                <span>📺</span> YouTube
+              </td>
+              <td class="px-4 py-3 text-center font-semibold text-ink">1,000 characters</td>
+              <td class="px-4 py-3 text-xs">Up to 14 banner links</td>
+              <td class="px-4 py-3 text-xs">Yes (multiline description)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 9: Related Free Creator Tools -->
+    <div class="space-y-6 pt-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">09 / Creator Toolkit</span>
+      </div>
+      <h2 class="text-display-sm text-ink font-bold">More Free Utilities for Creators & Marketers</h2>
+      <p class="text-body leading-relaxed">
+        Scale your content strategy and optimize your social metrics with our full suite of free, browser-based utilities:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 not-prose">
+        <a 
+          href="/instagram-engagement-rate-calculator" 
+          class="p-4 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all hover:border-hairline-strong shadow-2xs group flex flex-col justify-between space-y-3"
+        >
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">📈</span>
+              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">Instagram Engagement Calculator</h3>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Calculate Engagement Rate by Reach (ERR) and Followers (ERF) with tier-by-tier creator benchmarks.
+            </p>
+          </div>
+          <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">
+            Calculate Engagement &rarr;
+          </span>
+        </a>
+
+        <a 
+          href="/instagram-reels-overlay-tester" 
+          class="p-4 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all hover:border-hairline-strong shadow-2xs group flex flex-col justify-between space-y-3"
+        >
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">📱</span>
+              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">Reels Safe Zone Tester</h3>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Upload videos to check if UI icons, captions, or audio tags obscure your text safe zones.
+            </p>
+          </div>
+          <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">
+            Test Safe Zones &rarr;
+          </span>
+        </a>
+
+        <a 
+          href="/linkedin-preview-formatter" 
+          class="p-4 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all hover:border-hairline-strong shadow-2xs group flex flex-col justify-between space-y-3"
+        >
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">✍️</span>
+              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">LinkedIn Preview Formatter</h3>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Style posts with bold and italic Unicode fonts and preview the exact "see more" cutoff line.
+            </p>
+          </div>
+          <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">
+            Format Post &rarr;
+          </span>
+        </a>
+
+        <a 
+          href="/roas-calculator" 
+          class="p-4 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all hover:border-hairline-strong shadow-2xs group flex flex-col justify-between space-y-3"
+        >
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">💰</span>
+              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">ROAS & Profitability Engine</h3>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Determine break-even ad spend, target ROAS, and net margin on Meta and Google ad campaigns.
+            </p>
+          </div>
+          <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">
+            Calculate ROAS &rarr;
+          </span>
+        </a>
+
+        <a 
+          href="/roi-calculator" 
+          class="p-4 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all hover:border-hairline-strong shadow-2xs group flex flex-col justify-between space-y-3"
+        >
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">📊</span>
+              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">ROI & CAGR Calculator</h3>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Calculate Return on Investment, Marketing ROI, and Annualized Growth (CAGR) with worked examples.
+            </p>
+          </div>
+          <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">
+            Calculate ROI &rarr;
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Section 10: FAQ -->
+    <FAQ 
+      faqs={faqs} 
+      title="TikTok Bio Character Limit & Checker FAQ" 
+      description="Everything you need to know about the 80-character TikTok bio limit, character counting, line breaks, bio ideas, and SEO optimization." 
+    />
+
+  </div>
+</section>
+

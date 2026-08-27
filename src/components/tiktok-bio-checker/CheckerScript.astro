@@ -1,0 +1,341 @@
+---
+---
+
+<script>
+  // DOM Elements
+  const bioInput = document.getElementById('bio-input') as HTMLTextAreaElement;
+  const clearBtn = document.getElementById('clear-btn') as HTMLButtonElement;
+  const copyBtn = document.getElementById('copy-bio-btn') as HTMLButtonElement;
+  const copyBtnText = document.getElementById('copy-btn-text') as HTMLSpanElement;
+  const copyIcon = document.getElementById('copy-icon') as HTMLElement;
+  const copySuccessIcon = document.getElementById('copy-success-icon') as HTMLElement;
+  const formatBtn = document.getElementById('uppercase-first-btn') as HTMLButtonElement;
+
+  const charCountElem = document.getElementById('char-count') as HTMLElement;
+  const remainingCountElem = document.getElementById('remaining-count') as HTMLElement;
+  const remainingLabelElem = document.getElementById('remaining-label') as HTMLElement;
+  const wordCountElem = document.getElementById('word-count') as HTMLElement;
+  const lineCountElem = document.getElementById('line-count') as HTMLElement;
+  
+  const progressBar = document.getElementById('progress-bar') as HTMLElement;
+  const progressBarContainer = document.getElementById('bio-progress-bar-container') as HTMLElement;
+  const progressPercentElem = document.getElementById('progress-percent') as HTMLElement;
+  const warningBanner = document.getElementById('bio-warning-banner') as HTMLElement;
+  const charStatusPill = document.getElementById('char-status-pill') as HTMLElement;
+
+  // Profile Preview Elements
+  const previewBioText = document.getElementById('preview-bio-text') as HTMLElement;
+  const previewStatusBadge = document.getElementById('preview-status-badge') as HTMLElement;
+  const previewHandleHeader = document.getElementById('preview-handle-header') as HTMLElement;
+  const previewHandle = document.getElementById('preview-handle') as HTMLElement;
+  const previewDisplayName = document.getElementById('preview-display-name') as HTMLElement;
+  const previewLinkText = document.getElementById('preview-link-text') as HTMLElement;
+  const previewLinkContainer = document.getElementById('preview-link-container') as HTMLElement;
+
+  const customHandleInput = document.getElementById('custom-handle') as HTMLInputElement;
+  const customLinkInput = document.getElementById('custom-link') as HTMLInputElement;
+
+  const templateButtons = Array.from(document.querySelectorAll('.template-btn')) as HTMLButtonElement[];
+
+  const MAX_LIMIT = 80;
+
+  // Accurate grapheme cluster character counting
+  function getCharCount(str: string): number {
+    if (!str) return 0;
+    if (typeof Intl !== 'undefined' && 'Segmenter' in Intl) {
+      // @ts-ignore
+      const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
+      return Array.from(segmenter.segment(str)).length;
+    }
+    return [...str].length;
+  }
+
+  function getWordCount(str: string): number {
+    const trimmed = str.trim();
+    if (!trimmed) return 0;
+    return trimmed.split(/\s+/).filter(Boolean).length;
+  }
+
+  function getLineCount(str: string): number {
+    if (!str) return 0;
+    return str.split(/\r\n|\r|\n/).length;
+  }
+
+  function escapeHtml(text: string): string {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function updateBioStats() {
+    if (!bioInput) return;
+
+    const rawText = bioInput.value;
+    const charCount = getCharCount(rawText);
+    const wordCount = getWordCount(rawText);
+    const lineCount = getLineCount(rawText);
+    const remaining = MAX_LIMIT - charCount;
+    const percentUsed = Math.round((charCount / MAX_LIMIT) * 100);
+
+    // Update Counts
+    if (charCountElem) charCountElem.textContent = charCount.toString();
+    if (wordCountElem) wordCountElem.textContent = wordCount.toString();
+    if (lineCountElem) lineCountElem.textContent = lineCount.toString();
+
+    // Update Remaining
+    if (remainingCountElem) {
+      remainingCountElem.textContent = remaining >= 0 ? remaining.toString() : Math.abs(remaining).toString();
+      
+      if (remaining >= 0) {
+        if (remainingLabelElem) remainingLabelElem.textContent = 'left';
+        if (charCount > 60) {
+          remainingCountElem.className = 'text-xl font-bold text-amber-600 dark:text-amber-400';
+        } else {
+          remainingCountElem.className = 'text-xl font-bold text-emerald-600 dark:text-emerald-400';
+        }
+      } else {
+        if (remainingLabelElem) remainingLabelElem.textContent = 'over limit';
+        remainingCountElem.className = 'text-xl font-bold text-red-500';
+      }
+    }
+
+    // Update Progress Bar
+    const barWidth = Math.min(100, Math.max(0, percentUsed));
+    if (progressBar) {
+      progressBar.style.width = `${barWidth}%`;
+      
+      if (charCount > MAX_LIMIT) {
+        progressBar.className = 'h-full bg-red-500 transition-all duration-150 rounded-full';
+      } else if (charCount >= 65) {
+        progressBar.className = 'h-full bg-amber-500 transition-all duration-150 rounded-full';
+      } else {
+        progressBar.className = 'h-full bg-emerald-500 transition-all duration-150 rounded-full';
+      }
+    }
+
+    if (progressBarContainer) {
+      progressBarContainer.setAttribute('aria-valuenow', charCount.toString());
+    }
+
+    if (progressPercentElem) {
+      progressPercentElem.textContent = `${percentUsed}% (${charCount} / ${MAX_LIMIT})`;
+      if (charCount > MAX_LIMIT) {
+        progressPercentElem.className = 'font-mono text-red-500 font-bold';
+      } else if (charCount >= 65) {
+        progressPercentElem.className = 'font-mono text-amber-600 dark:text-amber-400 font-semibold';
+      } else {
+        progressPercentElem.className = 'font-mono text-muted font-semibold';
+      }
+    }
+
+    // Update Warning Banner & Input Border State
+    if (warningBanner) {
+      if (charCount > MAX_LIMIT) {
+        const overBy = charCount - MAX_LIMIT;
+        warningBanner.innerHTML = `
+          <div class="flex items-center gap-2 text-red-600 dark:text-red-400 font-semibold">
+            <span>⚠️</span>
+            <span>Bio is ${overBy} ${overBy === 1 ? 'character' : 'characters'} over TikTok's 80-character limit!</span>
+          </div>
+          <p class="text-neutral-600 dark:text-neutral-400 text-[11px] leading-relaxed">
+            TikTok will prevent you from saving bios longer than 80 characters. Trim ${overBy} characters to fit.
+          </p>
+        `;
+        warningBanner.className = 'p-3.5 rounded-xl border border-red-500/30 bg-red-500/10 text-xs space-y-1 transition-all block';
+        bioInput.classList.add('border-red-500', 'focus:ring-red-500/20');
+        bioInput.setAttribute('aria-invalid', 'true');
+      } else if (charCount >= 75) {
+        warningBanner.innerHTML = `
+          <div class="flex items-center gap-2 text-amber-700 dark:text-amber-300 font-semibold">
+            <span>⚡</span>
+            <span>Great job! You have ${remaining} ${remaining === 1 ? 'character' : 'characters'} left.</span>
+          </div>
+          <p class="text-neutral-600 dark:text-neutral-400 text-[11px] leading-relaxed">
+            Your bio is well-optimized for maximum space usage while staying safely within the 80-character boundary.
+          </p>
+        `;
+        warningBanner.className = 'p-3.5 rounded-xl border border-amber-500/30 bg-amber-500/10 text-xs space-y-1 transition-all block';
+        bioInput.classList.remove('border-red-500', 'focus:ring-red-500/20');
+        bioInput.removeAttribute('aria-invalid');
+      } else {
+        warningBanner.innerHTML = '';
+        warningBanner.className = 'hidden p-3.5 rounded-xl border text-xs space-y-1 transition-all';
+        bioInput.classList.remove('border-red-500', 'focus:ring-red-500/20');
+        bioInput.removeAttribute('aria-invalid');
+      }
+    }
+
+    if (charStatusPill) {
+      if (charCount > MAX_LIMIT) {
+        charStatusPill.textContent = `${charCount - MAX_LIMIT} Over Limit`;
+        charStatusPill.className = 'text-[11px] text-red-500 font-mono font-bold';
+      } else if (charCount >= 65) {
+        charStatusPill.textContent = `${remaining} Chars Left`;
+        charStatusPill.className = 'text-[11px] text-amber-600 dark:text-amber-400 font-mono font-semibold';
+      } else {
+        charStatusPill.textContent = 'Max 80 Chars';
+        charStatusPill.className = 'text-[11px] text-muted font-mono';
+      }
+    }
+
+    // Sync Live Preview
+    if (previewBioText) {
+      if (!rawText.trim()) {
+        previewBioText.innerHTML = '<span class="text-neutral-400 dark:text-neutral-500 italic">Enter a bio in the editor to preview how it looks on your profile...</span>';
+      } else {
+        previewBioText.textContent = rawText;
+      }
+    }
+
+    if (previewStatusBadge) {
+      if (charCount === 0) {
+        previewStatusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span> Awaiting Bio';
+        previewStatusBadge.className = 'px-2.5 py-1 rounded-pill bg-surface-strong text-muted text-xs font-semibold border border-hairline shadow-2xs flex items-center gap-1';
+      } else if (charCount > MAX_LIMIT) {
+        previewStatusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> ${charCount - MAX_LIMIT} Over Limit`;
+        previewStatusBadge.className = 'px-2.5 py-1 rounded-pill bg-red-500/10 text-red-600 dark:text-red-400 text-xs font-semibold border border-red-500/20 shadow-2xs flex items-center gap-1';
+      } else if (charCount >= 65) {
+        previewStatusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Near Limit';
+        previewStatusBadge.className = 'px-2.5 py-1 rounded-pill bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-semibold border border-amber-500/20 shadow-2xs flex items-center gap-1';
+      } else {
+        previewStatusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Fits Limits (80 Max)';
+        previewStatusBadge.className = 'px-2.5 py-1 rounded-pill bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold border border-emerald-500/20 shadow-2xs flex items-center gap-1';
+      }
+    }
+  }
+
+  // Copy Bio functionality
+  async function copyBioToClipboard() {
+    if (!bioInput || !bioInput.value) {
+      bioInput?.focus();
+      return;
+    }
+
+    const textToCopy = bioInput.value;
+    let successful = false;
+
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        successful = true;
+      } catch (err) {
+        console.warn('Clipboard API failed, using fallback copy method:', err);
+      }
+    }
+
+    if (!successful) {
+      // Fallback
+      const tempTextArea = document.createElement('textarea');
+      tempTextArea.value = textToCopy;
+      tempTextArea.style.position = 'fixed';
+      tempTextArea.style.left = '-999999px';
+      tempTextArea.style.top = '-999999px';
+      document.body.appendChild(tempTextArea);
+      tempTextArea.focus();
+      tempTextArea.select();
+      try {
+        document.execCommand('copy');
+        successful = true;
+      } catch (e) {
+        console.error('Fallback copy failed:', e);
+      }
+      document.body.removeChild(tempTextArea);
+    }
+
+    if (successful) {
+      if (copyBtnText) copyBtnText.textContent = 'Copied to Clipboard!';
+      if (copyIcon) copyIcon.classList.add('hidden');
+      if (copySuccessIcon) copySuccessIcon.classList.remove('hidden');
+      if (copyBtn) {
+        copyBtn.classList.remove('bg-primary', 'hover:bg-primary-active');
+        copyBtn.classList.add('bg-emerald-600', 'hover:bg-emerald-700');
+      }
+
+      setTimeout(() => {
+        if (copyBtnText) copyBtnText.textContent = 'Copy Bio to Clipboard';
+        if (copyIcon) copyIcon.classList.remove('hidden');
+        if (copySuccessIcon) copySuccessIcon.classList.add('hidden');
+        if (copyBtn) {
+          copyBtn.classList.add('bg-primary', 'hover:bg-primary-active');
+          copyBtn.classList.remove('bg-emerald-600', 'hover:bg-emerald-700');
+        }
+      }, 2000);
+    }
+  }
+
+  // Clear Text functionality
+  function clearBio() {
+    if (!bioInput) return;
+    bioInput.value = '';
+    updateBioStats();
+    bioInput.focus();
+  }
+
+  // Clean & Format Helper
+  function formatBio() {
+    if (!bioInput || !bioInput.value) return;
+    let text = bioInput.value;
+
+    // Split into lines, trim extra spaces from lines, remove excessive blank lines
+    const lines = text.split(/\r\n|\r|\n/)
+      .map(line => line.trim().replace(/[ \t]+/g, ' '))
+      .filter((line, index, arr) => {
+        // Keep non-empty lines, or at most 1 blank line between text
+        if (line.length > 0) return true;
+        return index > 0 && arr[index - 1].length > 0;
+      });
+
+    bioInput.value = lines.join('\n');
+    updateBioStats();
+  }
+
+  // Handle Mockup Customizer synchronization
+  function syncMockupCustomizer() {
+    if (customHandleInput && previewHandle && previewHandleHeader) {
+      const handleVal = customHandleInput.value.trim().replace(/^@/, '') || 'alex.creator';
+      previewHandle.textContent = `@${handleVal}`;
+      previewHandleHeader.textContent = handleVal;
+      if (previewDisplayName) {
+        previewDisplayName.textContent = handleVal.split(/[._]/).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') || 'Alex Rivera';
+      }
+    }
+
+    if (customLinkInput && previewLinkText && previewLinkContainer) {
+      const linkVal = customLinkInput.value.trim();
+      if (linkVal) {
+        previewLinkText.textContent = linkVal;
+        previewLinkContainer.classList.remove('hidden');
+      } else {
+        previewLinkContainer.classList.add('hidden');
+      }
+    }
+  }
+
+  // Event Listeners
+  bioInput?.addEventListener('input', updateBioStats);
+  bioInput?.addEventListener('keyup', updateBioStats);
+  bioInput?.addEventListener('paste', () => setTimeout(updateBioStats, 10));
+
+  clearBtn?.addEventListener('click', clearBio);
+  copyBtn?.addEventListener('click', copyBioToClipboard);
+  formatBtn?.addEventListener('click', formatBio);
+
+  customHandleInput?.addEventListener('input', syncMockupCustomizer);
+  customLinkInput?.addEventListener('input', syncMockupCustomizer);
+
+  // Template Quick-Insert handlers
+  templateButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const templateText = btn.getAttribute('data-template');
+      if (templateText && bioInput) {
+        bioInput.value = templateText;
+        updateBioStats();
+        bioInput.focus();
+      }
+    });
+  });
+
+  // Initial Calculation Run
+  updateBioStats();
+  syncMockupCustomizer();
+</script>

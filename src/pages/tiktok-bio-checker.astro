@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+import CheckerHeader from '../components/tiktok-bio-checker/CheckerHeader.astro';
+import BioEditor from '../components/tiktok-bio-checker/BioEditor.astro';
+import BioPreview from '../components/tiktok-bio-checker/BioPreview.astro';
+import EducationalContent from '../components/tiktok-bio-checker/EducationalContent.astro';
+import CheckerScript from '../components/tiktok-bio-checker/CheckerScript.astro';
+
+const title = "TikTok Bio Checker & Character Limit Counter (80 Max) | Get Micro Tools";
+const description = "Free client-side TikTok Bio Checker & 80-character limit counter. Test your TikTok bio with live mobile profile preview, emoji grapheme count, & bio ideas.";
+const keywords = "tiktok bio character limit, tiktok bio checker, tiktok bio counter, tiktok bio character counter, tiktok bio ideas, tiktok bio length, check tiktok bio, tiktok profile bio, tiktok 80 character limit, tiktok bio preview";
+const url = "https://getmicrotools.com/tiktok-bio-checker";
+
+// Structured Data: WebApplication Schema
+const webApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "TikTok Bio Character Limit & Bio Checker",
+  "alternateName": [
+    "TikTok Bio Character Counter",
+    "TikTok Bio Checker",
+    "TikTok Bio Limit Tool",
+    "TikTok Profile Bio Preview"
+  ],
+  "url": "https://getmicrotools.com/tiktok-bio-checker",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "description": "Free client-side TikTok Bio Checker to test and count characters against the official 80-character limit. Includes real-time profile preview, character counter, word counter, line counter, bio ideas, and copy tool.",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Get Micro Tools",
+    "url": "https://getmicrotools.com"
+  },
+  "featureList": [
+    "Accurate 80-character limit tracking with emoji grapheme cluster support",
+    "Live character, word, line, and remaining space counters",
+    "Visual capacity progress bar with color-coded warning states",
+    "One-click copy with instant feedback and clean text formatter",
+    "Authentic TikTok mobile profile live preview mockup",
+    "Tested high-converting TikTok bio ideas and templates for creators and businesses"
+  ]
+};
+
+// Structured Data: BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://getmicrotools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "TikTok Bio Checker",
+      "item": "https://getmicrotools.com/tiktok-bio-checker"
+    }
+  ]
+};
+
+// Structured Data: HowTo Schema
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Check and Optimize Your TikTok Bio Character Limit",
+  "description": "A step-by-step guide to writing, testing, and optimizing a high-converting TikTok bio that fits within the official 80-character limit.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Step 1: Write Your Value Hook",
+      "text": "Draft a concise 1-line hook explaining what you post or who your profile helps."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 2: Add Social Proof or Credibility",
+      "text": "Include an upload schedule, milestone, or credential to build trust."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 3: Add a Call-to-Action with Down-Pointing Emoji",
+      "text": "Direct viewers to your link in bio using a pointing finger emoji (👇)."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 4: Check Character Limit & Mobile Preview",
+      "text": "Verify your bio is at or under 80 characters in the live TikTok bio character counter and check the mobile preview before copying."
+    }
+  ]
+};
+---
+
+<Layout 
+  title={title}
+  description={description} 
+  keywords={keywords}
+  url={url}
+>
+  {/* Inject Structured Data */}
+  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+
+  <Nav />
+
+  <main class="min-h-screen bg-canvas">
+    {/* Header Section */}
+    <CheckerHeader />
+
+    {/* Main Tool Card Section */}
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <div class="bg-surface-card rounded-2xl border border-hairline overflow-hidden shadow-sm">
+        
+        {/* Main Grid: Editor vs Profile Preview */}
+        <div class="p-4 sm:p-6 md:p-8 xl:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+          
+          {/* Editor Column */}
+          <BioEditor />
+
+          {/* Live Preview Column */}
+          <BioPreview />
+
+        </div>
+      </div>
+    </section>
+
+    {/* Educational Content & FAQs Section */}
+    <EducationalContent />
+  </main>
+
+  <Footer />
+</Layout>
+
+<CheckerScript />
