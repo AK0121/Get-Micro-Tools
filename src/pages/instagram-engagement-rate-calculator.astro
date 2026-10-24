@@ -11,9 +11,64 @@ import EducationalContent from '../components/instagram-engagement-calculator/Ed
 import CalculatorScript from '../components/instagram-engagement-calculator/CalculatorScript.astro';
 
 const title = "Instagram Engagement Rate Calculator (ERR & ERF) | Get Micro Tools";
-const description = "Calculate your Instagram Engagement Rate by Reach (ERR) and Followers (ERF). Free, instant creator-tier benchmarks, formula breakdowns, and actionable insights.";
-const keywords = "instagram engagement rate calculator, ERR calculator, ERF calculator, instagram reach engagement rate, instagram creator benchmarks, instagram analytics tool, calculate instagram engagement";
+const description = "Calculate your Instagram Engagement Rate by Reach (ERR) or Followers (ERF). Free client-side tool with verified formulas, creator tier benchmarks, and campaign analysis.";
+const keywords = "instagram engagement rate calculator, ERR calculator, ERF calculator, instagram reach engagement rate, calculate instagram engagement, instagram creator tier benchmarks";
 const url = "https://getmicrotools.com/instagram-engagement-rate-calculator";
+
+const webApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Instagram Engagement Rate Calculator",
+  "alternateName": [
+    "Instagram ERR Calculator",
+    "Instagram ERF Calculator",
+    "Instagram Engagement Calculator"
+  ],
+  "url": "https://getmicrotools.com/instagram-engagement-rate-calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "description": "Calculate Instagram Engagement Rate by Reach (ERR) and by Followers (ERF). Features real-time creator tier benchmarking, save-to-like ratios, and campaign evaluation tools.",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Get Micro Tools",
+    "url": "https://getmicrotools.com"
+  },
+  "featureList": [
+    "Engagement Rate by Reach (ERR) calculation",
+    "Engagement Rate by Followers (ERF) calculation",
+    "Automatic sum of Likes, Comments, Shares, and Saves",
+    "Save-to-Like and Share-to-Like intent ratios",
+    "Creator tier detection from Nano to Mega",
+    "100% private, client-side browser execution"
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://getmicrotools.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Instagram Engagement Rate Calculator",
+      "item": "https://getmicrotools.com/instagram-engagement-rate-calculator"
+    }
+  ]
+};
 ---
 
 <Layout 
@@ -53,6 +108,9 @@ const url = "https://getmicrotools.com/instagram-engagement-rate-calculator";
   </main>
 
   <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 </Layout>
 
 <CalculatorScript />
