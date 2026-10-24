@@ -5,25 +5,26 @@ import Footer from '../components/Footer.astro';
 import FAQ from '../components/FAQ.astro';
 
 // Page Metadata
-const title = "LinkedIn Post Formatter & Preview Generator (Bold & Italic) | Get Micro Tools";
-const description = "Free client-side LinkedIn text formatter and post preview simulator. Style text with bold/italic Unicode fonts and preview the exact 'see more' cutoff across desktop and mobile.";
-const keywords = "linkedin text formatter, linkedin post preview, linkedin formatting tool, bold text linkedin, linkedin see more cutoff, linkedin hook generator";
+const title = "LinkedIn Post Formatter & Preview Tool (Bold & Italic) | Get Micro Tools";
+const description = "Format bold and italic text for LinkedIn using Unicode characters and preview desktop and mobile 'see more' cutoff limits before posting.";
+const keywords = "linkedin post formatter, linkedin text formatter, bold text for linkedin, linkedin text styling, linkedin preview simulator, bold text linkedin";
 const url = "https://getmicrotools.com/linkedin-preview-formatter";
 
 const webApplicationSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "LinkedIn Text Formatter & Post Preview Generator",
+  "name": "LinkedIn Post Formatter & Feed Preview",
   "alternateName": [
-    "LinkedIn Preview Tool",
-    "LinkedIn Text Styler",
-    "LinkedIn Hook & Cutoff Simulator"
+    "LinkedIn Text Formatter",
+    "LinkedIn Post Preview Tool",
+    "Bold Text for LinkedIn",
+    "LinkedIn Cutoff Preview Simulator"
   ],
   "url": "https://getmicrotools.com/linkedin-preview-formatter",
-  "applicationCategory": "SocialNetworkingApplication",
+  "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires JavaScript. Requires HTML5.",
-  "description": "Free client-side LinkedIn text formatter to apply bold and italic Unicode formatting while simulating desktop and mobile feed preview cutoffs in real time.",
+  "description": "Free client-side LinkedIn text formatter to apply bold, italic, and bold-italic Unicode formatting while simulating desktop and mobile feed preview cutoffs in real time.",
   "inLanguage": "en",
   "isAccessibleForFree": true,
   "offers": {
@@ -37,11 +38,11 @@ const webApplicationSchema = {
     "url": "https://getmicrotools.com"
   },
   "featureList": [
-    "Real-time Unicode Bold and Italic font converter",
-    "Desktop (210 chars) and Mobile (140 chars) feed truncation preview",
-    "Media attachment mode simulating image/document feed height compression",
-    "One-click clipboard copy with instant feedback",
-    "Character and line counter with screen-reader accessibility best practices"
+    "Unicode Bold, Italic, and Bold-Italic text formatting for Latin characters and numerals",
+    "Desktop (210 chars) and Mobile (140 chars) feed truncation preview simulator",
+    "Media attachment mode simulating image, document carousel, and link card cutoff compression (~100 chars)",
+    "One-click clipboard copy with visual confirmation",
+    "Real-time character counter and plain-text conversion tools"
   ]
 };
 
@@ -58,7 +59,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "LinkedIn Preview Formatter",
+      "name": "LinkedIn Post Formatter",
       "item": "https://getmicrotools.com/linkedin-preview-formatter"
     }
   ]
@@ -67,52 +68,68 @@ const breadcrumbSchema = {
 const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "How to Format and Preview LinkedIn Posts for Maximum Engagement",
-  "description": "A step-by-step workflow for styling LinkedIn post text and optimizing opening hooks before publishing.",
+  "name": "How to Format and Preview a LinkedIn Post",
+  "description": "A practical workflow for applying bold and italic Unicode styling and checking feed preview cutoffs before publishing on LinkedIn.",
   "step": [
     {
       "@type": "HowToStep",
-      "name": "Step 1: Draft Your Opening Hook",
-      "text": "Write a punchy 1-2 sentence hook in the text workspace that introduces your core insight."
+      "name": "Step 1: Write or Paste Your Draft",
+      "text": "Enter your post text into the workspace editor. Keep an eye on the character counter to track your total post length."
     },
     {
       "@type": "HowToStep",
-      "name": "Step 2: Apply Strategic Bold or Italic Emphasis",
-      "text": "Select your headline or key phrase and click 'Bold' or 'Italic' to apply Unicode emphasis to 2-3 words."
+      "name": "Step 2: Apply Bold or Italic Styling to Specific Words",
+      "text": "Select the specific words or section labels you wish to emphasize and click 'Bold' or 'Italic'. Avoid formatting entire sentences to maintain accessibility."
     },
     {
       "@type": "HowToStep",
-      "name": "Step 3: Toggle Desktop and Mobile Previews",
-      "text": "Switch between Desktop (210-char limit) and Mobile (140-char limit) to ensure your hook appears completely above the '...see more' fold."
+      "name": "Step 3: Check Desktop and Mobile Feed Cutoffs",
+      "text": "Toggle between Desktop (approx. 210 characters) and Mobile (approx. 140 characters) views to ensure your opening lines appear above the '...see more' fold. If you plan to attach media, turn on the 'Contains Image/Media' toggle."
     },
     {
       "@type": "HowToStep",
       "name": "Step 4: Copy and Paste into LinkedIn",
-      "text": "Click 'Copy Formatted Text' to copy the formatted Unicode text to your clipboard, then paste directly into the LinkedIn post creator."
+      "text": "Click 'Copy Formatted Text' to copy the text to your clipboard, then paste it directly into LinkedIn's post composer."
     }
   ]
 };
 
 const faqs = [
   {
-    question: "How does Unicode formatting work on LinkedIn?",
-    answer: "LinkedIn does not natively support rich-text Markdown (like HTML or native bolding) in standard post descriptions. Our tool converts standard Latin letters into Mathematical Alphanumeric Symbols from the Unicode standard (such as 𝗯𝗼𝗹𝗱 and 𝘪𝘵𝘢𝘭𝘪𝘤) that render universally across browsers and mobile apps."
+    question: "Why doesn't LinkedIn support native bold and italic formatting in regular posts?",
+    answer: "LinkedIn's standard feed post composer accepts plain text only. It strips HTML tags and displays Markdown syntax (such as **bold** or *italic*) as literal asterisks. Native rich-text formatting (bold, italic, numbered lists, blockquotes) is only available inside LinkedIn Articles and Newsletters, which use a dedicated long-form editor rather than the feed composer."
   },
   {
-    question: "Is using bold Unicode text bad for accessibility (Screen Readers)?",
-    answer: "Yes, if overused. Screen readers (like NVDA or VoiceOver) interpret mathematical Unicode characters literally (e.g., 𝗯 is read as 'Mathematical Bold Small B'). To maintain accessibility, use bold or italic formatting solely for short 2–3 word headlines, labels, or bullet points—never for entire paragraphs."
+    question: "How does this tool generate bold and italic text for LinkedIn?",
+    answer: "Because LinkedIn's feed composer only accepts plain text, this tool converts standard Latin letters and numerals into corresponding glyphs from the Unicode Mathematical Alphanumeric Symbols block (U+1D400–U+1D7FF). Modern operating systems and web browsers render these mathematical symbols with bold or italic weights, even though LinkedIn treats them as plain characters."
   },
   {
-    question: "Does styled Unicode text affect LinkedIn search SEO?",
-    answer: "Yes. LinkedIn's internal search algorithm indexes standard ASCII text. Styled Unicode characters are not recognized as standard letters (e.g., searching for 'marketing' will not match '𝗺𝗮𝗿𝗸𝗲𝘁𝗶𝗻𝗴'). Keep your primary niche keywords in standard, unstyled plain text."
+    question: "Which characters and styles does this tool support?",
+    answer: "This tool supports Bold (Latin letters A–Z, a–z, and digits 0–9), Italic (Latin letters A–Z, a–z), and Bold-Italic (Latin letters A–Z, a–z). It does not style punctuation, spaces, or emojis. It also does not support italic numerals (the Unicode mathematical italic block has no separate italic digits), non-Latin alphabets (such as Cyrillic, Greek, Arabic, or CJK characters), or decorative styles like underline, strikethrough, monospace, or script fonts."
   },
   {
-    question: "Where does the '...see more' cutoff happen on LinkedIn?",
-    answer: "On desktop devices, LinkedIn typically truncates text after approximately 210 characters (or 3 lines). On mobile devices, the cutoff happens earlier, at approximately 140 characters (or 2 lines). When media or documents are attached, the cutoff tightens to roughly 100 characters."
+    question: "How do I format and copy text to paste into LinkedIn?",
+    answer: "Type or paste your text into the workspace editor. Highlight the specific words or labels you wish to style, then click '𝗕 Bold' or '𝘐 Italic' in the toolbar. Once your post looks right in the preview, click 'Copy Formatted Text'. Open LinkedIn, click 'Start a post', and press Ctrl+V (or Cmd+V on Mac) to paste the styled text into your post."
   },
   {
-    question: "What is the 1-3-1 post formatting rule on LinkedIn?",
-    answer: "The 1-3-1 rule is a skimmable structure: 1 punchy opening hook line, followed by a 3-line concise context or story block, concluding with a 1-line key takeaway or call-to-action. This creates comfortable white space on mobile screens and maximizes click-through on 'see more'."
+    question: "Can screen readers read bold or italic Unicode text?",
+    answer: "Screen readers (such as NVDA, JAWS, Apple VoiceOver, and Android TalkBack) often interpret Mathematical Alphanumeric Symbols literally according to their Unicode character specifications. Instead of pronouncing a word normally, a screen reader may announce each letter phonetically (for example, reading 𝗯-𝗼-𝗹-𝗱 as 'Mathematical Bold Small B, Mathematical Bold Small O...'). To maintain accessibility, never format entire sentences or paragraphs with Unicode; limit styling strictly to short 1–3 word labels."
+  },
+  {
+    question: "Does using bold or italic Unicode text hurt my search visibility on LinkedIn?",
+    answer: "Yes, it can. LinkedIn's internal search algorithm and feed indexing systems index standard ASCII characters. When you replace letters with mathematical Unicode symbols, LinkedIn does not automatically map them back to standard letters. If a user searches for 'project management', a post containing '𝗽𝗿𝗼𝗷𝗲𝗰𝘁 𝗺𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁' may not match the search query. Keep your primary keywords, hashtags, and author names in standard plain text."
+  },
+  {
+    question: "Where does LinkedIn cut off text with the '...see more' button?",
+    answer: "On mobile devices, LinkedIn truncates standard text posts after approximately 140 characters or up to 3 lines, whichever comes first. On desktop screens, the cutoff is approximately 210 characters or 3 lines. When a post includes an image, document carousel, or video attachment, LinkedIn tightens the preview area to roughly 100 characters or 1 line break."
+  },
+  {
+    question: "Will the formatted text look the same on iPhones, Android phones, and PCs?",
+    answer: "Most modern mobile and desktop operating systems (iOS, Android, Windows 10/11, macOS) include system fonts that support Mathematical Alphanumeric Symbols. However, older operating systems, customized enterprise browser environments, or certain email digest clients may lack complete Unicode font coverage and display missing characters as empty boxes ('tofu' glyphs like ▯)."
+  },
+  {
+    question: "What is the difference between a LinkedIn feed post and a LinkedIn Article?",
+    answer: "A LinkedIn feed post is limited to 3,000 characters, accepts plain text only, and appears directly in the feed. A LinkedIn Article is a long-form publishing format (accessed by clicking 'Write article' on desktop) with a full rich-text editor that supports native bold, italic, H1/H2 headings, bulleted lists, embedded hyperlinks, and images without using Unicode replacement."
   }
 ];
 ---
@@ -128,14 +145,14 @@ const faqs = [
     <header class="max-w-7xl mx-auto px-6 pt-16 pb-12">
       <div class="max-w-3xl">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-strong text-ink text-caption-uppercase mb-4">
-          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-          Formatting Utility
+          <span class="w-2 h-2 rounded-full bg-primary"></span>
+          Formatting & Feed Preview Utility
         </div>
         <h1 class="text-display-lg md:text-display-mega text-ink mb-6">
-          LinkedIn <span class="text-primary">Preview</span> & Formatter
+          LinkedIn <span class="text-primary">Post Formatter</span> & Feed Preview
         </h1>
-        <p class="text-body-md text-muted max-w-2xl">
-          Stand out in the professional feed with styled text and ensure your high-converting hook is fully visible before the 'see more' fold.
+        <p class="text-body-md text-muted max-w-2xl leading-relaxed">
+          Format bold and italic text for LinkedIn using Unicode characters, simulate desktop and mobile &ldquo;see more&rdquo; cutoff limits, and copy your formatted post ready to publish.
         </p>
       </div>
     </header>
@@ -168,7 +185,7 @@ const faqs = [
               <textarea
                 id="post-input"
                 class="w-full h-80 p-6 bg-transparent text-ink font-sans text-base leading-relaxed resize-none outline-none placeholder:text-muted-soft transition-colors duration-500"
-                placeholder="Write your LinkedIn post here..."
+                placeholder="Write or paste your LinkedIn post here..."
               ></textarea>
               
               <div class="absolute bottom-4 right-6 flex items-center gap-2 px-2 py-1 bg-canvas/50 backdrop-blur-sm rounded text-[11px] font-semibold text-muted uppercase tracking-wider border border-hairline transition-colors duration-500">
@@ -219,7 +236,7 @@ const faqs = [
                     <span class="text-sm font-semibold text-black dark:text-white hover:text-primary hover:underline cursor-pointer">Alex Morgan</span>
                     <span class="text-xs text-muted"> • 1st</span>
                   </div>
-                  <p class="text-[12px] text-muted leading-tight line-clamp-1">Head of Growth & Product Strategy | Scaling B2B SaaS</p>
+                  <p class="text-[12px] text-muted leading-tight line-clamp-1">Product Strategy & Operations</p>
                   <div class="flex items-center gap-1 mt-0.5 text-[12px] text-muted">
                     <span>1h • </span>
                     <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" class="opacity-70"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 12a5 5 0 110-10 5 5 0 010 10zm.5-7.5h-1v3l2.5 1.5.5-.8-2-1.2v-2.5z"/></svg>
@@ -245,8 +262,8 @@ const faqs = [
                       <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <h5 class="text-xs font-semibold text-ink mb-1">Image / PDF Document / Link Card</h5>
-                  <p class="text-[10px] text-muted max-w-[200px]">LinkedIn tightens feed preview cutoffs when media is attached.</p>
+                  <h5 class="text-xs font-semibold text-ink mb-1">Image / Document Carousel / Link Card</h5>
+                  <p class="text-[10px] text-muted max-w-[220px]">LinkedIn tightens feed preview cutoffs when an image, document, or card is attached.</p>
                 </div>
               </div>
 
@@ -275,9 +292,9 @@ const faqs = [
           </div>
 
           <div class="mt-8 p-6 bg-canvas-soft border border-hairline rounded-lg transition-colors duration-500">
-            <h4 class="text-title-sm text-ink mb-2">Feed Truncation Mechanics</h4>
+            <h4 class="text-title-sm text-ink mb-2">Feed Truncation Thresholds</h4>
             <p class="text-body-sm leading-relaxed text-muted">
-              On <strong class="text-ink">Mobile</strong>, the cutoff triggers at <strong class="text-ink">~140 characters</strong>. On <strong class="text-ink">Desktop</strong>, it extends to <strong class="text-ink">~210 characters</strong>. Posts with attached media truncate after <strong class="text-ink">~100 characters</strong>.
+              In standard text posts, <strong class="text-ink">Mobile</strong> truncates after approximately <strong class="text-ink">140 characters</strong> (or 3 lines). On <strong class="text-ink">Desktop</strong>, the cutoff occurs at approximately <strong class="text-ink">210 characters</strong> (or 3 lines). Posts with attached media truncate after approximately <strong class="text-ink">100 characters</strong> (or 1 line break).
             </p>
           </div>
         </div>
@@ -285,177 +302,404 @@ const faqs = [
     </section>
 
     <!-- Educational & Guidelines Section -->
-    <section class="max-w-5xl mx-auto px-6 py-20 border-t border-hairline space-y-16">
+    <section class="max-w-5xl mx-auto px-6 py-20 border-t border-hairline space-y-20">
       
-      {/* Section 1: Accessibility & Unicode Technical Reality */}
+      {/* Section 1: How the Formatter Controls Work */}
       <div class="space-y-6">
         <div class="border-b border-hairline pb-4">
-          <span class="text-xs font-bold uppercase tracking-wider text-primary">Technical Standards</span>
-          <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">Unicode Formatting: Screen Reader Accessibility & SEO</h2>
-          <p class="text-sm text-muted mt-1">How mathematical alphanumeric Unicode characters function and how to format responsibly.</p>
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Tool Operation</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">How to Format, Preview, and Copy Your Post</h2>
+          <p class="text-sm text-muted mt-1">Understanding the editor toolbar, simulation switches, and clipboard actions.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
           <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
-            <div class="flex items-center gap-2 text-red-500 font-semibold text-sm">
-              <span>⚠️</span>
-              <h3 class="font-bold uppercase tracking-wider text-xs">Screen Reader Impact</h3>
+            <div class="flex items-center gap-2 font-semibold text-sm text-ink">
+              <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-mono">1</span>
+              <h3 class="font-bold text-sm text-ink">Drafting & Character Tracking</h3>
             </div>
             <p class="text-xs text-muted leading-relaxed">
-              When software like VoiceOver or NVDA encounters styled Unicode, it spells out mathematical symbols character-by-character (e.g., <code>𝗯𝗼𝗹𝗱</code> is vocalized as <em>"Mathematical Bold Small B, Mathematical Bold Small O..."</em>). 
+              Type or paste your text into the workspace editor. The real-time character counter at the bottom counts characters using JavaScript array clustering, ensuring that multi-byte Unicode characters are accurately tallied against LinkedIn&rsquo;s 3,000-character post limit.
             </p>
-            <div class="p-3 bg-canvas-soft rounded-lg text-xs text-ink font-medium border border-hairline">
-              <strong>Rule:</strong> Never format full sentences or paragraphs with Unicode. Restrict styling strictly to 2–3 word headlines or bullet titles.
-            </div>
           </div>
 
           <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
-            <div class="flex items-center gap-2 text-primary font-semibold text-sm">
-              <span>🔍</span>
-              <h3 class="font-bold uppercase tracking-wider text-xs">Platform Search & Indexing</h3>
+            <div class="flex items-center gap-2 font-semibold text-sm text-ink">
+              <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-mono">2</span>
+              <h3 class="font-bold text-sm text-ink">Applying Bold and Italic Styling</h3>
             </div>
             <p class="text-xs text-muted leading-relaxed">
-              LinkedIn's internal search crawler indexes standard ASCII characters. Styled Unicode characters are treated as distinct math symbols, meaning searching for <code>marketing</code> will not surface a post written as <code>𝗺𝗮𝗿𝗸𝗲𝘁𝗶𝗻𝗴</code>.
+              Highlight the specific words or labels you want to style, then click <strong class="text-ink">𝗕 Bold</strong> or <strong class="text-ink">𝘐 Italic</strong> in the toolbar. Clicking either button again removes that style. If no text is selected, the buttons toggle active styling for subsequent typing or apply styling across the entire draft.
             </p>
-            <div class="p-3 bg-canvas-soft rounded-lg text-xs text-ink font-medium border border-hairline">
-              <strong>Rule:</strong> Keep your core industry keywords, hashtags, and author names in clean, unstyled standard text.
+          </div>
+
+          <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+            <div class="flex items-center gap-2 font-semibold text-sm text-ink">
+              <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-mono">3</span>
+              <h3 class="font-bold text-sm text-ink">Desktop vs. Mobile Preview Simulator</h3>
             </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Switch between <strong class="text-ink">Desktop</strong> and <strong class="text-ink">Mobile</strong> views to inspect how your opening hook appears above the fold. The preview card models LinkedIn&rsquo;s real feed constraints, inserting the &ldquo;...see more&rdquo; cutoff when character limits or line break maximums are reached.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+            <div class="flex items-center gap-2 font-semibold text-sm text-ink">
+              <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-mono">4</span>
+              <h3 class="font-bold text-sm text-ink">Media Mode & Clipboard Copy</h3>
+            </div>
+            <p class="text-xs text-muted leading-relaxed">
+              Turn on the <strong class="text-ink">Contains Image/Media</strong> toggle if you are uploading an image, carousel PDF, or link preview. When ready, click <strong class="text-ink">Copy Formatted Text</strong> to transfer the styled Unicode text to your clipboard, then paste it directly into LinkedIn with Ctrl+V (or Cmd+V).
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Section 2: High-Converting Hook Frameworks */}
+      {/* Section 2: Ordinary Text vs. Unicode Characters */}
       <div class="space-y-6">
         <div class="border-b border-hairline pb-4">
-          <span class="text-xs font-bold uppercase tracking-wider text-primary">Copywriting Frameworks</span>
-          <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">4 Tested LinkedIn Hook Archetypes</h2>
-          <p class="text-sm text-muted mt-1">Structure your opening 140 characters to maximize "see more" click-through rates.</p>
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Technical Fundamentals</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">Ordinary Text vs. Unicode Character Substitution</h2>
+          <p class="text-sm text-muted mt-1">How mathematical Unicode symbols imitate font styles in a plain-text composer.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-4">
+          <h3 class="text-base font-bold text-ink">Why LinkedIn Feed Posts Do Not Support Native Bold or Italic</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            In standard rich-text environments (such as Microsoft Word, Google Docs, or HTML web pages), bold and italic styling are stored as formatting metadata (<code class="text-ink bg-canvas-soft px-1.5 py-0.5 rounded">&lt;strong&gt;</code>, <code class="text-ink bg-canvas-soft px-1.5 py-0.5 rounded">&lt;em&gt;</code>, or Markdown <code class="text-ink bg-canvas-soft px-1.5 py-0.5 rounded">**bold**</code>). The underlying characters remain standard ASCII characters (<code class="text-ink bg-canvas-soft px-1.5 py-0.5 rounded">a</code> is still byte value 0x61).
+          </p>
+          <p class="text-sm text-muted leading-relaxed">
+            The standard LinkedIn feed composer is strictly a plain-text input field. It strips HTML tags and prints Markdown asterisks as literal characters. To display text with bold or italic weights in the feed, formatters substitute standard Latin characters with alternate symbols from the <strong class="text-ink">Unicode Mathematical Alphanumeric Symbols</strong> block (range U+1D400–U+1D7FF).
+          </p>
+        </div>
+
+        <!-- Tool Capabilities Table -->
+        <div class="border border-hairline rounded-xl overflow-hidden bg-surface-card">
+          <div class="p-4 bg-canvas-soft border-b border-hairline">
+            <h3 class="text-sm font-bold text-ink">Exact Formatting Capabilities of This Tool</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-surface-strong/30 border-b border-hairline text-ink font-semibold">
+                <tr>
+                  <th class="p-3 sm:p-4">Style</th>
+                  <th class="p-3 sm:p-4">Supported Characters</th>
+                  <th class="p-3 sm:p-4">Sample Output</th>
+                  <th class="p-3 sm:p-4">Limitations</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-hairline text-muted">
+                <tr>
+                  <td class="p-3 sm:p-4 font-semibold text-ink">Bold</td>
+                  <td class="p-3 sm:p-4">Latin A–Z, a–z, digits 0–9</td>
+                  <td class="p-3 sm:p-4 font-mono text-ink">𝗕𝗼𝗹𝗱 𝟭𝟮𝟯</td>
+                  <td class="p-3 sm:p-4">Punctuation, symbols, and non-Latin alphabets remain standard text.</td>
+                </tr>
+                <tr>
+                  <td class="p-3 sm:p-4 font-semibold text-ink">Italic</td>
+                  <td class="p-3 sm:p-4">Latin A–Z, a–z</td>
+                  <td class="p-3 sm:p-4 font-mono text-ink">𝘐𝘵𝘢𝘭𝘪𝘤 𝘛𝘦𝘹𝘵</td>
+                  <td class="p-3 sm:p-4">Digits 0–9 lack italic Unicode math code points; numerals stay unstyled.</td>
+                </tr>
+                <tr>
+                  <td class="p-3 sm:p-4 font-semibold text-ink">Bold + Italic</td>
+                  <td class="p-3 sm:p-4">Latin A–Z, a–z</td>
+                  <td class="p-3 sm:p-4 font-mono text-ink">𝘽𝙤𝙡𝙙 𝙄𝙩𝙖𝙡𝙞𝙘</td>
+                  <td class="p-3 sm:p-4">Applies both styles simultaneously to Latin letters.</td>
+                </tr>
+                <tr>
+                  <td class="p-3 sm:p-4 font-semibold text-ink">Unsupported Styles</td>
+                  <td class="p-3 sm:p-4">Underline, strikethrough, cursive, monospace</td>
+                  <td class="p-3 sm:p-4 font-mono text-muted">N/A</td>
+                  <td class="p-3 sm:p-4">This tool intentionally avoids low-readability novelty styles to protect professional presentation.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 3: Accessibility & Technical Limitations */}
+      <div class="space-y-6">
+        <div class="border-b border-hairline pb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Accessibility & System Reality</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">Important Accessibility and Technical Limitations</h2>
+          <p class="text-sm text-muted mt-1">Why stylized Unicode characters must be used with care on professional platforms.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
           <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
-            <div class="flex items-center justify-between">
-              <h3 class="text-sm font-bold text-ink">1. The Contrarian Reframe</h3>
-              <span class="text-[10px] font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full">High Dwell Time</span>
+            <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 font-semibold text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              <h3 class="font-bold uppercase tracking-wider text-xs">Screen Reader Interpretation</h3>
             </div>
             <p class="text-xs text-muted leading-relaxed">
-              Challenges accepted industry dogma immediately, triggering intellectual curiosity to see the alternative.
+              Screen readers (such as NVDA, JAWS, VoiceOver, and TalkBack) rely on Unicode specifications. Because bold Unicode characters are defined as mathematical alphanumeric symbols, some screen readers do not pronounce them as regular words. Instead, they may vocalize each letter individually (for example, reading <code class="text-ink">𝗯𝗼𝗹𝗱</code> as <em>&ldquo;Mathematical Bold Small B, Mathematical Bold Small O...&rdquo;</em>).
             </p>
-            <div class="p-3 bg-canvas-soft rounded-lg font-mono text-xs text-ink border border-hairline-soft">
-              Most teams think [Common Strategy] is the best way to grow.<br /><br />
-              They are mistaken. Here is what we do instead: 👇
+            <div class="p-3 bg-canvas-soft rounded-lg text-xs text-ink font-medium border border-hairline">
+              <strong>Best Practice:</strong> Never format full sentences or paragraphs with Unicode. Restrict styling strictly to 1–3 word section headers or step labels.
             </div>
           </div>
 
           <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
-            <div class="flex items-center justify-between">
-              <h3 class="text-sm font-bold text-ink">2. The Hard Numbers Case Study</h3>
-              <span class="text-[10px] font-semibold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full">Proof Driven</span>
+            <div class="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <h3 class="font-bold uppercase tracking-wider text-xs">Platform Search & Keyword Indexing</h3>
             </div>
             <p class="text-xs text-muted leading-relaxed">
-              Opens with specific financial, traffic, or efficiency data to establish instant authority.
+              LinkedIn&rsquo;s internal search engine and external search crawlers index standard ASCII characters. Mathematical Unicode characters do not always map back to standard letters in search queries. If a professional searches LinkedIn for <code>growth strategy</code>, a post written with <code>𝗴𝗿𝗼𝘄𝘁𝗵 𝘀𝘁𝗿𝗮𝘁𝗲𝗴𝘆</code> may not match the search index.
             </p>
-            <div class="p-3 bg-canvas-soft rounded-lg font-mono text-xs text-ink border border-hairline-soft">
-              We spent $42,500 testing [Channel] over the last 90 days.<br /><br />
-              The 3 unexpected findings every founder should know:
+            <div class="p-3 bg-canvas-soft rounded-lg text-xs text-ink font-medium border border-hairline">
+              <strong>Best Practice:</strong> Keep all primary industry terms, job titles, hashtags, and author names in unstyled, standard plain text.
             </div>
           </div>
 
           <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
-            <div class="flex items-center justify-between">
-              <h3 class="text-sm font-bold text-ink">3. The Framework Playbook</h3>
-              <span class="text-[10px] font-semibold text-blue-600 bg-blue-500/10 px-2 py-0.5 rounded-full">Save & Repost Magnet</span>
+            <div class="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <h3 class="font-bold uppercase tracking-wider text-xs">Cross-Device & Font Fallback</h3>
             </div>
             <p class="text-xs text-muted leading-relaxed">
-              Promises a step-by-step resolution to a common workflow bottleneck.
+              While current iOS, Android, macOS, and Windows releases support mathematical symbols, older operating systems, corporate virtual desktop images, and specific third-party browser configurations can lack the necessary glyphs. In those environments, unsupported characters display as missing rectangular &ldquo;tofu&rdquo; boxes (▯).
             </p>
-            <div class="p-3 bg-canvas-soft rounded-lg font-mono text-xs text-ink border border-hairline-soft">
-              How to [Achieve Goal] in [Timeframe] without [Biggest Pain Point]:<br /><br />
-              Our complete 5-step operating playbook: 🧵
-            </div>
           </div>
 
           <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
-            <div class="flex items-center justify-between">
-              <h3 class="text-sm font-bold text-ink">4. The Costly Mistake Story</h3>
-              <span class="text-[10px] font-semibold text-amber-600 bg-amber-500/10 px-2 py-0.5 rounded-full">Authenticity</span>
+            <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+              <h3 class="font-bold uppercase tracking-wider text-xs">Translation & In-Page Search</h3>
             </div>
             <p class="text-xs text-muted leading-relaxed">
-              Leverages vulnerability and personal learning to build deep audience connection.
-            </p>
-            <div class="p-3 bg-canvas-soft rounded-lg font-mono text-xs text-ink border border-hairline-soft">
-              In 2023, I made a mistake that cost our agency $18,000.<br /><br />
-              It taught me the single most valuable lesson about [Topic]:
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Section 3: The 1-3-1 Formatting Rule */}
-      <div class="p-8 rounded-2xl bg-surface-card border border-hairline space-y-6 not-prose">
-        <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-wider">
-          <span>📐</span> Visual Formatting Anatomy
-        </div>
-        <h2 class="text-2xl font-bold text-ink tracking-tight">The 1-3-1 Post Structure: Optimizing Mobile Readability</h2>
-        <p class="text-sm text-muted leading-relaxed">
-          Over 70% of LinkedIn consumption happens on mobile screens. Dense text blocks cause users to scroll past. The 1-3-1 structure prevents visual fatigue:
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-          <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
-            <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center">1</span>
-            <h3 class="text-sm font-bold text-ink">1 Punchy Hook Line</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Under 140 characters. Grabs attention and creates curiosity to click 'see more'.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
-            <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center">3</span>
-            <h3 class="text-sm font-bold text-ink">3 Context Lines</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Short bullet points or clean 1-sentence paragraphs explaining the insight or data.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
-            <span class="w-7 h-7 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center">1</span>
-            <h3 class="text-sm font-bold text-ink">1 Takeaway / Question</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              A clear takeaway or engaging discussion question to drive meaningful comments.
+              When international readers use in-browser translation tools (such as Google Translate), mathematical Unicode characters are frequently skipped or treated as uninterpretable symbols. In-page search (Ctrl+F) on desktop browsers also will not match standard keyboard typing against mathematical symbols.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Section 4: Related Tools */}
+      {/* Section 4: Practical Guide to Structuring a Readable Post */}
+      <div class="p-8 rounded-2xl bg-surface-card border border-hairline space-y-8 not-prose">
+        <div class="space-y-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Content Architecture</span>
+          <h2 class="text-2xl font-bold text-ink tracking-tight">A Practical Guide to Structuring a Readable LinkedIn Post</h2>
+          <p class="text-sm text-muted leading-relaxed">
+            Formatting cannot compensate for poor structure. A readable post respects how professionals consume information on mobile devices, organizing insights into clear, skimmable sections.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+            <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold">1</span>
+              The Opening Hook (Lines 1–2, &lt;140 Chars)
+            </h3>
+            <p class="text-xs text-muted leading-relaxed">
+              State the core premise, finding, or question immediately. Because mobile feeds truncate after roughly 140 characters, your opening two lines must establish what the post is about without requiring vague clickbait. Clear topic clarity gives readers an honest reason to expand the post.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+            <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold">2</span>
+              Short, Breathable Paragraphs (1–2 Sentences)
+            </h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Dense walls of text are fatiguing on 6-inch smartphone screens. Keep paragraphs to one or two sentences, separated by clean single line breaks. This creates whitespace that allows readers to scan the narrative at their own pace.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+            <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold">3</span>
+              Structured Lists and Takeaways
+            </h3>
+            <p class="text-xs text-muted leading-relaxed">
+              When presenting data, steps, or multiple observations, use standard bullet points (<code class="text-ink">•</code> or <code class="text-ink">-</code>) or numbered lists (<code class="text-ink">1.</code>, <code class="text-ink">2.</code>). Lists break complex arguments into manageable, self-contained thoughts.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-canvas-soft border border-hairline-soft space-y-2">
+            <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold">4</span>
+              Clear Takeaway or Call to Action
+            </h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Conclude with a concrete summary, a practical next step, or a specific question to encourage professional discussion. Avoid generic engagement prompts like &ldquo;Agree?&rdquo; or &ldquo;Comment YES below&rdquo; in favor of questions that invite real industry perspectives.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 5: When to Use Ordinary Text vs. Stylized Formatting */}
       <div class="space-y-6">
         <div class="border-b border-hairline pb-4">
-          <span class="text-xs font-bold uppercase tracking-wider text-primary">Creator Toolkit</span>
-          <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">More Utilities for Creators & Marketers</h2>
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Styling Discipline</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">When to Use Ordinary Text vs. Stylized Characters</h2>
+          <p class="text-sm text-muted mt-1">Why excessive formatting harms reading speed and undermines professional credibility.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose">
-          <a href="/tiktok-bio-checker" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
+          <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+            <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+              <span class="text-emerald-500 font-bold">✓</span> Always Use Ordinary Plain Text For:
+            </h3>
+            <ul class="text-xs text-muted space-y-2 leading-relaxed">
+              <li><strong class="text-ink">95%+ of your post body:</strong> Standard typography is effortless to read and natively supported across all screens.</li>
+              <li><strong class="text-ink">Core search keywords & hashtags:</strong> Ensures LinkedIn search indexers and algorithms can catalog your content accurately.</li>
+              <li><strong class="text-ink">Company names, URLs, and mentions:</strong> Prevents broken handles, unclickable links, or corrupted brand names.</li>
+              <li><strong class="text-ink">Full sentences and paragraphs:</strong> Avoids screen reader stuttering and visual fatigue.</li>
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-surface-card border border-hairline space-y-3">
+            <h3 class="text-sm font-bold text-ink flex items-center gap-2">
+              <span class="text-primary font-bold">⚡</span> Use Stylized Formatting Strictly For:
+            </h3>
+            <ul class="text-xs text-muted space-y-2 leading-relaxed">
+              <li><strong class="text-ink">Short section headers:</strong> 1–3 word labels such as <code class="text-ink">𝗞𝗲𝘆 𝗳𝗶𝗻𝗱𝗶𝗻𝗴𝘀:</code> or <code class="text-ink">𝗧𝗮𝗸𝗲𝗮𝘄𝗮𝘆:</code> that introduce a new block.</li>
+              <li><strong class="text-ink">Step indicators:</strong> Prefixes like <code class="text-ink">𝗦𝘁𝗲𝗽 𝟭:</code> or <code class="text-ink">𝗦𝘁𝗲𝗽 𝟮:</code> in a numbered tutorial.</li>
+              <li><strong class="text-ink">Single contrast words:</strong> Rare, selective emphasis on a single word where italic styling clarifies nuance.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-xl bg-canvas-soft border border-hairline text-xs text-muted leading-relaxed">
+          <strong class="text-ink">Why Excessive Formatting Backfires:</strong> When half of a post is bolded, italicized, or interspersed with decorative symbols, contrast is lost. True emphasis requires contrast against neutral surroundings. Over-formatted posts look visually aggressive, cause eye fatigue, and frequently evoke spam or artificial engagement tactics, reducing reader trust.
+        </div>
+      </div>
+
+      {/* Section 6: Before-and-After Formatting Examples */}
+      <div class="space-y-6">
+        <div class="border-b border-hairline pb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Practical Demonstrations</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-ink tracking-tight mt-1">Before & After: Useful Formatting vs. Gimmicky Tricks</h2>
+          <p class="text-sm text-muted mt-1">Side-by-side comparisons showing how restrained formatting elevates clarity.</p>
+        </div>
+
+        <div class="space-y-8 not-prose">
+          <!-- Example 1: Project Update -->
+          <div class="border border-hairline rounded-2xl bg-surface-card overflow-hidden">
+            <div class="p-4 bg-canvas-soft border-b border-hairline">
+              <h3 class="text-sm font-bold text-ink">Example 1: Project Retrospective & Lessons Learned</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-hairline">
+              <!-- Gimmicky -->
+              <div class="p-6 space-y-3">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-red-500/10 text-red-600 dark:text-red-400 font-bold text-[11px] uppercase tracking-wider">
+                  ✕ Ineffective / Gimmicky Over-Formatting
+                </span>
+                <div class="p-4 bg-canvas rounded-lg text-xs font-mono text-ink leading-relaxed space-y-2 border border-hairline-soft">
+                  <p>🚨 𝗕𝗥𝗘𝗔𝗞𝗜𝗡𝗚: 𝗪𝗲 𝗮𝗹𝗺𝗼𝘀𝘁 𝗹𝗼𝘀𝘁 $𝟱𝟬,𝟬𝟬𝟬 𝗹𝗮𝘀𝘁 𝗺𝗼𝗻𝘁𝗵! 🚨</p>
+                  <p><em>Most people think growth is easy.</em> 𝗧𝗵𝗲𝘆 𝗮𝗿𝗲 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲𝗹𝘆 𝘄𝗿𝗼𝗻𝗴.</p>
+                  <p>👉 𝗪𝗘 𝗙𝗜𝗫𝗘𝗗 𝗢𝗨𝗥 𝗘𝗡𝗧𝗜𝗥𝗘 𝗢𝗡𝗕𝗢𝗔𝗥𝗗𝗜𝗡𝗚 𝗙𝗟𝗢𝗪 𝗜𝗡 𝟮𝟰 𝗛𝗢𝗨𝗥𝗦</p>
+                  <p>👉 <em>Never ever ignore user drop-off metrics!</em></p>
+                  <p>👇 𝗖𝗢𝗠𝗠𝗘𝗡𝗧 &ldquo;𝗚𝗥𝗢𝗪𝗧𝗛&rdquo; 𝗔𝗡𝗗 𝗜 𝗪𝗜𝗟𝗟 𝗗𝗠 𝗬𝗢𝗨 𝗧𝗛𝗘 𝗙𝗨𝗟𝗟 𝗣𝗟𝗔𝗬𝗕𝗢𝗢𝗞! 👇</p>
+                </div>
+                <p class="text-[11px] text-muted leading-relaxed">
+                  <strong>Why it fails:</strong> Entire sentences in bold Unicode break screen readers, emojis create visual noise, keywords cannot be indexed, and artificial engagement begging reduces authority.
+                </p>
+              </div>
+
+              <!-- Useful -->
+              <div class="p-6 space-y-3">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold text-[11px] uppercase tracking-wider">
+                  ✓ Structured & Accessible Formatting
+                </span>
+                <div class="p-4 bg-canvas rounded-lg text-xs font-mono text-ink leading-relaxed space-y-2 border border-hairline-soft">
+                  <p>Last month, our team audited why new trial users were dropping off during initial workspace configuration.</p>
+                  <p>Here is what we observed and how we adjusted:</p>
+                  <p><strong>Key findings:</strong><br />• Most drop-offs occurred on step 3 due to unexpected team permission prompts.<br />• Clarifying the default settings cut onboarding support tickets by half.<br />• Adding an optional setup checklist helped users reach their first milestone faster.</p>
+                  <p><strong>Takeaway:</strong><br />Before designing new onboarding features, review where users currently hesitate. Removing friction often beats adding explanations.</p>
+                </div>
+                <p class="text-[11px] text-muted leading-relaxed">
+                  <strong>Why it works:</strong> Honest opening hook visible before the cutoff, short paragraphs, clean bullet list, and bold styling reserved solely for two structural labels.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example 2: Process Breakdown -->
+          <div class="border border-hairline rounded-2xl bg-surface-card overflow-hidden">
+            <div class="p-4 bg-canvas-soft border-b border-hairline">
+              <h3 class="text-sm font-bold text-ink">Example 2: Operational Workflow / Step-by-Step Guide</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-hairline">
+              <!-- Gimmicky -->
+              <div class="p-6 space-y-3">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-red-500/10 text-red-600 dark:text-red-400 font-bold text-[11px] uppercase tracking-wider">
+                  ✕ Ineffective / Hype-Driven Styling
+                </span>
+                <div class="p-4 bg-canvas rounded-lg text-xs font-mono text-ink leading-relaxed space-y-2 border border-hairline-soft">
+                  <p>🔥 𝗧𝗛𝗘 𝗦𝗘𝗖𝗥𝗘𝗧 𝗧𝗢 𝗤𝗨𝗔𝗗𝗥𝗨𝗣𝗟𝗜𝗡𝗚 𝗬𝗢𝗨𝗥 𝗣𝗥𝗢𝗗𝗨𝗖𝗧𝗜𝗩𝗜𝗧𝗬 🔥</p>
+                  <p><em>Stop wasting time on useless meetings today!</em></p>
+                  <p>𝟭. <em>Audit every 15-minute block on your calendar right now.</em></p>
+                  <p>𝟮. <em>Decline 80% of all invites without apology or hesitation.</em></p>
+                  <p>𝟯. <em>Work strictly in 90-minute blocks of pure flow state.</em></p>
+                  <p>🚀 𝗥𝗘𝗣𝗢𝗦𝗧 𝘁𝗵𝗶𝘀 𝘁𝗼 𝗵𝗲𝗹𝗽 𝘆𝗼𝘂𝗿 𝗻𝗲𝘁𝘄𝗼𝗿𝗸 𝘀𝘂𝗰𝗰𝗲𝗲𝗱!</p>
+                </div>
+                <p class="text-[11px] text-muted leading-relaxed">
+                  <strong>Why it fails:</strong> Over-stylized Unicode numerals, aggressive claims, unreadable italicized blocks, and hollow repost requests that undermine professional tone.
+                </p>
+              </div>
+
+              <!-- Useful -->
+              <div class="p-6 space-y-3">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold text-[11px] uppercase tracking-wider">
+                  ✓ Structured & Accessible Formatting
+                </span>
+                <div class="p-4 bg-canvas rounded-lg text-xs font-mono text-ink leading-relaxed space-y-2 border border-hairline-soft">
+                  <p>If your workday feels fragmented by recurring 30-minute status meetings, batching your schedule can restore focused deep work.</p>
+                  <p>Here is the three-step framework our team introduced:</p>
+                  <p><strong>Step 1: Cluster syncs</strong><br />Consolidate one-on-ones into Tuesday and Thursday afternoons rather than scattering them across the workweek.</p>
+                  <p><strong>Step 2: Default to 20 minutes</strong><br />Shorten default invites from 30 minutes to 20 minutes to give attendees a natural 10-minute transition buffer.</p>
+                  <p><strong>Step 3: Guard focus mornings</strong><br />Block Monday and Wednesday mornings for heads-down problem solving with notifications paused.</p>
+                  <p>How does your team protect uninterrupted focus time?</p>
+                </div>
+                <p class="text-[11px] text-muted leading-relaxed">
+                  <strong>Why it works:</strong> Clear problem-solution opening, standard plain-text numbers and body copy, subtle bolding on step headings, and a genuine discussion question.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 7: Related Tools */}
+      <div class="space-y-6">
+        <div class="border-b border-hairline pb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Related GMT Tools</span>
+          <h2 class="text-2xl font-bold text-ink tracking-tight mt-1">Complementary Utilities for Social Media & Marketing</h2>
+          <p class="text-sm text-muted mt-1">Helpful client-side calculators and formatting checkers across Get Micro Tools.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 not-prose">
+          <a href="/tiktok-bio-checker" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-3">
             <div>
-              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">🎵 TikTok Bio Checker & Counter</h3>
-              <p class="text-xs text-muted mt-1 leading-relaxed">Count characters against the strict 80-char limit with live profile preview.</p>
+              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">TikTok Bio Checker & Counter</h3>
+              <p class="text-xs text-muted mt-1 leading-relaxed">Test character limits and formatting constraints against TikTok&rsquo;s strict 80-character profile bio cutoff.</p>
             </div>
-            <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">Check TikTok Bio &rarr;</span>
+            <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">Open Bio Checker &rarr;</span>
           </a>
 
-          <a href="/roi-calculator" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-2">
+          <a href="/instagram-engagement-rate-calculator" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-3">
             <div>
-              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">📊 ROI & CAGR Calculator</h3>
-              <p class="text-xs text-muted mt-1 leading-relaxed">Calculate Return on Investment, Marketing ROI, and annual compound growth rates.</p>
+              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">Instagram Engagement Calculator</h3>
+              <p class="text-xs text-muted mt-1 leading-relaxed">Calculate reach-based (ERR) and follower-based (ERF) engagement rates with realistic benchmark comparisons.</p>
+            </div>
+            <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">Calculate Engagement &rarr;</span>
+          </a>
+
+          <a href="/roi-calculator" class="p-5 bg-surface-card hover:bg-surface-strong rounded-xl border border-hairline transition-all group flex flex-col justify-between space-y-3">
+            <div>
+              <h3 class="text-sm font-bold text-ink group-hover:text-primary transition-colors">ROI & CAGR Calculator</h3>
+              <p class="text-xs text-muted mt-1 leading-relaxed">Evaluate Return on Investment, annualized compound growth rates, and marketing campaign payback periods.</p>
             </div>
             <span class="text-xs font-semibold text-primary inline-flex items-center gap-1">Calculate ROI &rarr;</span>
           </a>
         </div>
       </div>
 
-      {/* Section 5: Tool Specific FAQs */}
-      <FAQ faqs={faqs} title="LinkedIn Text Formatter FAQ" description="Common questions about Unicode bold/italic formatting, screen reader accessibility, and the LinkedIn feed cutoff." />
+      {/* Section 8: Tool Specific FAQs */}
+      <FAQ faqs={faqs} title="LinkedIn Text Formatter FAQ" description="Clear answers on Unicode bold and italic characters, screen reader accessibility, feed cutoffs, and platform compatibility." />
 
     </section>
 
@@ -491,7 +735,6 @@ const faqs = [
     // Track active styles (for new typing)
     const activeStyles = { bold: false, italic: false };
     let currentView: 'desktop' | 'mobile' = 'desktop';
-    const LIMITS = { desktop: 210, mobile: 140 };
 
     const textarea = document.getElementById('post-input') as HTMLTextAreaElement;
     const preview = document.getElementById('preview-text') as HTMLDivElement;
@@ -536,10 +779,6 @@ const faqs = [
       updateUI();
     }
 
-    function normalize(text: string): string {
-      return [...text].map(c => REVERSE_MAP[c] ?? c).join('');
-    }
-
     function getCharStyles(c: string) {
       const base = REVERSE_MAP[c] ?? c;
       const isBold = (MAPS.bold[base] === c) || (MAPS.bolditalic[base] === c);
@@ -567,7 +806,6 @@ const faqs = [
       if (selection) {
         // Apply to selection
         const chars = [...selection].map(getCharStyles);
-        // If all chars in selection already have this style, we remove it. Otherwise we add it.
         const allHaveStyle = chars.every(c => (style === 'bold' ? c.isBold : c.isItalic));
         
         const transformed = chars.map(c => {
@@ -577,12 +815,8 @@ const faqs = [
         }).join('');
 
         textarea.setRangeText(transformed, start, end, 'select');
-        // If we toggled something on, update activeStyles for future typing
         if (!allHaveStyle) {
           activeStyles[style] = true;
-        } else {
-          // If we removed it, only turn off activeStyle if there's no selection left or something?
-          // Actually, standard behavior is to leave the button state as is unless changed.
         }
       } else {
         // No selection, toggle for the WHOLE textarea AND future typing
@@ -666,7 +900,6 @@ const faqs = [
         const styled = applyActiveStylesToText(e.data);
         if (styled !== e.data) {
           const pos = textarea.selectionStart;
-          const len = [...e.data].length;
           
           // Re-insertion logic
           const before = textarea.value.substring(0, pos - e.data.length);
