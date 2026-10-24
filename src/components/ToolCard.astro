@@ -5,9 +5,10 @@ interface Props {
   icon: string;
   tag?: string;
   href: string;
+  index?: number;
 }
 
-const { title, description, icon, tag, href } = Astro.props;
+const { title, description, icon, tag, href, index = 0 } = Astro.props;
 
 // Determine icon key based on icon prop or title string
 const getIconKey = (iconProp: string, titleProp: string) => {
@@ -22,89 +23,197 @@ const getIconKey = (iconProp: string, titleProp: string) => {
 };
 
 const iconKey = getIconKey(icon, title);
+
+// Distinct thematic styling per tool
+const getAccentStyle = (key: string) => {
+  switch (key) {
+    case "roi":
+      return {
+        iconBg: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 group-hover:border-emerald-500/50 group-hover:shadow-emerald-500/20",
+        badge: "text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border-emerald-500/20",
+        glow: "from-emerald-500/20",
+        dot: "bg-emerald-500"
+      };
+    case "engagement":
+      return {
+        iconBg: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20 group-hover:border-purple-500/50 group-hover:shadow-purple-500/20",
+        badge: "text-purple-700 dark:text-purple-300 bg-purple-500/10 border-purple-500/20",
+        glow: "from-purple-500/20",
+        dot: "bg-purple-500"
+      };
+    case "reels":
+      return {
+        iconBg: "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20 group-hover:border-rose-500/50 group-hover:shadow-rose-500/20",
+        badge: "text-rose-700 dark:text-rose-300 bg-rose-500/10 border-rose-500/20",
+        glow: "from-rose-500/20",
+        dot: "bg-rose-500"
+      };
+    case "roas":
+      return {
+        iconBg: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20 group-hover:border-amber-500/50 group-hover:shadow-amber-500/20",
+        badge: "text-amber-700 dark:text-amber-300 bg-amber-500/10 border-amber-500/20",
+        glow: "from-amber-500/20",
+        dot: "bg-amber-500"
+      };
+    case "linkedin":
+      return {
+        iconBg: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20 group-hover:border-sky-500/50 group-hover:shadow-sky-500/20",
+        badge: "text-sky-700 dark:text-sky-300 bg-sky-500/10 border-sky-500/20",
+        glow: "from-sky-500/20",
+        dot: "bg-sky-500"
+      };
+    case "tiktok":
+      return {
+        iconBg: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20 group-hover:border-teal-500/50 group-hover:shadow-teal-500/20",
+        badge: "text-teal-700 dark:text-teal-300 bg-teal-500/10 border-teal-500/20",
+        glow: "from-teal-500/20",
+        dot: "bg-teal-500"
+      };
+    default:
+      return {
+        iconBg: "bg-primary/10 text-primary border-primary/20 group-hover:border-primary/50 group-hover:shadow-primary/20",
+        badge: "text-primary bg-primary/10 border-primary/20",
+        glow: "from-primary/20",
+        dot: "bg-primary"
+      };
+  }
+};
+
+const accent = getAccentStyle(iconKey);
 ---
 
 <a 
   href={href} 
-  class="group relative flex flex-col justify-between h-full bg-surface-card border border-hairline rounded-lg p-6 sm:p-7 transition-all duration-200 hover:border-hairline-strong hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+  data-tool-card
+  data-category={tag ? tag.toLowerCase() : "other"}
+  style={`animation-delay: ${index * 70}ms;`}
+  class="tool-card-item group relative flex flex-col justify-between h-full bg-surface-card border border-hairline rounded-2xl p-6 sm:p-7 overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:border-hairline-strong hover:shadow-xl hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
 >
-  <div class="space-y-4">
-    <!-- Tool Name & Icon Header -->
-    <div class="flex items-start gap-3.5">
-      <div class="shrink-0 w-11 h-11 rounded-lg bg-canvas border border-hairline flex items-center justify-center shadow-2xs group-hover:border-primary/30 group-hover:bg-canvas-soft transition-colors duration-200">
+  <!-- Ambient Gradient Glow in Corner -->
+  <div 
+    class={`absolute -top-14 -right-14 w-36 h-36 rounded-full bg-gradient-to-br ${accent.glow} to-transparent blur-2xl opacity-20 group-hover:opacity-90 group-hover:scale-125 transition-all duration-500 pointer-events-none`}
+    aria-hidden="true"
+  ></div>
+
+  <!-- Top Accent Border Beam on Hover -->
+  <div 
+    class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-hairline to-transparent group-hover:via-primary transition-all duration-500" 
+    aria-hidden="true"
+  ></div>
+
+  <!-- Diagonal Interactive Light Sheen -->
+  <div 
+    class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" 
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 space-y-4">
+    <!-- Top Header: Icon + Category Badge -->
+    <div class="flex items-center justify-between gap-3">
+      <div class={`shrink-0 w-12 h-12 rounded-xl border flex items-center justify-center shadow-xs transition-all duration-300 ease-out group-hover:scale-110 group-hover:shadow-md ${accent.iconBg}`}>
         {iconKey === "roi" ? (
           <!-- Finance / Bar Chart Icon -->
-          <svg class="w-5 h-5 text-ink group-hover:text-primary transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+          <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-105" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
           </svg>
         ) : iconKey === "engagement" ? (
           <!-- Growth / Engagement Trend Icon -->
-          <svg class="w-5 h-5 text-ink group-hover:text-primary transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+          <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-105" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 005.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
           </svg>
         ) : iconKey === "reels" ? (
           <!-- Mobile Device / Video Tester Icon -->
-          <svg class="w-5 h-5 text-ink group-hover:text-primary transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+          <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-105" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
           </svg>
         ) : iconKey === "roas" ? (
           <!-- Revenue / Currency Target Icon -->
-          <svg class="w-5 h-5 text-ink group-hover:text-primary transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+          <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-105" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-9h4.5a2.25 2.25 0 010 4.5H9a2.25 2.25 0 000 4.5h4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         ) : iconKey === "linkedin" ? (
           <!-- Typography / Text Editor Icon -->
-          <svg class="w-5 h-5 text-ink group-hover:text-primary transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+          <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-105" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
           </svg>
         ) : iconKey === "tiktok" ? (
           <!-- TikTok / Music Note Icon -->
-          <svg class="w-5 h-5 text-ink group-hover:text-primary transition-colors duration-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-105" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.88 2.89 2.89 0 01-2.89-2.88 2.89 2.89 0 012.89-2.89c.34 0 .66.06.96.16v-3.53a6.37 6.37 0 00-.96-.08A6.34 6.34 0 003 15.67 6.34 6.34 0 009.34 22a6.34 6.34 0 006.34-6.33V9.04a8.28 8.28 0 003.91 1.15V6.69z" />
           </svg>
         ) : (
-          <span class="text-xl" aria-hidden="true">{icon}</span>
+          <span class="text-2xl" aria-hidden="true">{icon}</span>
         )}
       </div>
-      <div class="pt-0.5 min-w-0 flex-1">
-        <h3 class="text-base sm:text-lg font-semibold text-ink group-hover:text-primary transition-colors duration-200 leading-snug tracking-tight">
-          {title}
-        </h3>
-      </div>
+
+      {tag && (
+        <span class={`inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border transition-all duration-200 ${accent.badge}`}>
+          <span class={`w-1.5 h-1.5 rounded-full ${accent.dot} animate-pulse`} aria-hidden="true"></span>
+          {tag}
+        </span>
+      )}
     </div>
-    
-    <!-- What it does (Description) -->
-    <p class="text-body text-sm leading-relaxed font-normal">
-      {description}
-    </p>
+
+    <!-- Title & Description -->
+    <div>
+      <h3 class="text-base sm:text-lg font-bold text-ink group-hover:text-primary transition-colors duration-200 leading-snug tracking-tight">
+        {title}
+      </h3>
+      <p class="text-body text-sm leading-relaxed font-normal mt-2">
+        {description}
+      </p>
+    </div>
   </div>
 
-  <!-- Category & Action Footer -->
-  <div class="mt-6 pt-4 border-t border-hairline-soft flex items-center justify-between gap-3">
-    {tag ? (
-      <span class="inline-flex items-center text-[10px] font-mono font-semibold uppercase tracking-wider text-muted bg-canvas-soft border border-hairline px-2.5 py-1 rounded-md group-hover:border-hairline-strong/60 transition-colors">
-        {tag}
-      </span>
-    ) : (
-      <div />
-    )}
-    
-    <div class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink group-hover:text-primary transition-colors duration-200 ml-auto shrink-0">
-      <span>Try it now</span>
-      <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" 
-        fill="none" 
-        viewBox="0 0 24 24" 
-        stroke="currentColor" 
-        stroke-width="2"
-        aria-hidden="true"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-      </svg>
+  <!-- Action Footer -->
+  <div class="relative z-10 mt-6 pt-4 border-t border-hairline-soft flex items-center justify-between gap-3">
+    <span class="text-xs font-mono font-medium text-muted group-hover:text-ink transition-colors duration-200">
+      Free & Instant
+    </span>
+
+    <div class="inline-flex items-center gap-2 text-xs font-semibold text-ink group-hover:text-primary transition-colors duration-200 shrink-0">
+      <span>Open Tool</span>
+      <div class="w-7 h-7 rounded-full bg-canvas border border-hairline flex items-center justify-center text-ink group-hover:bg-primary group-hover:text-canvas group-hover:border-primary group-hover:translate-x-1 group-hover:shadow-xs transition-all duration-300">
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          class="w-3.5 h-3.5" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor" 
+          stroke-width="2.5"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </div>
     </div>
   </div>
 </a>
+
+<style>
+  .tool-card-item {
+    animation: cardEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes cardEntrance {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tool-card-item {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
 
 
 
