@@ -21,9 +21,9 @@ const steps = [
 ];
 ---
 
-<section id="how-it-works" class="py-20 sm:py-32 bg-canvas">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="mb-20 text-center">
+<section id="how-it-works" class="py-16 sm:py-32 bg-canvas overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="mb-14 sm:mb-20 text-center">
       <h2 class="text-display-lg text-ink mb-4">How it works</h2>
       <p class="text-body text-base sm:text-lg max-w-2xl mx-auto">
         We've removed the complexity from your daily workflow. Three simple steps to professional-grade output.
@@ -32,8 +32,8 @@ const steps = [
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16">
       {steps.map((step) => (
-        <div class="flex flex-col gap-6 relative">
-          <div class="text-display-mega text-surface-strong/30 font-bold absolute -top-12 -left-4 select-none pointer-events-none">
+        <div class="flex flex-col items-center text-center md:items-start md:text-left gap-6 relative">
+          <div class="text-display-mega text-surface-strong/30 font-bold absolute -top-12 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-0 select-none pointer-events-none">
             {step.number}
           </div>
           <div class="w-14 h-14 rounded-md bg-surface-card border border-hairline flex items-center justify-center text-2xl shadow-sm relative z-10">
@@ -49,12 +49,12 @@ const steps = [
       ))}
     </div>
     
-    <div class="mt-20 p-8 rounded-lg bg-surface-card border border-hairline flex flex-col md:flex-row items-center justify-between gap-8">
+    <div class="mt-14 sm:mt-20 p-6 sm:p-8 rounded-xl bg-surface-card border border-hairline flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 text-center md:text-left">
       <div class="max-w-xl">
         <h4 class="text-display-sm text-ink mb-2">Ready to speed up your workflow?</h4>
         <p class="text-body text-sm">Join thousands of creators who use Micro Tools every day to save time and hit their targets.</p>
       </div>
-      <a href="#tools" class="bg-primary hover:bg-primary-active text-white px-8 py-3 rounded-md text-sm font-medium transition-all shadow-sm whitespace-nowrap">
+      <a href="#tools" class="w-full sm:w-auto text-center bg-primary hover:bg-primary-active text-white px-8 py-3 rounded-md text-sm font-medium transition-all shadow-sm whitespace-nowrap">
         Start Exploring
       </a>
     </div>

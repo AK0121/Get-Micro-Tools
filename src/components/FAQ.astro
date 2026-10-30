@@ -24,7 +24,7 @@ const defaultFaqs = [
   },
   {
     question: "Why is my text being cut off on Instagram Reels?",
-    answer: "Instagram places various UI elements over Reels. If your text is placed too high, too low, or too far to the right, it will likely be obscured. Testing your content with an overlay tool before posting is the best way to prevent this."
+    answer: "Instagram places various UI elements over Reels. If your text is placed too high, too low, or too far to the right, it will likely be obscured. Testing your content with an overlay tool before packaging or posting is the best way to prevent this."
   },
   {
     question: "What is a good engagement rate for creators?",
@@ -76,24 +76,24 @@ const schema = {
 };
 ---
 
-<section id="faq" class="max-w-4xl mx-auto px-6 py-20 sm:py-32">
-  <div class="mb-16">
+<section id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-32">
+  <div class="mb-12 sm:mb-16 text-center md:text-left">
     <h2 class="text-display-lg text-ink mb-4">{title}</h2>
-    {description && <p class="text-body text-base sm:text-lg max-w-2xl">{description}</p>}
+    {description && <p class="text-body text-base sm:text-lg max-w-2xl mx-auto md:mx-0">{description}</p>}
   </div>
 
   <div class="grid gap-4">
     {faqs.map((faq) => (
       <details class="group border border-hairline rounded-lg bg-surface-card overflow-hidden transition-all duration-300">
-        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-          <h3 class="text-display-sm text-ink pr-8 font-normal">{faq.question}</h3>
+        <summary class="flex items-center justify-between p-4 sm:p-6 cursor-pointer list-none gap-4">
+          <h3 class="text-display-sm text-ink pr-2 sm:pr-8 font-normal text-left">{faq.question}</h3>
           <span class="transition-transform duration-300 group-open:rotate-180 shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </span>
         </summary>
-        <div class="px-6 pb-6 text-body text-sm sm:text-base leading-relaxed border-t border-hairline-soft pt-4">
+        <div class="px-4 sm:px-6 pb-4 sm:pb-6 text-body text-sm sm:text-base leading-relaxed border-t border-hairline-soft pt-4 text-left">
           {faq.answer}
         </div>
       </details>

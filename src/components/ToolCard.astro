@@ -87,7 +87,7 @@ const accent = getAccentStyle(iconKey);
   data-tool-card
   data-category={tag ? tag.toLowerCase() : "other"}
   style={`animation-delay: ${index * 70}ms;`}
-  class="tool-card-item group relative flex flex-col justify-between h-full bg-surface-card border border-hairline rounded-2xl p-6 sm:p-7 overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:border-hairline-strong hover:shadow-xl hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+  class="tool-card-item group relative flex flex-col justify-between h-full bg-surface-card border border-hairline rounded-2xl p-5 sm:p-7 overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:border-hairline-strong hover:shadow-xl hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-canvas w-full max-w-full"
 >
   <!-- Ambient Gradient Glow in Corner -->
   <div 
@@ -107,9 +107,9 @@ const accent = getAccentStyle(iconKey);
     aria-hidden="true"
   ></div>
 
-  <div class="relative z-10 space-y-4">
+  <div class="relative z-10 space-y-4 w-full">
     <!-- Top Header: Icon + Category Badge -->
-    <div class="flex items-center justify-between gap-3">
+    <div class="flex items-center justify-between gap-3 w-full">
       <div class={`shrink-0 w-12 h-12 rounded-xl border flex items-center justify-center shadow-xs transition-all duration-300 ease-out group-hover:scale-110 group-hover:shadow-md ${accent.iconBg}`}>
         {iconKey === "roi" ? (
           <!-- Finance / Bar Chart Icon -->
@@ -147,7 +147,7 @@ const accent = getAccentStyle(iconKey);
       </div>
 
       {tag && (
-        <span class={`inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border transition-all duration-200 ${accent.badge}`}>
+        <span class={`inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border transition-all duration-200 shrink-0 ${accent.badge}`}>
           <span class={`w-1.5 h-1.5 rounded-full ${accent.dot} animate-pulse`} aria-hidden="true"></span>
           {tag}
         </span>
@@ -156,17 +156,17 @@ const accent = getAccentStyle(iconKey);
 
     <!-- Title & Description -->
     <div>
-      <h3 class="text-base sm:text-lg font-bold text-ink group-hover:text-primary transition-colors duration-200 leading-snug tracking-tight">
+      <h3 class="text-base sm:text-lg font-bold text-ink group-hover:text-primary transition-colors duration-200 leading-snug tracking-tight break-words">
         {title}
       </h3>
-      <p class="text-body text-sm leading-relaxed font-normal mt-2">
+      <p class="text-body text-sm leading-relaxed font-normal mt-2 break-words">
         {description}
       </p>
     </div>
   </div>
 
   <!-- Action Footer -->
-  <div class="relative z-10 mt-6 pt-4 border-t border-hairline-soft flex items-center justify-between gap-3">
+  <div class="relative z-10 mt-6 pt-4 border-t border-hairline-soft flex items-center justify-between gap-3 w-full">
     <span class="text-xs font-mono font-medium text-muted group-hover:text-ink transition-colors duration-200">
       Free & Instant
     </span>
@@ -214,6 +214,3 @@ const accent = getAccentStyle(iconKey);
     }
   }
 </style>
-
-
-
